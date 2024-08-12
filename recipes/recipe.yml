@@ -14,18 +14,44 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+                       # put configuration files you want in /usr/etc/ inside the image
+                       # while putting files in /etc/ is done on booted system by system administrators.
+                       # read more about this in files module reference.
+
+  - from-file: akmods.yml
+  - from-file: displaylink.yml
+  - from-file: extra-repos.yml
+  - from-file: intel.yml
+  - from-file: cosmic.yml
 
   - type: rpm-ostree
     repos:
       # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - 
     install:
       # - micro
       # - starship
+      - distrobox
+      - adw-gtk3-theme
+      - heif-pixbuf-loader
+      - libheif-freeworld
+      - libheif-tools
+      - pipewire-codec-aptx
+      - rsms-inter-fonts
+      - podman-compose
+      - libavcodec-freeworld
+      - openh264
+      - ffmpeg
+
+      # Needed for winapps
+      - dialog
+      - nmap-ncat
     remove:
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
-      # - firefox
-      # - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - firefox
+      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - noopenh264
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -35,8 +61,39 @@ modules:
       # repo-name: flathub
       # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
       install:
-        # - org.mozilla.firefox
-        # - org.gnome.Loupe
+        # Browsers
+        - org.mozilla.firefox
+        - com.microsoft.Edge
+
+        # Social
+        - io.github.mimbrero.WhatsAppDesktop
+        - com.github.IsmaelMartinez.teams_for_linux
+        - us.zoom.Zoom
+
+        # Media
+        # - org.freedesktop.Platform.ffmpeg-full
+        - com.spotify.Client
+        - com.stremio.Stremio
+        - sh.cider.Cider
+
+        # Utility
+        - org.gnome.Loupe
+        - com.github.tchx84.Flatseal
+        - com.mattjakeman.ExtensionManager
+        - org.localsend.localsend_app
+        - com.bitwarden.desktop
+        - com.usebottles.bottles
+        
+        # Development
+        - com.visualstudio.code
+
+        # Needed for winapps
+        - com.freerdp.FreeRDP
+
+        # Gaming
+        - com.valvesoftware.Steam
+        - net.lutris.Lutris
+
         # - one.ablaze.floorp//lightning # This is an example of flatpak which has multiple branches in selection (flatpak//branch).
       # Flatpak runtimes are not supported (like org.winehq.Wine//stable-23.08),
       # only normal flatpak applications are (like Floorp Lightning web browser in this example).

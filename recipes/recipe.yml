@@ -20,6 +20,7 @@ modules:
 
   - from-file: akmods.yml
   - from-file: displaylink.yml
+  - from-file: system76-power.yml
   - from-file: extra-repos.yml
   - from-file: intel.yml
   - from-file: cosmic.yml

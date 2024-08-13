@@ -1,0 +1,11 @@
+[org/gnome/shell] 
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com']
+
+[org/gnome/desktop/sound]
+allow-volume-above-100-percent=true
+
+[org/gnome/desktop/wm/preferences]
+button-layout=":minimize,maximize,close"
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true

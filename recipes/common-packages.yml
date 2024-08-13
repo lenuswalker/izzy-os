@@ -15,7 +15,6 @@ modules:
       # Codecs
       - pipewire-codec-aptx
       - libavcodec-freeworld
-      - openh264
       - ffmpeg
       - heif-pixbuf-loader
       - libheif-freeworld

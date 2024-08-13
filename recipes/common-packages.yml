@@ -21,10 +21,10 @@ install:
   - libheif-tools
 
   # Gnome Extensions
-  - gnome-shell-extension-appindicator
+  #- gnome-shell-extension-appindicator
   - gnome-shell-extension-pop-shell
   - gnome-shell-extension-pop-shell-shortcut-overrides
-  - gnome-shell-extension-dash-to-dock
+  #- gnome-shell-extension-dash-to-dock
 
   # Needed for winapps
   - dialog

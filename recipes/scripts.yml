@@ -1,3 +1,4 @@
-type: script
-scripts:
-  - izzy-os-changes.sh
+modules:
+  - type: script
+    scripts:
+      - izzy-os-changes.sh

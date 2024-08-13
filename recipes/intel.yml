@@ -1,4 +1,5 @@
-type: rpm-ostree
-install:
-  - igt-gpu-tools
-  - intel-media-driver
+modules:
+  - type: rpm-ostree
+    install:
+      - igt-gpu-tools
+      - intel-media-driver

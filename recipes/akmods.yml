@@ -1,3 +1,4 @@
-type: akmods
-install:
-  - evdi
+modules:
+  - type: akmods
+    install:
+      - evdi

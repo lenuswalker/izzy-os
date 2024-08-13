@@ -1,5 +1,0 @@
-type: rpm-ostree
-  remove:
-    - gnome-extensions-app
-    - nvtop
-    - htop

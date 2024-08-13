@@ -1,6 +1,5 @@
 modules:
   - type: rpm-ostree
     install:
-      - openh264
       - igt-gpu-tools
       - intel-media-driver

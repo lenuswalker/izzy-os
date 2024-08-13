@@ -22,11 +22,11 @@ modules:
   - from-file: displaylink.yml
   - from-file: system76-power.yml
   - from-file: extra-repos.yml
-  - from-file: intel.yml
   - from-file: cosmic.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
   - from-file: remove-packages.yml
+  - from-file: intel.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
   - from-file: scripts.yml

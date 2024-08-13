@@ -1,0 +1,34 @@
+# image will be published to ghcr.io/<user>/<name>
+name: izzy-os
+# description will be included in the image's metadata
+description: This is my personal OS image.
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: rawhide # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+                        # put configuration files you want in /usr/etc/ inside the image
+                        # while putting files in /etc/ is done on booted system by system administrators.
+                        # read more about this in files module reference.
+
+  - from-file: akmods.yml
+  - from-file: displaylink.yml
+  - from-file: system76-power.yml
+  - from-file: extra-repos.yml
+  - from-file: intel.yml
+  - from-file: cosmic.yml
+  - from-file: common-packages.yml
+  - from-file: common-flatpaks.yml
+  - from-file: remove-packages.yml
+  - from-file: gnome-extensions.yml
+  - from-file: gschema-overrides.yml
+  - from-file: scripts.yml
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully

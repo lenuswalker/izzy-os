@@ -1,6 +1,5 @@
-modules:
-  - type: rpm-ostree
-    install:
-      # https://docs.fedoraproject.org/en-US/quick-docs/rpmfusion-setup/#_enabling_the_rpm_fusion_repositories_for_ostree_based_systems
-      - rpmfusion-free-release
-      - rpmfusion-nonfree-release
+type: rpm-ostree
+  install:
+    # https://docs.fedoraproject.org/en-US/quick-docs/rpmfusion-setup/#_enabling_the_rpm_fusion_repositories_for_ostree_based_systems
+    - rpmfusion-free-release
+    - rpmfusion-nonfree-release

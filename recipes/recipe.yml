@@ -27,6 +27,7 @@ modules:
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
   - from-file: remove-packages.yml
+  - from-file: gschema-overrides.yml
   - from-file: scripts.yml
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

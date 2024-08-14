@@ -1,11 +1,11 @@
 # image will be published to ghcr.io/<user>/<name>
-name: izzy-os-rawhide
+name: izzy-os-nvidia
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/lenuswalker/izzy-os-image
-image-version: rawhide # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/silverblue-nvidia
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -18,6 +18,8 @@ modules:
                         # while putting files in /etc/ is done on booted system by system administrators.
                         # read more about this in files module reference.
 
+  - from-file: akmods.yml
+  - from-file: displaylink.yml
   - from-file: system76-power.yml
   - from-file: extra-repos.yml
   - from-file: cosmic.yml

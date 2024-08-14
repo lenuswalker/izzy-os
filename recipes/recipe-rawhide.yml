@@ -18,6 +18,7 @@ modules:
                         # while putting files in /etc/ is done on booted system by system administrators.
                         # read more about this in files module reference.
 
+  - from-file: extra-repos-rawhide.yml
   - from-file: system76-power-rawhide.yml
   - from-file: cosmic-desktop-rawhide.yml
   - from-file: common-packages.yml

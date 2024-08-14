@@ -22,6 +22,7 @@ modules:
   - from-file: cosmic-desktop-rawhide.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
+  - from-file: starship-rawhide.yml
   - from-file: remove-packages.yml
   - from-file: packages-intel.yml
   - from-file: intel-specific.yml

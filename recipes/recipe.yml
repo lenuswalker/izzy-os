@@ -25,6 +25,7 @@ modules:
   - from-file: cosmic-desktop.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
+  - from-file: starship.yml
   - from-file: remove-packages.yml
   - from-file: remove-packages-intel.yml
   - from-file: packages-intel.yml

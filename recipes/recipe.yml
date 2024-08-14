@@ -22,7 +22,7 @@ modules:
   - from-file: displaylink.yml
   - from-file: system76-power.yml
   - from-file: extra-repos.yml
-  - from-file: cosmic.yml
+  - from-file: cosmic-desktop.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
   - from-file: remove-packages.yml

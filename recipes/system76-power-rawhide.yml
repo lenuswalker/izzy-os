@@ -1,0 +1,15 @@
+modules:
+  - type: rpm-ostree
+    repos:
+      - https://copr.fedorainfracloud.org/coprs/szydell/system76/repo/fedora-rawhide/szydell-system76-fedora-rawhide.repo
+    install:
+      - system76-driver
+      - system76-power
+
+  - type: systemd
+    system:
+      enabled:
+        - com.system76.PowerDaemon.service 
+        - system76-power-wake.service
+      masked:
+        - power-profiles-daemon.service

@@ -25,7 +25,6 @@ modules:
   - from-file: common-flatpaks.yml
   - from-file: starship-rawhide.yml
   - from-file: packages-intel.yml
-  - from-file: intel-specific.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
   - from-file: scripts.yml

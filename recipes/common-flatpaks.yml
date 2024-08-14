@@ -17,20 +17,26 @@ modules:
         - us.zoom.Zoom
 
         # Media
-        # - org.freedesktop.Platform.ffmpeg-full
         - com.spotify.Client
         - com.stremio.Stremio
         - sh.cider.Cider
 
         # Utility
-        - org.gnome.Loupe
-        - com.github.tchx84.Flatseal
+        - io.missioncenter.MissionCenter
         - com.mattjakeman.ExtensionManager
+        - com.github.tchx84.Flatseal
+        - io.github.realmazharhussain.GdmSettings
+        - org.gnome.Connections
+        - org.gnome.Loupe
         - org.localsend.localsend_app
         - com.bitwarden.desktop
         - com.usebottles.bottles
-        - io.missioncenter.MissionCenter
         - org.gnome.Papers
+
+        # Graphics
+        - com.github.maoschanz.drawing
+        - org.flameshot.Flameshot
+        - com.github.finefindus.eyedropper
         
         # Development
         - com.visualstudio.code

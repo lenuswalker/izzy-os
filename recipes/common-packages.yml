@@ -13,7 +13,6 @@ modules:
       - starship
 
       # Codecs
-      - openh264
       - pipewire-codec-aptx
       - libavcodec-freeworld
       - ffmpeg

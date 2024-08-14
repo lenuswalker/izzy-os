@@ -27,7 +27,8 @@ modules:
   - from-file: common-flatpaks.yml
   - from-file: remove-packages.yml
   - from-file: remove-packages-intel.yml
-  - from-file: intel.yml
+  - from-file: packages-intel.yml
+  - from-file: intel-specific.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
   - from-file: scripts.yml

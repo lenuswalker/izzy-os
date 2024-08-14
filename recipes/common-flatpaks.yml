@@ -47,3 +47,7 @@ modules:
         # Gaming
         - com.valvesoftware.Steam
         - net.lutris.Lutris
+
+        # Theme
+        - org.gtk.Gtk3theme.adw-gtk3
+        - org.gtk.Gtk3theme.adw-gtk3-dark

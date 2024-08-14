@@ -21,7 +21,7 @@ modules:
   - from-file: extra-repos-rawhide.yml
   - from-file: system76-power-rawhide.yml
   - from-file: cosmic-desktop-rawhide.yml
-  - from-file: common-packages.yml
+  - from-file: common-packages-rawhide.yml
   - from-file: common-flatpaks.yml
   - from-file: starship-rawhide.yml
   - from-file: remove-packages.yml

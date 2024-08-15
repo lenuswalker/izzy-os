@@ -1,0 +1,13 @@
+FROM registry.fedoraproject.org/fedora:latest
+
+ARG KERNEL_VERSION
+ARG MODULE_VERSION
+ARG GH_REPO
+ARG RELEASE_ARTIFACT
+
+WORKDIR /tmp
+
+RUN cd /tmp && \
+    dnf install -y wget && \
+    wget https://github.com/${GH_REPO}/releases/download/${MODULE_VERSION}/${RELEASE_ARTIFACT} && \
+    dnf install -y ./${RELEASE_ARTIFACT}

@@ -18,8 +18,8 @@ modules:
                         # while putting files in /etc/ is done on booted system by system administrators.
                         # read more about this in files module reference.
 
-  # - from-file: akmods.yml
-  - from-file: evdi.yml
+  - from-file: akmods.yml
+  # - from-file: evdi.yml
   - from-file: displaylink.yml
   - from-file: system76-power.yml
   - from-file: extra-repos.yml

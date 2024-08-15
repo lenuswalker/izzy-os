@@ -2,5 +2,5 @@
 
 set -ouex pipefail
 
-/files/scripts/kernel-modules build
-/files/scripts/kernel-modules load
+/tmp/files/scripts/kernel-modules build
+/tmp/files/scripts/kernel-modules load

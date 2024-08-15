@@ -37,7 +37,7 @@ BUILD_SOURCE=.
 GH_REPO=displaylink-rpm/displaylink-rpm
 IMAGE=quay.io/senz/silverblue-evdi
 RELEASE_ARTIFACT=fedora-40-displaylink-1.14.4-1.github_evdi.x86_64.rpm
-CONTAINERFILE=Containerfile-evdi
+CONTAINERFILE=/tmp/files/scripts/Containerfile-evdi
 
 if [ $(id -u) -ne 0 ]; then
     echo "Please run as root"

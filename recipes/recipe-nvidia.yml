@@ -20,7 +20,8 @@ modules:
 
   # - from-file: akmods.yml
   # - from-file: evdi.yml
-  - from-file: displaylink.yml
+  - from-file: displaylink-evdi.yml
+  # - from-file: displaylink.yml
   - from-file: system76-power.yml
   - from-file: extra-repos.yml
   - from-file: cosmic-desktop.yml

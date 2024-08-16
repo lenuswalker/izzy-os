@@ -4,7 +4,3 @@ modules:
       - Night Theme Switcher
       - AppIndicator and KStatusNotifierItem Support
       - Dash to Dock
-
-  - type: scripts
-    scripts:
-      - gsettings --schemadir ~/.local/share/gnome-shell/extensions/nightthemeswitcher@romainvigier.fr/schemas/ set org.gnome.shell.extensions.nightthemeswitcher.time location '($LATITUDE,$LONGITUDE)'

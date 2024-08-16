@@ -32,6 +32,7 @@ modules:
         - com.bitwarden.desktop
         - com.usebottles.bottles
         - org.gnome.Papers
+        - org.gnome.Weather
 
         # Graphics
         - com.github.maoschanz.drawing

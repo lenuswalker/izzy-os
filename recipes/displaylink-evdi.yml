@@ -1,5 +1,4 @@
 modules:
   - type: script
     scripts:
-      # - build-evdi.sh
       - install-displaylink-evdi.sh

@@ -4,4 +4,4 @@
 SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",RUN+="/usr/bin/system76-power profile balanced"
 
 # Start DisplayLink service
-SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",RUN+="/bin/systemctl start displaylink-driver.service"
+SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",RUN+="/bin/systemctl start displaylink.service"

@@ -1,30 +1,51 @@
 type: rpm-ostree
 install:
   - hyprland
+  - hyprcursor
   - waybar
   - xdg-desktop-portal-hyprland
+  - xdg-desktop-portal-gtk
 
   # launcher
   - rofi-wayland
   
   # environment
+  - cargo
+  - curl
+  - gawk
+  - git
+  - imagemagick
+  - jq
+  - inxi
+  - kitty
+  - kvantum
+  - nano
+  - openssl
   - power-profiles-daemon
-  - xorg-x11-server-Xwayland
-  - polkit
-  - xfce-polkit 
-  - xdg-user-dirs
-  - dbus-tools
-  - dbus-daemon
+  - polkit-gnome
+  - qt5ct
+  - qt6ct
+  - qt6-qtsvg
+  - swappy
+  - SwayNotificationCenter
+  - vim-enhanced
+  - wget2
   - wl-clipboard
-  - pavucontrol
-  - playerctl
-  - qt5-qtwayland
-  - qt6-qtwayland
-  - vulkan-validation-layers
-  - vulkan-tools
+  - wlogout
+  - xdg-user-dirs
+  - xdg-utils
+  - xorg-x11-server-Xwayland
+  - yad
+
+  # fonts
+  - adobe-source-code-pro-fonts
+  - fira-code-fonts
+  - fontawesome-fonts-all
+  - google-droid-sans-fonts
+  - google-noto-sans-cjk-fonts
+  - google-noto-color-emoji-fonts
   - google-noto-emoji-fonts
-  - gnome-disk-utility
-  - ddcutil
+  - jetbrains-mono-fonts
 
   # networking
   - network-manager-applet
@@ -33,17 +54,24 @@ install:
   - bluez
   - bluez-tools
   - blueman
+  - python3-cairo
 
   # sound
-  - wireplumber
-  - pipewire
   - pamixer
-  - pulseaudio-utils
+  - pavucontrol
+  - pipewire
+  - pipewire-alsa
+  - pipewire-utils
+  - playerctl
+  - wireplumber
 
   # file manager
+  - ffmpegthumbnailer
+  - file-roller
   - thunar
   - thunar-archive-plugin 
   - thunar-volman
+  - tumbler
   - xarchiver
   - imv
   - p7zip
@@ -56,20 +84,31 @@ install:
   - gvfs-archive
   - android-tools
 
-# screenshot
+  # screenshot
   - slurp
   - grim
 
-# display
-  - wlr-randr
-  - wlsunset
+  # display
   - brightnessctl
-  - swaylock
-  - swayidle
-  - kanshi
+  - cliphist
+  - hyprlock
+  - hypridle
+  - pyprland
+  - swww
 
-# terminal
-  - foot
+  # nwg-look
+  - golang
+  - gtk3
+  - gtk3-devel
+  - cairo-devel
+  - glib-devel
 
-# notifications
-  - dunst
+  # themes
+  - unzip
+  - gtk-murrine-engine
+
+  # zsh
+  - eza
+  - fzf
+  - zsh 
+  - util-linux

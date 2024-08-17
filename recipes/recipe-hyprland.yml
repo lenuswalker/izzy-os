@@ -12,22 +12,20 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   - from-file: common-files.yml
   # - from-file: akmods.yml
-  # - from-file: evdi.yml
-  # - from-file: displaylink-evdi.yml
-  # - from-file: displaylink.yml
-  - from-file: hyprland-packages.yml
-  - from-file: system76-power.yml
+  - from-file: system76-power-packages.yml
+  - from-file: system76-power-systemd.yml
   - from-file: extra-repos.yml
-  - from-file: cosmic-desktop.yml
+  - from-file: hyprland-packages.yml
+  - from-file: sddm-packages.yml
+  - from-file: sddm-systemd.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
-  - from-file: starship.yml
+  - from-file: starship-packages.yml
   - from-file: remove-packages.yml
-  - from-file: remove-packages-intel.yml
-  - from-file: packages-intel.yml
+  - from-file: remove-nvidia-packages.yml
+  - from-file: intel-packages.yml
   - from-file: intel-specific.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
-  - from-file: scripts.yml
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - from-file: custom-scripts.yml
+  - type: signing

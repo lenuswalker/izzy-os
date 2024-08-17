@@ -24,6 +24,7 @@ jobs:
           # !! Add your recipes here 
           - recipe.yml
           - recipe-nvidia.yml
+          - recipe-hyprland.yml
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

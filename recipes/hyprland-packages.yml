@@ -14,7 +14,7 @@ install:
   - curl
   - gawk
   - git
-  - imagemagick
+  - ImageMagick
   - jq
   - inxi
   - kitty

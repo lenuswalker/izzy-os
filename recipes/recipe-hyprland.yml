@@ -1,10 +1,10 @@
 # image will be published to ghcr.io/<user>/<name>
-name: izzy-os-nvidia
+name: izzy-os-hyprland
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-nvidia
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -15,6 +15,7 @@ modules:
   # - from-file: evdi.yml
   # - from-file: displaylink-evdi.yml
   # - from-file: displaylink.yml
+  - from-file: hyprland-packages.yml
   - from-file: system76-power.yml
   - from-file: extra-repos.yml
   - from-file: cosmic-desktop.yml
@@ -22,7 +23,9 @@ modules:
   - from-file: common-flatpaks.yml
   - from-file: starship.yml
   - from-file: remove-packages.yml
+  - from-file: remove-packages-intel.yml
   - from-file: packages-intel.yml
+  - from-file: intel-specific.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
   - from-file: scripts.yml

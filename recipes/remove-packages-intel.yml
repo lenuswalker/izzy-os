@@ -1,5 +1,4 @@
-modules:
-  - type: rpm-ostree
-    remove:
-      - nvtop
-      - noopenh264
+type: rpm-ostree
+remove:
+  - nvtop
+  - noopenh264

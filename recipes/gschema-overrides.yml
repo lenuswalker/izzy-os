@@ -1,4 +1,3 @@
-modules:
-  - type: gschema-overrides
-    include:
-      - 01-izzy-os.gschema.override
+type: gschema-overrides
+include:
+  - 01-izzy-os.gschema.override

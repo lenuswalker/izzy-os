@@ -1,6 +1,5 @@
-modules:
-  - type: gnome-extensions
-    install:
-      - Night Theme Switcher
-      - AppIndicator and KStatusNotifierItem Support
-      - Dash to Dock
+type: gnome-extensions
+install:
+  - Night Theme Switcher
+  - AppIndicator and KStatusNotifierItem Support
+  - Dash to Dock

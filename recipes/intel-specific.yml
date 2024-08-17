@@ -1,4 +1,3 @@
-modules:
-  - type: rpm-ostree
-    install:
-      - openh264
+type: rpm-ostree
+install:
+  - openh264

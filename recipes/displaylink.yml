@@ -1,8 +1,7 @@
-modules:
-  - type: script
-    snippets:
-      - wget https://copr.fedorainfracloud.org/coprs/crashdummy/Displaylink/repo/fedora-$(rpm -E %fedora)/crashdummy-Displaylink-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_crashdummy-displaylink.repo
+type: script
+snippets:
+  - wget https://copr.fedorainfracloud.org/coprs/crashdummy/Displaylink/repo/fedora-$(rpm -E %fedora)/crashdummy-Displaylink-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_crashdummy-displaylink.repo
 
-  - type: rpm-ostree
-    install:
-      - displaylink
+type: rpm-ostree
+install:
+  - displaylink

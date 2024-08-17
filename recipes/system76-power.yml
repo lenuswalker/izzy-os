@@ -1,15 +1,14 @@
-modules:
-  - type: rpm-ostree
-    repos:
-      - https://copr.fedorainfracloud.org/coprs/szydell/system76/repo/fedora-%OS_VERSION%/szydell-system76-fedora-%OS_VERSION%.repo
-    install:
-      - system76-driver
-      - system76-power
+type: rpm-ostree
+repos:
+  - https://copr.fedorainfracloud.org/coprs/szydell/system76/repo/fedora-%OS_VERSION%/szydell-system76-fedora-%OS_VERSION%.repo
+install:
+  - system76-driver
+  - system76-power
 
-  - type: systemd
-    system:
-      enabled:
-        - com.system76.PowerDaemon.service 
-        - system76-power-wake.service
-      masked:
-        - power-profiles-daemon.service
+type: systemd
+system:
+  enabled:
+    - com.system76.PowerDaemon.service 
+    - system76-power-wake.service
+  masked:
+    - power-profiles-daemon.service

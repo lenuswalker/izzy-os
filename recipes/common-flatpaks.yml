@@ -1,54 +1,53 @@
-modules:
-  - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
-    system:
-      # If no repo information is specified, Flathub will be used by default
-      # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      # repo-name: flathub
-      # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
-      install:
-        # Browsers
-        - org.mozilla.firefox
-        - com.microsoft.Edge
+type: default-flatpaks
+notify: true # Send notification after install/uninstall is finished (true/false)
+system:
+  # If no repo information is specified, Flathub will be used by default
+  # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
+  # repo-name: flathub
+  # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+  install:
+    # Browsers
+    - org.mozilla.firefox
+    - com.microsoft.Edge
 
-        # Social
-        - io.github.mimbrero.WhatsAppDesktop
-        - com.github.IsmaelMartinez.teams_for_linux
-        - us.zoom.Zoom
+    # Social
+    - io.github.mimbrero.WhatsAppDesktop
+    - com.github.IsmaelMartinez.teams_for_linux
+    - us.zoom.Zoom
 
-        # Media
-        - com.spotify.Client
-        - com.stremio.Stremio
-        - sh.cider.Cider
+    # Media
+    - com.spotify.Client
+    - com.stremio.Stremio
+    - sh.cider.Cider
 
-        # Utility
-        - io.missioncenter.MissionCenter
-        - com.mattjakeman.ExtensionManager
-        - com.github.tchx84.Flatseal
-        - io.github.realmazharhussain.GdmSettings
-        - org.gnome.Connections
-        - org.gnome.Loupe
-        - org.localsend.localsend_app
-        - com.bitwarden.desktop
-        - com.usebottles.bottles
-        - org.gnome.Papers
-        - org.gnome.Weather
+    # Utility
+    - io.missioncenter.MissionCenter
+    - com.mattjakeman.ExtensionManager
+    - com.github.tchx84.Flatseal
+    - io.github.realmazharhussain.GdmSettings
+    - org.gnome.Connections
+    - org.gnome.Loupe
+    - org.localsend.localsend_app
+    - com.bitwarden.desktop
+    - com.usebottles.bottles
+    - org.gnome.Papers
+    - org.gnome.Weather
 
-        # Graphics
-        - com.github.maoschanz.drawing
-        - org.flameshot.Flameshot
-        - com.github.finefindus.eyedropper
-        
-        # Development
-        - com.visualstudio.code
+    # Graphics
+    - com.github.maoschanz.drawing
+    - org.flameshot.Flameshot
+    - com.github.finefindus.eyedropper
+    
+    # Development
+    - com.visualstudio.code
 
-        # Needed for winapps
-        - com.freerdp.FreeRDP
+    # Needed for winapps
+    - com.freerdp.FreeRDP
 
-        # Gaming
-        - com.valvesoftware.Steam
-        - net.lutris.Lutris
+    # Gaming
+    - com.valvesoftware.Steam
+    - net.lutris.Lutris
 
-        # Theme
-        - org.gtk.Gtk3theme.adw-gtk3
-        - org.gtk.Gtk3theme.adw-gtk3-dark
+    # Theme
+    - org.gtk.Gtk3theme.adw-gtk3
+    - org.gtk.Gtk3theme.adw-gtk3-dark

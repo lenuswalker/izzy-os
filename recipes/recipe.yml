@@ -11,17 +11,20 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - from-file: common-files.yml
-  - from-file: system76-power.yml
+  # - from-file: akmods.yml
+  - from-file: system76-power-packages.yml
+  - from-file: system76-power-systemd.yml
   - from-file: extra-repos.yml
-  - from-file: cosmic-desktop.yml
+  - from-file: cosmic-desktop-repo.yml
+  - from-file: cosmic-desktop-packages.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
-  - from-file: starship.yml
+  - from-file: starship-packages.yml
   - from-file: remove-packages.yml
-  - from-file: remove-packages-intel.yml
-  - from-file: packages-intel.yml
+  - from-file: remove-nvidia-packages.yml
+  - from-file: intel-packages.yml
   - from-file: intel-specific.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
-  - from-file: scripts.yml
+  - from-file: custom-scripts.yml
   - type: signing

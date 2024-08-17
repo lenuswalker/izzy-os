@@ -4,11 +4,3 @@ repos:
 install:
   - system76-driver
   - system76-power
-
-type: systemd
-system:
-  enabled:
-    - com.system76.PowerDaemon.service 
-    - system76-power-wake.service
-  masked:
-    - power-profiles-daemon.service

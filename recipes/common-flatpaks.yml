@@ -24,7 +24,7 @@ system:
     - io.missioncenter.MissionCenter
     - com.mattjakeman.ExtensionManager
     - com.github.tchx84.Flatseal
-    - io.github.realmazharhussain.GdmSettings
+    - io.github.dvlv.boxbuddyrs
     - org.gnome.Connections
     - org.gnome.Loupe
     - org.localsend.localsend_app
@@ -35,7 +35,6 @@ system:
 
     # Graphics
     - com.github.maoschanz.drawing
-    - org.flameshot.Flameshot
     - com.github.finefindus.eyedropper
     
     # Development

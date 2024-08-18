@@ -1,16 +1,17 @@
 type: rpm-ostree
 install:
   # Utility
-  - distrobox
   - adw-gtk3-theme
-  - rsms-inter-fonts
-  - podman-compose
+  - distrobox
+  - evolution-ews
   - fastfetch
-
+  - podman-compose
+  - rsms-inter-fonts
+  
   # Codecs
+  - ffmpeg
   - pipewire-codec-aptx
   - libavcodec-freeworld
-  - ffmpeg
   - heif-pixbuf-loader
   - libheif-freeworld
   - libheif-tools

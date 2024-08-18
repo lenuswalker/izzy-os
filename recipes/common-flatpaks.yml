@@ -27,6 +27,7 @@ system:
     - io.github.dvlv.boxbuddyrs
     - org.fedoraproject.MediaWriter
     - org.gnome.Boxes
+    - org.gnome.Calculator
     - org.gnome.Calendar
     - org.gnome.clocks
     - org.gnome.Connections

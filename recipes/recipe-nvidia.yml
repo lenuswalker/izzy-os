@@ -11,10 +11,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   - from-file: common-files.yml
-  # - from-file: akmods.yml
-  # - from-file: evdi.yml
-  # - from-file: displaylink-evdi.yml
-  # - from-file: displaylink.yml
+  # - from-file: common-akmods.yml
   - from-file: system76-power-packages.yml
   - from-file: system76-power-systemd.yml
   - from-file: extra-repos.yml

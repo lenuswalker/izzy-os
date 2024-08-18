@@ -3,7 +3,6 @@ install:
   # Utility
   - adw-gtk3-theme
   - distrobox
-  - evolution-ews
   - fastfetch
   - podman-compose
   - rsms-inter-fonts

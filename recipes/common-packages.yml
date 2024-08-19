@@ -1,12 +1,13 @@
 type: rpm-ostree
 install:
   # Utility
-  - adw-gtk3-theme
+  - nu
   - distrobox
   - fastfetch
   - podman-compose
-  - rsms-inter-fonts
-  
+  - neovim
+  - python3-neovim
+
   # Codecs
   - ffmpeg
   - pipewire-codec-aptx
@@ -20,10 +21,14 @@ install:
   - pipewire
   
   # Gnome Extensions
-  # - gnome-shell-extension-appindicator
   - gnome-shell-extension-pop-shell
   - gnome-shell-extension-pop-shell-shortcut-overrides
-  # - gnome-shell-extension-dash-to-dock
+
+  # Themes
+  - adw-gtk3-theme
+
+  # Fonts
+  - rsms-inter-fonts
 
   # Needed for winapps
   - dialog

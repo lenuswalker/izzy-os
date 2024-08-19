@@ -2,6 +2,8 @@ type: rpm-ostree
 install:
   - sddm
   - sddm-themes
-  - qt6-qt5compat
-  - qt6-qtdeclarative
-  - qt6-qtsvg
+  - qt5-qtgraphicaleffects
+  - qt5-qtquickcontrols2
+  - qt5-qtsvg
+  - kwallet
+  - pam-kwallet

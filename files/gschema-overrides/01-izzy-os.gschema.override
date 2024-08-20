@@ -1,5 +1,7 @@
 [org/gnome/shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr']
+# enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
+
 
 [org.gnome.desktop.peripherals.touchpad:GNOME-Greeter]
 tap-to-click=true

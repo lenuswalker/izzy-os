@@ -1,11 +1,11 @@
+[org/gnome/shell] 
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
+
 [org.gnome.desktop.peripherals.touchpad:GNOME-Greeter]
 tap-to-click=true
 
 [org/gnome/desktop/peripherals/touchpad]
 tap-to-click=true
-
-[org/gnome/shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
 
 [org/gnome/desktop/sound]
 allow-volume-above-100-percent=true
@@ -30,3 +30,8 @@ max-alpha=0.8
 [org.gnome.shell.extensions.paperwm]
 selection-border-radius-bottom=12
 show-workspace-indicator=false
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Control><Shift>Escape'
+command="flatpak run io.missioncenter.MissionCenter"
+name='mission-center'

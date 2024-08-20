@@ -5,7 +5,7 @@ tap-to-click=true
 tap-to-click=true
 
 [org/gnome/shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'pop-shell@system76.com']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
 
 [org/gnome/desktop/sound]
 allow-volume-above-100-percent=true
@@ -18,3 +18,12 @@ custom-theme-shrink=true
 apply-custom-theme=false
 dash-max-icon-size=40
 intellihide=false
+running-indicator-style=dots
+transparency-mode=dynamic
+customize-alphas=true
+min-alpha=0.5
+max-alpha=0.8
+
+[org.gnome.shell.extensions.paperwm]
+selection-border-radius-bottom=12
+show-workspace-indicator=false

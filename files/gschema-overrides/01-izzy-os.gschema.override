@@ -1,6 +1,6 @@
 [org/gnome/shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr']
-# enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
+# enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr', 'paperwm@paperwm.github.com']
 
 
 [org.gnome.desktop.peripherals.touchpad:GNOME-Greeter]
@@ -29,9 +29,9 @@ customize-alphas=true
 min-alpha=0.5
 max-alpha=0.8
 
-# [org.gnome.shell.extensions.paperwm]
-# selection-border-radius-bottom=12
-# show-workspace-indicator=false
+[org.gnome.shell.extensions.paperwm]
+selection-border-radius-bottom=12
+show-workspace-indicator=false
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Control><Shift>Escape'

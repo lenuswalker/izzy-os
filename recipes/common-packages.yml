@@ -1,24 +1,24 @@
 type: rpm-ostree
 install:
   # Utility
-  - nu
   - distrobox
   - fastfetch
-  - podman-compose
   - neovim
+  - nu
+  - podman-compose
   - python3-neovim
 
   # Codecs
   - ffmpeg
-  - pipewire-codec-aptx
-  - libavcodec-freeworld
   - heif-pixbuf-loader
+  - libavcodec-freeworld
   - libheif-freeworld
   - libheif-tools
+  - pipewire-codec-aptx
 
   # Audio
-  - wireplumber
   - pipewire
+  - wireplumber
   
   # Gnome Extensions
   - gnome-shell-extension-pop-shell

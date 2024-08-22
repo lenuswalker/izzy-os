@@ -14,7 +14,7 @@ modules:
   - from-file: common-akmods.yml
   - from-file: system76-power-packages.yml
   - from-file: system76-power-systemd.yml
-  - from-file: extra-repos.yml
+  - from-file: common-rpmfusion-repos.yml
   - from-file: cosmic-desktop-repo.yml
   - from-file: cosmic-desktop-packages.yml
   - from-file: common-packages.yml
@@ -26,5 +26,5 @@ modules:
   - from-file: intel-specific.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml
-  - from-file: custom-scripts.yml
+  - from-file: common-scripts.yml
   - type: signing

@@ -1,0 +1,39 @@
+type: rpm-ostree
+install:
+  # Utility
+  - distrobox
+  - fastfetch
+  - neovim
+  - nu
+  - podman-compose
+  - python3-neovim
+
+  # Codecs
+  - ffmpeg-free
+  - heif-pixbuf-loader
+  - libavcodec-free
+  - libheif-freeworld
+  - libheif-tools
+  - pipewire-codec-aptx
+
+  # Audio
+  - pipewire
+  - wireplumber
+  
+  # Gnome Extensions
+  - gnome-shell-extension-pop-shell
+  - gnome-shell-extension-pop-shell-shortcut-overrides
+
+  # Themes
+  - adw-gtk3-theme
+
+  # Fonts
+  - rsms-inter-fonts
+
+  # Needed for winapps
+  - dialog
+  - nmap-ncat
+
+remove:
+  - firefox
+  - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)

@@ -21,6 +21,7 @@ system:
     - sh.cider.Cider
 
     # Utility
+    - app.devsuite.Ptyxis
     - com.bitwarden.desktop
     - com.github.rafostar.Clapper
     - com.github.tchx84.Flatseal

@@ -1,0 +1,6 @@
+type: rpm-ostree
+repos:
+  - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-rawhide/atim-starship-fedora-rawhide.repo
+
+install:
+  - starship

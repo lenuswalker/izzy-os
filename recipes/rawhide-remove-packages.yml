@@ -1,3 +1,4 @@
 type: rpm-ostree
 remove:
   - gnome-extensions-app
+  - noopenh264

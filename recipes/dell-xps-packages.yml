@@ -2,5 +2,5 @@ type: rpm-ostree
 install:
   - libfprint-tod
   - libfprint-tod-goodix
-remove:
-  - libfprint
+# remove:
+#   - libfprint

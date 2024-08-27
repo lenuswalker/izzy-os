@@ -1,0 +1,10 @@
+[copr:copr.fedorainfracloud.org:manciukic:libfprint-tod-goodix]
+name=Copr repo for libfprint-tod-goodix owned by manciukic
+baseurl=https://download.copr.fedorainfracloud.org/results/manciukic/libfprint-tod-goodix/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/manciukic/libfprint-tod-goodix/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1

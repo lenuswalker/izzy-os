@@ -1,0 +1,4 @@
+type: chezmoi
+repository: "https://github.com/lenuswalker/dotfiles" # my dotfiles repo
+all-users: true # make users have to enable chezmoi manually
+file-conflict-policy: replace # override changed files with those from the repo

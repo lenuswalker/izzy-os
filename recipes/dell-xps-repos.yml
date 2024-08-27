@@ -1,0 +1,3 @@
+type: rpm-ostree
+repos:
+  - manciukic-libfprint-tod-goodix.repo

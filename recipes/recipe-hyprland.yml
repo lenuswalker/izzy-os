@@ -26,6 +26,9 @@ modules:
   - from-file: remove-nvidia-packages.yml
   - from-file: intel-packages.yml
   - from-file: intel-specific.yml
+  - from-file: dell-xps-repos.yml
+  - from-file: dell-xps-packages.yml
   - from-file: common-scripts.yml
   - from-file: sddm-systemd.yml
+  - from-file: chezmoi.yml
   - type: signing

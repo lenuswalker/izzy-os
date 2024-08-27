@@ -26,6 +26,7 @@ modules:
   - from-file: intel-packages.yml
   - from-file: intel-specific.yml
   - from-file: dell-xps-repos.yml
+  - from-file: dell-xps-remove-packages.yml
   - from-file: dell-xps-packages.yml
   - from-file: rawhide-gnome-extensions.yml
   - from-file: rawhide-gschema-overrides.yml

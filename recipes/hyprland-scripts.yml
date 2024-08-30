@@ -1,4 +1,4 @@
 type: script
 scripts:
   # - removeunprofessionalwallpapers.sh
-  - sethyprlandwaybarmodules.sh
+  - hyprland-waybar-modules.sh

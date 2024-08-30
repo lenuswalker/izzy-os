@@ -7,7 +7,6 @@ install:
   - nu
   - podman-compose
   - python3-neovim
-  - rbw
 
   # Codecs
   - ffmpeg

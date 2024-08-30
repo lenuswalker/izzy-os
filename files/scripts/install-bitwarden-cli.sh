@@ -8,4 +8,4 @@ unzip /tmp/bitwarden.zip -d /tmp
 
 chmod u+x /tmp/bw
 
-mw /tmp/bw /usr/local/bw
+mv /tmp/bw /usr/local/bw

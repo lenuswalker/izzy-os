@@ -21,8 +21,8 @@ install:
   - wireplumber
   
   # Gnome Extensions
-  - gnome-shell-extension-pop-shell
-  - gnome-shell-extension-pop-shell-shortcut-overrides
+  # - gnome-shell-extension-pop-shell
+  # - gnome-shell-extension-pop-shell-shortcut-overrides
 
   # Themes
   - adw-gtk3-theme

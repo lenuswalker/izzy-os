@@ -1,13 +1,17 @@
 type: rpm-ostree
 install:
-  - hyprland
+  # Hyprland
   - hyprcursor
-  - waybar
+  - hypridle
+  - hyprland
+  - hyprlock
+  - hyprpaper
   - xdg-desktop-portal-hyprland
-  - xdg-desktop-portal-gtk
 
-  # launcher
+  # Desktop Utils
   - rofi-wayland
+  - SwayNotificationCenter
+  - waybar
   
   # environment
   - cargo
@@ -49,8 +53,7 @@ install:
 
   # networking
   - network-manager-applet
-  - NetworkManager-openvpn
-  - NetworkManager-openconnect
+  - NetworkManager-tui
   - bluez
   - bluez-tools
   - blueman
@@ -91,10 +94,6 @@ install:
   # display
   - brightnessctl
   - cliphist
-  - hyprlock
-  - hypridle
-  - pyprland
-  - swww
 
   # nwg-look
   - golang
@@ -106,9 +105,3 @@ install:
   # themes
   - unzip
   - gtk-murrine-engine
-
-  # zsh
-  - eza
-  - fzf
-  - zsh 
-  - util-linux

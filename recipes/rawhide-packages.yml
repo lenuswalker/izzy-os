@@ -3,10 +3,11 @@ install:
   # Utility
   - distrobox
   - fastfetch
-  - neovim
+  # - neovim
   - nu
   - podman-compose
-  - python3-neovim
+  # - python3-neovim
+  - vim
 
   # Codecs
   - ffmpeg-free
@@ -19,10 +20,6 @@ install:
   # Audio
   - pipewire
   - wireplumber
-  
-  # Gnome Extensions
-  # - gnome-shell-extension-pop-shell
-  # - gnome-shell-extension-pop-shell-shortcut-overrides
 
   # Themes
   - adw-gtk3-theme

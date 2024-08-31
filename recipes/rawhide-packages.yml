@@ -1,6 +1,7 @@
 type: rpm-ostree
 install:
   # Utility
+  - bash-completion
   - distrobox
   - fastfetch
   # - neovim

@@ -8,7 +8,6 @@ install:
   - nu
   - podman-compose
   # - python3-neovim
-  - vim
 
   # Codecs
   - ffmpeg-free

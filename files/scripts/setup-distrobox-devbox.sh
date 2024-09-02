@@ -47,6 +47,7 @@ EOF
 # Install Starship
 curl -sS https://starship.rs/install.sh | sh
 cat >> .bashrc << EOF
+
 # Starship
 eval "$(starship init bash)"
 fastfetch

@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 # Create devbox
-distrobox create --name devbox --image ubuntu:latest --yes --home $HOME/distrobox/home/devbox
+distrobox create --name devbox --image ubuntu:latest --yes --home /opt/distrobox/home/devbox
 distrobox enter devbox
 
 # Update distrobox

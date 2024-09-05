@@ -2,4 +2,3 @@ type: script
 scripts:
   - install-bitwarden-cli.sh
   - izzy-os-changes.sh
-  # - setup-distrobox-devbox.sh

@@ -1,6 +1,7 @@
 type: rpm-ostree
 install:
   # Utility
+  - age
   - bash-completion
   - distrobox
   - fastfetch

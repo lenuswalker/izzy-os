@@ -2,12 +2,13 @@ type: rpm-ostree
 install:
   # Utility
   - bash-completion
+  - bootc
   - distrobox
   - fastfetch
-  # - neovim
+  - neovim
   - nu
   - podman-compose
-  # - python3-neovim
+  - python3-neovim
 
   # Codecs
   - ffmpeg-free

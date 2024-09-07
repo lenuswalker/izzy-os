@@ -1,6 +1,7 @@
 type: rpm-ostree
 install:
   # Utility
+  - age
   - bash-completion
   - bootc
   - distrobox
@@ -9,11 +10,12 @@ install:
   - nu
   - podman-compose
   - python3-neovim
+  - vim
 
   # Codecs
-  - ffmpeg-free
+  - ffmpeg
   - heif-pixbuf-loader
-  - libavcodec-free
+  - libavcodec-freeworld
   - libheif-freeworld
   - libheif-tools
   - pipewire-codec-aptx
@@ -33,5 +35,8 @@ install:
   - nmap-ncat
 
 remove:
+  - ffmpeg-free
   - firefox
   - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  - libavcodec-free
+  - noopenh264

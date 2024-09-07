@@ -13,9 +13,9 @@ install:
   - vim
 
   # Codecs
-  - ffmpeg
+  - ffmpeg-free
   - heif-pixbuf-loader
-  - libavcodec-freeworld
+  - libavcodec-free
   - libheif-freeworld
   - libheif-tools
   - pipewire-codec-aptx
@@ -35,8 +35,6 @@ install:
   - nmap-ncat
 
 remove:
-  - ffmpeg-free
   - firefox
   - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-  - libavcodec-free
   - noopenh264

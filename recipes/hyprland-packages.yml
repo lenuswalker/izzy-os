@@ -26,6 +26,7 @@ install:
   - inxi
   - kitty
   - kvantum
+  - libfprint
   - nano
   - openssl
   - power-profiles-daemon

@@ -1,4 +1,7 @@
 type: rpm-ostree
+repos:
+  - solopasha-hyprland.repo
+  - erikreider-swaynotificationcenter.repo
 install:
   # Hyprland
   - hyprcursor

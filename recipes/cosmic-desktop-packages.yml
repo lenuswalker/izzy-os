@@ -1,3 +1,5 @@
 type: rpm-ostree
+repos:
+  - ryanabx-cosmic-epoch.repo
 install:
   - cosmic-desktop

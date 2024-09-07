@@ -1,5 +1,5 @@
 type: rpm-ostree
 repos:
-  - https://copr.fedorainfracloud.org/coprs/szydell/system76/repo/fedora-%OS_VERSION%/szydell-system76-fedora-%OS_VERSION%.repo
+  - szydell-system76.repo
 install:
   - system76-power

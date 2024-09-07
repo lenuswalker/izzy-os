@@ -1,4 +1,6 @@
 type: rpm-ostree
+repos:
+  - manciukic-libfprint-tod-goodix.repo
 install:
   - libfprint-tod
   - libfprint-tod-goodix

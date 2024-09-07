@@ -3,11 +3,13 @@ install:
   # Utility
   - age
   - bash-completion
+  - bootc
   - distrobox
   - fastfetch
   - neovim
   - nu
   - podman-compose
+  - power-profiles-daemon
   - python3-neovim
   - vim
 

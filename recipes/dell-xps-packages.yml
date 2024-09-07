@@ -4,3 +4,5 @@ repos:
 install:
   - libfprint-tod
   - libfprint-tod-goodix
+remove:
+  - libfprint

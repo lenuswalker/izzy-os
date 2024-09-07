@@ -22,7 +22,7 @@ modules:
   - from-file: starship-packages.yml
   - from-file: remove-packages.yml
   - from-file: intel-packages.yml
-  - from-file: dell-xps-remove-packages.yml
+  # - from-file: dell-xps-remove-packages.yml
   - from-file: dell-xps-packages.yml
   - from-file: gnome-extensions.yml
   - from-file: gschema-overrides.yml

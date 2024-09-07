@@ -19,9 +19,9 @@ modules:
   # - from-file: system76-power-systemd.yml
   - from-file: rawhide-rpmfusion-repos.yml
   - from-file: cosmic-desktop-packages.yml
-  - from-file: common-packages.yml
+  # - from-file: common-packages.yml
   - from-file: rawhide-packages.yml
-  # - from-file: common-flatpaks.yml
+  - from-file: common-flatpaks.yml
   - from-file: starship-packages.yml
   - from-file: rawhide-remove-packages.yml
   # - from-file: remove-nvidia-packages.yml

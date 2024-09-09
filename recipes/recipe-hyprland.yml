@@ -11,19 +11,18 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
   #- from-file: common-files.yml
-  - from-file: common-akmods.yml
-  - from-file: rpmfusion-repos.yml
+  - from-file: modules/common-akmods.yml
   # - from-file: hyprland-packages.yml
   # - from-file: hyprland-files.yml
   # - from-file: hyprland-scripts.yml
-  - from-file: hyprland-extras.yml
-  - from-file: common-packages.yml
-  - from-file: common-flatpaks.yml
-  - from-file: starship-packages.yml
-  - from-file: remove-nvidia-packages.yml
-  - from-file: intel-packages.yml
-  - from-file: intel-specific.yml
-  - from-file: dell-xps-packages.yml
-  - from-file: common-scripts.yml
-  - from-file: chezmoi.yml
+  - from-file: modules/hyprland-extras.yml
+  - from-file: modules/common-packages.yml
+  - from-file: modules/common-flatpaks.yml
+  - from-file: modules/starship-packages.yml
+  - from-file: modules/remove-nvidia-packages.yml
+  - from-file: modules/intel-packages.yml
+  - from-file: modules/intel-specific.yml
+  - from-file: modules/dell-xps-packages.yml
+  - from-file: modules/common-scripts.yml
+  - from-file: modules/chezmoi.yml
   - type: signing

@@ -10,21 +10,20 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: common-files.yml
-  - from-file: common-akmods.yml
+  - from-file: modules/common-files.yml
+  - from-file: modules/common-akmods.yml
   # - from-file: system76-power-packages.yml
   # - from-file: system76-power-systemd.yml
-  - from-file: rpmfusion-repos.yml
-  - from-file: cosmic-desktop-packages.yml
-  - from-file: common-packages.yml
-  - from-file: common-flatpaks.yml
-  - from-file: starship-packages.yml
-  - from-file: remove-nvidia-packages.yml
-  - from-file: intel-packages.yml
-  - from-file: intel-specific.yml
-  - from-file: dell-xps-packages.yml
-  - from-file: gnome-extensions.yml
-  - from-file: gschema-overrides.yml
-  - from-file: common-scripts.yml
-  - from-file: chezmoi.yml
+  - from-file: modules/cosmic-desktop-packages.yml
+  - from-file: modules/common-packages.yml
+  - from-file: modules/common-flatpaks.yml
+  - from-file: modules/starship-packages.yml
+  - from-file: modules/remove-nvidia-packages.yml
+  - from-file: modules/intel-packages.yml
+  - from-file: modules/intel-specific.yml
+  - from-file: modules/dell-xps-packages.yml
+  - from-file: modules/gnome-extensions.yml
+  - from-file: modules/gschema-overrides.yml
+  - from-file: modules/common-scripts.yml
+  - from-file: modules/chezmoi.yml
   - type: signing

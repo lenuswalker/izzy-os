@@ -1,4 +1,0 @@
-type: rpm-ostree
-repos:
-  - solopasha-hyprland.repo
-  - erikreider-swaynotificationcenter.repo

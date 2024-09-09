@@ -13,12 +13,9 @@ modules:
   #- from-file: common-files.yml
   - from-file: common-akmods.yml
   - from-file: rpmfusion-repos.yml
-  # - from-file: sddm-packages.yml
-  # - from-file: hyprland-copr-repos.yml
   # - from-file: hyprland-packages.yml
   # - from-file: hyprland-files.yml
   # - from-file: hyprland-scripts.yml
-  # - from-file: sddm-scripts.yml
   - from-file: hyprland-extras.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml
@@ -28,6 +25,5 @@ modules:
   - from-file: intel-specific.yml
   - from-file: dell-xps-packages.yml
   - from-file: common-scripts.yml
-  # - from-file: sddm-systemd.yml
   - from-file: chezmoi.yml
   - type: signing

@@ -14,7 +14,7 @@ modules:
   - from-file: common-akmods.yml
   # - from-file: system76-power-packages.yml
   # - from-file: system76-power-systemd.yml
-  - from-file: common-rpmfusion-repos.yml
+  - from-file: rpmfusion-repos.yml
   - from-file: cosmic-desktop-packages.yml
   - from-file: common-packages.yml
   - from-file: common-flatpaks.yml

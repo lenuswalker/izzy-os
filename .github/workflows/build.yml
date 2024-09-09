@@ -40,10 +40,10 @@ jobs:
           BASE_IMAGE=$(yq '.base-image' ./recipes/${{ matrix.recipe }})
           echo "BASE_IMAGE_NAME=$(echo $BASE_IMAGE | sed 's/.*\/.*\///')" >> $GITHUB_ENV
 
-      # - name: Verify base image
-      #   uses: EyeCantCU/cosign-action/verify@v0.3.0
-      #   with:
-      #     containers: ${{ env.BASE_IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
+      - name: Verify base image
+        uses: EyeCantCU/cosign-action/verify@v0.3.0
+        with:
+          containers: ${{ env.BASE_IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
 
        # the build is fully handled by the reusable github action
       - name: Build Custom Image

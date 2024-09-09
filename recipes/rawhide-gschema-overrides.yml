@@ -1,3 +1,0 @@
-type: gschema-overrides
-include:
-  - 01-izzy-os-rawhide.gschema.override

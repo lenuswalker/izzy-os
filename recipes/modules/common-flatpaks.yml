@@ -25,6 +25,7 @@ system:
     # Utility
     - app.devsuite.Ptyxis
     - com.bitwarden.desktop
+    - com.dec05eba.gpu_screen_recorder
     - com.github.rafostar.Clapper
     - com.github.tchx84.Flatseal
     - com.github.tenderowl.frog

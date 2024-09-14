@@ -23,6 +23,7 @@ modules:
   - from-file: modules/intel-packages.yml
   - from-file: modules/intel-specific.yml
   - from-file: modules/dell-xps-packages.yml
+  - from-file: modules/bling.yml
   - from-file: modules/common-scripts.yml
   - from-file: modules/chezmoi.yml
   - type: signing

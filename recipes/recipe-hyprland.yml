@@ -18,8 +18,8 @@ modules:
   - from-file: common/common-packages.yml
   - from-file: common/common-scripts.yml
   - from-file: common/starship-packages.yml
+  - from-file: hyprland/hyprland-extras.yml
   - from-file: dell/dell-xps-packages.yml
   - from-file: dell/intel-packages.yml
   - from-file: dell/intel-specific.yml
-  - from-file: hyprland/hyprland-extras.yml
   - type: signing

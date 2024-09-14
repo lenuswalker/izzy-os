@@ -11,6 +11,10 @@ image-version: rawhide # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+  - from-file: rawhide/rawhide-rpmfusion-repos.yml
+  - from-file: rawhide/rawhide-gnome-extensions.yml
+  - from-file: rawhide/rawhide-packages.yml
+  - from-file: rawhide/rawhide-scripts.yml
   - from-file: common/common-bling.yml
   - from-file: common/common-chezmoi.yml
   - from-file: common/common-files.yml
@@ -19,9 +23,5 @@ modules:
   - from-file: cosmic/cosmic-packages.yml
   - from-file: dell/dell-xps-packages.yml
   - from-file: dell/intel-packages.yml
-  - from-file: rawhide/rawhide-rpmfusion-repos.yml
-  - from-file: rawhide/rawhide-gnome-extensions.yml
-  - from-file: rawhide/rawhide-packages.yml
-  - from-file: rawhide/rawhide-scripts.yml
   - from-file: gnome/gschema-overrides.yml
   - type: signing

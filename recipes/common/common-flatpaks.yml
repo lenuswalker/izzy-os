@@ -3,8 +3,8 @@ notify: true # Send notification after install/uninstall is finished (true/false
 system:
   # If no repo information is specified, Flathub will be used by default
   # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-  # repo-name: flathub
-  # repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
+  repo-name: flathub-system
+  repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
   install:
     # Browsers
     - com.google.Chrome
@@ -19,7 +19,6 @@ system:
     # Media
     - com.spotify.Client
     - com.stremio.Stremio
-    - de.schmidhuberj.tubefeeder
     - sh.cider.Cider
 
     # Utility
@@ -69,3 +68,6 @@ system:
     # Theme
     - org.gtk.Gtk3theme.adw-gtk3
     - org.gtk.Gtk3theme.adw-gtk3-dark
+
+user:
+  repo-name: flathub-user

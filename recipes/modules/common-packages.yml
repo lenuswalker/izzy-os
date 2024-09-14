@@ -11,7 +11,6 @@ install:
   - podman-compose
   - power-profiles-daemon
   - python3-neovim
-  - sassc
   - vim
 
   # Codecs
@@ -28,6 +27,8 @@ install:
 
   # Themes
   - adw-gtk3-theme
+  - gtk-murrine-engine
+  - sassc
 
   # Fonts
   - rsms-inter-fonts

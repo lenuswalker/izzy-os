@@ -26,6 +26,6 @@ modules:
   - from-file: modules/rawhide-gnome-extensions.yml
   - from-file: modules/bling.yml
   - from-file: modules/gschema-overrides.yml
-  - from-file: modules/common-scripts.yml
+  - from-file: modules/rawhide-scripts.yml
   - from-file: modules/chezmoi.yml
   - type: signing

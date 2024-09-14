@@ -11,6 +11,7 @@ install:
   - podman-compose
   - power-profiles-daemon
   - python3-neovim
+  - sassc
   - vim
 
   # Codecs

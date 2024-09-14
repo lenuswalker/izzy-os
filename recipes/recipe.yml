@@ -22,7 +22,6 @@ modules:
   - from-file: dell/dell-xps-packages.yml
   - from-file: dell/intel-packages.yml
   - from-file: dell/intel-specific.yml
-  - from-file: dell/remove-nvidia-packages.yml
   - from-file: gnome/gnome-extensions.yml
   - from-file: gnome/gschema-overrides.yml
   - type: signing

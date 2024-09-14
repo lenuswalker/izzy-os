@@ -1,3 +1,6 @@
 type: rpm-ostree
 install:
   - openh264
+remove:
+  - nvtop
+  - noopenh264

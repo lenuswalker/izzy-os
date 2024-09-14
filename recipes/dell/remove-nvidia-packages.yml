@@ -1,4 +1,0 @@
-type: rpm-ostree
-remove:
-  - nvtop
-  - noopenh264

@@ -19,9 +19,8 @@ modules:
   - from-file: cosmic/cosmic-packages.yml
   - from-file: dell/dell-xps-packages.yml
   - from-file: dell/intel-packages.yml
-  - from-file: dell/intel-specific.yml
   - from-file: rawhide/rawhide-rpmfusion-repos.yml
-  - from-file: rawhide/rawhide-gnome-extentions.yml
+  - from-file: rawhide/rawhide-gnome-extensions.yml
   - from-file: rawhide/rawhide-packages.yml
   - from-file: rawhide/rawhide-scripts.yml
   - from-file: gnome/gschema-overrides.yml

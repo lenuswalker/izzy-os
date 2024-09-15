@@ -32,6 +32,7 @@ system:
     - de.haeckerfelix.Fragments
     - io.github.dvlv.boxbuddyrs
     - io.missioncenter.MissionCenter
+    - it.mijorus.gearlever
     - org.fedoraproject.MediaWriter
     - org.gnome.Boxes
     - org.gnome.Calculator

@@ -11,6 +11,10 @@ install:
   - hyprpaper
   - xdg-desktop-portal-hyprland
 
+  # display
+  - brightnessctl
+  - cliphist
+
   # Desktop Utils
   - rofi-wayland
   - SwayNotificationCenter
@@ -21,21 +25,27 @@ install:
   - curl
   - gawk
   - git
+  - grim
+  - gvfs
+  - gvfs-mtp
   - ImageMagick
   - jq
   - inxi
   - kitty
-  - kvantum
   - libfprint
   - nano
   - openssl
   - power-profiles-daemon
   - polkit-gnome
+  - python3-requests
+  - python3-pip
+  - python3-pyquery
   - qt5ct
   - qt6ct
   - qt6-qtsvg
   - swappy
   - SwayNotificationCenter
+  - unzip
   - vim-enhanced
   - wget2
   - wl-clipboard
@@ -79,25 +89,16 @@ install:
   - thunar-archive-plugin 
   - thunar-volman
   - tumbler
-  - xarchiver
-  - imv
-  - p7zip
-  - unrar
-  - gvfs-mtp
-  - gvfs-gphoto2
-  - gvfs-smb
-  - gvfs-nfs
-  - gvfs-fuse
-  - gvfs-archive
-  - android-tools
 
   # screenshot
   - slurp
   - grim
 
-  # display
-  - brightnessctl
-  - cliphist
+  # sddm
+  - sddm
+  - qt6-qt5compat 
+  - qt6-qtdeclarative 
+  - qt6-qtsvg
 
   # nwg-look
   - golang
@@ -107,5 +108,6 @@ install:
   - glib-devel
 
   # themes
-  - unzip
+  - aquamarine
   - gtk-murrine-engine
+  - kvantum

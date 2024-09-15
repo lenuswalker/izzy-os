@@ -19,7 +19,6 @@ system:
     # Media
     - com.spotify.Client
     - com.stremio.Stremio
-    - sh.cider.Cider
 
     # Utility
     - app.devsuite.Ptyxis

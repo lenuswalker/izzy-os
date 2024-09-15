@@ -2,5 +2,6 @@ type: gnome-extensions
 install:
   - AppIndicator and KStatusNotifierItem Support
   - Dash to Dock
-  - Night Theme Switcher
-  # - PaperWM
+  # - Night Theme Switcher
+  - Open Bar
+  - PaperWM

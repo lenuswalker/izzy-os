@@ -9,7 +9,8 @@ tap-to-click=true
 #-------------- DESKTOP MODIFICATIONS --------------#
 
 [org/gnome/shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr']
+# enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'nightthemeswitcher@romainvigier.fr']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'openbar@neuromorph', 'paperwm@paperwm.github.com']
 
 [org.gnome.desktop.interface]
 clock-format='12h'
@@ -18,7 +19,7 @@ font-antialiasing="rgba"
 font-name="Inter 11"
 document-font-name="Inter 11"
 monospace-font-name="Hack Nerd Font Mono 10"
-gtk-theme="adw-gtk3"
+# gtk-theme="adw-gtk3"
 
 [org/gnome/desktop/peripherals/touchpad]
 tap-to-click=true

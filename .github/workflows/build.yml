@@ -23,6 +23,7 @@ jobs:
         recipe:
           # !! Add your recipes here 
           - recipe.yml
+          - recipe-cosmic.yml
           - recipe-nvidia.yml
           - recipe-hyprland.yml
           - recipe-rawhide.yml

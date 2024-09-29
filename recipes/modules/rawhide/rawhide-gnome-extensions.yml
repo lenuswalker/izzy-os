@@ -3,4 +3,5 @@ install:
   - AppIndicator and KStatusNotifierItem Support
   - Dash to Dock
   # - Night Theme Switcher
-  # - PaperWM
+  - Open Bar
+  - PaperWM

@@ -11,7 +11,6 @@ image-version: rawhide # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: modules/rawhide/rawhide-rpmfusion-repos.yml
   - from-file: modules/rawhide/rawhide-gnome-extensions.yml
   - from-file: modules/rawhide/rawhide-packages.yml
   - from-file: modules/rawhide/rawhide-scripts.yml

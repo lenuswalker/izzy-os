@@ -1,0 +1,4 @@
+type: rpm-ostree
+install:
+  - rpmfusion-free-release
+  - rpmfusion-nonfree-release

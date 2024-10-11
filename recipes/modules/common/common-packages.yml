@@ -22,7 +22,7 @@ install:
   - ffmpeg
   - heif-pixbuf-loader
   - libavcodec-freeworld
-  - libheif-freeworld
+  #- libheif-freeworld
   - libheif-tools
   - pipewire-codec-aptx
 

@@ -26,7 +26,6 @@ jobs:
           - recipe-cosmic.yml
           - recipe-nvidia.yml
           - recipe-hyprland.yml
-          - recipe-rawhide.yml
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

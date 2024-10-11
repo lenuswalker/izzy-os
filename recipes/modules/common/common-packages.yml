@@ -21,9 +21,9 @@ install:
   # Codecs
   - ffmpeg
   - heif-pixbuf-loader
-  - libavcodec-freeworld
+  #- libavcodec-freeworld
   #- libheif-freeworld
-  - libheif-tools
+  #- libheif-tools
   - pipewire-codec-aptx
 
   # Audio

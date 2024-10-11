@@ -16,11 +16,11 @@ install:
   # - vim
 
   # Codecs
-  - ffmpeg-free
+  - ffmpeg
   - heif-pixbuf-loader
-  - libavcodec-free
-  - libheif-freeworld
-  - libheif-tools
+  #- libavcodec-free
+  #- libheif-freeworld
+  #- libheif-tools
   - pipewire-codec-aptx
 
   # Audio

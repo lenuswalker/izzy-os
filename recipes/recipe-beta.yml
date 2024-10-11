@@ -10,7 +10,6 @@ image-version: beta # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: modules/common/common-rpmfusion.yml
   - from-file: modules/common/common-akmods.yml
   - from-file: modules/common/common-bling.yml
   - from-file: modules/common/common-chezmoi.yml

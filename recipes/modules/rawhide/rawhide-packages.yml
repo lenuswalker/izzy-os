@@ -21,7 +21,7 @@ install:
   #- libavcodec-free
   #- libheif-freeworld
   #- libheif-tools
-  - pipewire-codec-aptx
+  #- pipewire-codec-aptx
 
   # Audio
   - pipewire

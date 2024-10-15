@@ -1,7 +1,4 @@
 type: rpm-ostree
-repos:
-  - rpmfusion-free.repo
-  - rpmfusion-nonfree.repo
 install:
   # Utility
   - age
@@ -13,15 +10,15 @@ install:
   - nu
   - podman-compose
   - python3-neovim
-  # - vim
+  - vim
 
   # Codecs
   - ffmpeg
+  - ffmpeg-libs
   - heif-pixbuf-loader
-  #- libavcodec-free
-  #- libheif-freeworld
-  #- libheif-tools
-  #- pipewire-codec-aptx
+  - libavcodec
+  - libheif
+  - pipewire-libs-extra
 
   # Audio
   - pipewire

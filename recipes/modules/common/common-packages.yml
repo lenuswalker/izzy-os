@@ -1,8 +1,6 @@
 type: rpm-ostree
 repos:
   - atim-starship.repo
-  - rpmfusion-free.repo
-  - rpmfusion-nonfree.repo
 install:
   # Utility
   - age
@@ -20,11 +18,11 @@ install:
 
   # Codecs
   - ffmpeg
+  - ffmpeg-libs
   - heif-pixbuf-loader
-  #- libavcodec-freeworld
-  #- libheif-freeworld
-  #- libheif-tools
-  #- pipewire-codec-aptx
+  - libavcodec
+  - libheif
+  - pipewire-libs-extra
 
   # Audio
   - pipewire

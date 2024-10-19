@@ -1,6 +1,7 @@
 type: rpm-ostree
 repos:
   - atim-starship.repo
+  - negativo17-fedora-multimedia.repo
 install:
   # Utility
   - age
@@ -11,7 +12,7 @@ install:
   - neovim
   - nu
   - podman-compose
-  - power-profiles-daemon
+  #- power-profiles-daemon
   - python3-neovim
   - starship
   - vim

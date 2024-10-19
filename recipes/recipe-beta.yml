@@ -16,9 +16,8 @@ modules:
   - from-file: modules/common/common-files.yml
   - from-file: modules/common/common-flatpaks.yml
   - from-file: modules/common/common-fonts.yml
-  #- from-file: modules/common/common-packages.yml
   - from-file: modules/beta/beta-packages.yml
-  - from-file: modules/common/common-scripts.yml
+  - from-file: modules/beta/beta-scripts.yml
   - from-file: modules/cosmic/cosmic-packages.yml
   - from-file: modules/dell/dell-xps-packages.yml
   - from-file: modules/intel/intel-packages.yml

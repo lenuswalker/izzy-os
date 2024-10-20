@@ -13,7 +13,7 @@ modules:
   #- from-file: modules/common/common-akmods.yml
   - from-file: modules/common/common-bling.yml
   - from-file: modules/common/common-chezmoi.yml
-  - from-file: modules/common/common-files.yml
+  #- from-file: modules/common/common-files.yml
   - from-file: modules/common/common-flatpaks.yml
   - from-file: modules/common/common-fonts.yml
   - from-file: modules/beta/beta-packages.yml

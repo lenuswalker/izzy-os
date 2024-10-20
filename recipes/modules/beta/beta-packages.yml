@@ -12,9 +12,10 @@ install:
   - neovim
   - nu
   - podman-compose
-  #- power-profiles-daemon
   - python3-neovim
   - starship
+  - tuned
+  - tuned-ppd
   - vim
 
   # Codecs
@@ -23,7 +24,7 @@ install:
   - heif-pixbuf-loader
   - libavcodec
   - libheif
-  #- pipewire-libs-extra
+  - pipewire-libs-extra
 
   # Audio
   - pipewire

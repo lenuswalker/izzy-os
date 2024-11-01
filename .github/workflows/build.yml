@@ -24,7 +24,7 @@ jobs:
           # !! Add your recipes here 
           - recipe.yml
           - recipe-beta.yml
-          - recipe-cosmic.yml
+          #- recipe-cosmic.yml
           - recipe-nvidia.yml
           #- recipe-hyprland.yml
     steps:

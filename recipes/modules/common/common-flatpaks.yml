@@ -21,7 +21,6 @@ system:
     - com.stremio.Stremio
 
     # Utility
-    - app.devsuite.Ptyxis
     - com.bitwarden.desktop
     - com.dec05eba.gpu_screen_recorder
     - com.github.rafostar.Clapper

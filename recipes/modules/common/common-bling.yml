@@ -1,4 +1,5 @@
 type: bling
 install:
+  - negativo17
   - ublue-update
   - dconf-update-service

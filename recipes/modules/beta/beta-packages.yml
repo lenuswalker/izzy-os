@@ -24,7 +24,7 @@ install:
   - heif-pixbuf-loader
   - libavcodec
   - libheif
-  - pipewire-libs-extra
+  #- pipewire-libs-extra
 
   # Audio
   - pipewire

@@ -13,7 +13,7 @@ system:
 
     # Social
     - com.github.IsmaelMartinez.teams_for_linux
-    - io.github.mimbrero.WhatsAppDesktop
+    - com.rtosta.zapzap
     - us.zoom.Zoom
 
     # Media
@@ -21,12 +21,12 @@ system:
     - com.stremio.Stremio
 
     # Utility
-    - app.devsuite.Ptyxis
     - com.bitwarden.desktop
     - com.dec05eba.gpu_screen_recorder
     - com.github.rafostar.Clapper
     - com.github.tchx84.Flatseal
     - com.github.tenderowl.frog
+    - com.jeffser.Alpaca
     - com.mattjakeman.ExtensionManager
     - com.usebottles.bottles
     - de.haeckerfelix.Fragments

@@ -1,4 +1,4 @@
 type: rpm-ostree
 install:
   - igt-gpu-tools
-  - intel-media-driver
+  - libva-intel-media-driver

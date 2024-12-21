@@ -10,15 +10,15 @@ install:
   - nu
   - podman-compose
   - python3-neovim
-  # - vim
+  - vim
 
   # Codecs
-  - ffmpeg-free
+  - ffmpeg
+  - ffmpeg-libs
   - heif-pixbuf-loader
-  - libavcodec-free
-  - libheif-freeworld
-  - libheif-tools
-  - pipewire-codec-aptx
+  - libavcodec
+  - libheif
+  - pipewire-libs-extra
 
   # Audio
   - pipewire

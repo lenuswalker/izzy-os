@@ -23,10 +23,10 @@ jobs:
         recipe:
           # !! Add your recipes here 
           - recipe.yml
-          - recipe-cosmic.yml
+          - recipe-beta.yml
+          #- recipe-cosmic.yml
           - recipe-nvidia.yml
-          - recipe-hyprland.yml
-          - recipe-rawhide.yml
+          #- recipe-hyprland.yml
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -44,11 +44,11 @@ jobs:
       # - name: Verify base image
       #   uses: EyeCantCU/cosign-action/verify@v0.3.0
       #   with:
-      #     containers: ${{ env.BASE_IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
+      #     containers: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
 
        # the build is fully handled by the reusable github action
       - name: Build Custom Image
-        uses: blue-build/github-action@v1.6.1
+        uses: blue-build/github-action@v1.6.2
         with:
           cli_version: v0.8.11
           recipe: ${{ matrix.recipe }}

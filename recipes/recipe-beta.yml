@@ -5,19 +5,19 @@ description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 41 # latest is also supported if you want new updates ASAP
+image-version: beta # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: modules/common/common-akmods.yml
+  #- from-file: modules/common/common-akmods.yml
   - from-file: modules/common/common-bling.yml
   - from-file: modules/common/common-chezmoi.yml
-  - from-file: modules/common/common-files.yml
+  #- from-file: modules/common/common-files.yml
   - from-file: modules/common/common-flatpaks.yml
   - from-file: modules/common/common-fonts.yml
-  - from-file: modules/common/common-packages.yml
-  - from-file: modules/common/common-scripts.yml
+  - from-file: modules/beta/beta-packages.yml
+  - from-file: modules/beta/beta-scripts.yml
   - from-file: modules/cosmic/cosmic-packages.yml
   - from-file: modules/dell/dell-xps-packages.yml
   - from-file: modules/intel/intel-packages.yml

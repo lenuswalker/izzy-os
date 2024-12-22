@@ -9,6 +9,10 @@ on:
       
   pull_request:
   workflow_dispatch: # allow manually triggering builds
+concurrency:
+  # only run one build at a time
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
 jobs:
   bluebuild:
     name: Build Custom Image
@@ -28,18 +32,18 @@ jobs:
           - recipe-nvidia.yml
           #- recipe-hyprland.yml
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      #- name: Checkout repo
+      #  uses: actions/checkout@v4
 
-      - name: Add yq (for reading recipe.yml)
-        uses: mikefarah/yq@v4.44.6
+      #- name: Add yq (for reading recipe.yml)
+      #  uses: mikefarah/yq@v4.44.6
 
-      - name: Gather image data from recipe
-        run: |
-          echo "IMAGE_NAME=$(yq '.name' ./recipes/${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "IMAGE_MAJOR_VERSION=$(yq '.image-version' ./recipes/${{ matrix.recipe }})" >> $GITHUB_ENV
-          BASE_IMAGE=$(yq '.base-image' ./recipes/${{ matrix.recipe }})
-          echo "BASE_IMAGE_NAME=$(echo $BASE_IMAGE | sed 's/.*\/.*\///')" >> $GITHUB_ENV
+      #- name: Gather image data from recipe
+      #  run: |
+      #    echo "IMAGE_NAME=$(yq '.name' ./recipes/${{ matrix.recipe }})" >> $GITHUB_ENV
+      #    echo "IMAGE_MAJOR_VERSION=$(yq '.image-version' ./recipes/${{ matrix.recipe }})" >> $GITHUB_ENV
+      #    BASE_IMAGE=$(yq '.base-image' ./recipes/${{ matrix.recipe }})
+      #    echo "BASE_IMAGE_NAME=$(echo $BASE_IMAGE | sed 's/.*\/.*\///')" >> $GITHUB_ENV
 
       # - name: Verify base image
       #   uses: EyeCantCU/cosign-action/verify@v0.3.0
@@ -50,7 +54,7 @@ jobs:
       - name: Build Custom Image
         uses: blue-build/github-action@v1.8.1
         with:
-          cli_version: v0.8.11
+          #cli_version: v0.8.11
           recipe: ${{ matrix.recipe }}
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}

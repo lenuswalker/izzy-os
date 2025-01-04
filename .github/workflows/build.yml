@@ -32,24 +32,6 @@ jobs:
           - recipe-nvidia.yml
           #- recipe-hyprland.yml
     steps:
-      #- name: Checkout repo
-      #  uses: actions/checkout@v4
-
-      #- name: Add yq (for reading recipe.yml)
-      #  uses: mikefarah/yq@v4.44.6
-
-      #- name: Gather image data from recipe
-      #  run: |
-      #    echo "IMAGE_NAME=$(yq '.name' ./recipes/${{ matrix.recipe }})" >> $GITHUB_ENV
-      #    echo "IMAGE_MAJOR_VERSION=$(yq '.image-version' ./recipes/${{ matrix.recipe }})" >> $GITHUB_ENV
-      #    BASE_IMAGE=$(yq '.base-image' ./recipes/${{ matrix.recipe }})
-      #    echo "BASE_IMAGE_NAME=$(echo $BASE_IMAGE | sed 's/.*\/.*\///')" >> $GITHUB_ENV
-
-      # - name: Verify base image
-      #   uses: EyeCantCU/cosign-action/verify@v0.3.0
-      #   with:
-      #     containers: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_MAJOR_VERSION }}
-
        # the build is fully handled by the reusable github action
       - name: Build Custom Image
         uses: blue-build/github-action@v1.8.1

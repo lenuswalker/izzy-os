@@ -20,6 +20,9 @@ system:
     - com.spotify.Client
     - com.stremio.Stremio
 
+    # Office
+    - org.libreoffice.LibreOffice
+
     # Utility
     - com.bitwarden.desktop
     - com.dec05eba.gpu_screen_recorder

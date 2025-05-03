@@ -1,5 +1,5 @@
 type: gnome-extensions
 install:
-  - AppIndicator and KStatusNotifierItem Support
+  #- AppIndicator and KStatusNotifierItem Support
   - Dash to Dock
   - PaperWM

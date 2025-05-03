@@ -1,7 +1,7 @@
 #-------------- LOCKSCREEN MODIFICATIONS --------------#
 
-[org.gnome.desktop.interface:GNOME-Greeter]
-font-name="Inter 11"
+# [org.gnome.desktop.interface:GNOME-Greeter]
+# font-name="Inter 11"
 
 [org.gnome.desktop.peripherals.touchpad:GNOME-Greeter]
 tap-to-click=true
@@ -14,10 +14,10 @@ enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@mi
 [org.gnome.desktop.interface]
 clock-format='12h'
 clock-show-weekday=true
-font-antialiasing="rgba"
-font-name="Inter 11"
-document-font-name="Inter 11"
-monospace-font-name="Hack Nerd Font Mono 10"
+# font-antialiasing="rgba"
+# font-name="Inter 11"
+# document-font-name="Inter 11"
+# monospace-font-name="Hack Nerd Font Mono 10"
 # gtk-theme="adw-gtk3"
 
 [org.gnome.desktop.peripherals.touchpad]

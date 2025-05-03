@@ -1,10 +1,10 @@
 # image will be published to ghcr.io/<user>/<name>
-name: izzy-os-nvidia
+name: izzy-os-xps
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-nvidia
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -20,7 +20,9 @@ modules:
   - from-file: modules/common/common-packages.yml
   - from-file: modules/common/common-scripts.yml
   - from-file: modules/cosmic/cosmic-packages.yml
+  - from-file: modules/dell/dell-xps-packages.yml
   - from-file: modules/intel/intel-packages.yml
+  - from-file: modules/intel/intel-specific.yml
   - from-file: modules/gnome/gnome-extensions.yml
   - from-file: modules/gnome/gnome-packages.yml
   - from-file: modules/gnome/gschema-overrides.yml

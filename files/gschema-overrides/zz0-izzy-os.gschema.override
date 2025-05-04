@@ -9,7 +9,8 @@ tap-to-click=true
 #-------------- DESKTOP MODIFICATIONS --------------#
 
 [org.gnome.shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'paperwm@paperwm.github.com']
+# enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com', 'paperwm@paperwm.github.com']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com']
 
 [org.gnome.desktop.interface]
 clock-format='12h'

@@ -7,66 +7,71 @@ system:
   repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
   install:
     # Browsers
+    - app.zen_browser.zen
     - com.google.Chrome
     - com.microsoft.Edge
-    - org.mozilla.firefox
 
-    # Social
-    - com.github.IsmaelMartinez.teams_for_linux
-    - com.rtosta.zapzap
-    - us.zoom.Zoom
+    # Development
+    - com.visualstudio.code
 
-    # Media
-    - com.spotify.Client
-    - com.stremio.Stremio
-
-    # Office
-    - org.libreoffice.LibreOffice
-
-    # Utility
-    - com.bitwarden.desktop
-    - com.dec05eba.gpu_screen_recorder
-    - com.github.rafostar.Clapper
-    - com.github.tchx84.Flatseal
-    - com.github.tenderowl.frog
-    - com.jeffser.Alpaca
-    - com.mattjakeman.ExtensionManager
-    - com.usebottles.bottles
-    - de.haeckerfelix.Fragments
-    - io.github.dvlv.boxbuddyrs
-    - io.missioncenter.MissionCenter
-    - it.mijorus.gearlever
-    - org.fedoraproject.MediaWriter
-    - org.gnome.Boxes
-    - org.gnome.Calculator
-    - org.gnome.Calendar
-    - org.gnome.clocks
-    - org.gnome.Contacts
-    - org.gnome.font-viewer
-    - org.gnome.Loupe
-    - org.gnome.NetworkDisplays
-    - org.gnome.Papers
-    - org.gnome.Snapshot
-    - org.gnome.TextEditor
-    - org.gnome.Weather
-    - org.localsend.localsend_app
-    - org.remmina.Remmina
+    # Gaming
+    - com.valvesoftware.Steam
+    - net.lutris.Lutris
 
     # Graphics
     - com.github.finefindus.eyedropper
     - com.github.maoschanz.drawing
     - com.obsproject.Studio
     - org.pitivi.Pitivi
-    
-    # Development
-    - com.visualstudio.code
+    - page.kramo.Sly
 
-    # Needed for winapps
+    # Gnome Apps
+    - org.gnome.Boxes
+    - org.gnome.Calculator
+    - org.gnome.Calendar
+    - org.gnome.clocks
+    - org.gnome.Contacts
+    - org.gnome.Decibels
+    - org.gnome.font-viewer
+    - org.gnome.Loupe
+    - org.gnome.NetworkDisplays
+    - org.gnome.Papers
+    - org.gnome.Showtime
+    - org.gnome.Snapshot
+    - org.gnome.TextEditor
+    - org.gnome.Weather
+
+    # Media
+    - com.github.rafostar.Clapper
+    - com.spotify.Client
+    - com.stremio.Stremio
+
+    # Office
+    - org.libreoffice.LibreOffice
+
+    # Social
+    - com.discordapp.Discord
+    - com.github.IsmaelMartinez.teams_for_linux
+    - com.rtosta.zapzap
+    - us.zoom.Zoom
+
+    # Utility
+    - com.bitwarden.desktop
+    - com.dec05eba.gpu_screen_recorder
     - com.freerdp.FreeRDP
-
-    # Gaming
-    - com.valvesoftware.Steam
-    - net.lutris.Lutris
+    - com.github.tchx84.Flatseal
+    - com.github.tenderowl.frog
+    - com.jeffser.Alpaca
+    - com.mattjakeman.ExtensionManager
+    - com.usebottles.bottles
+    - de.haeckerfelix.Fragments
+    - dev.deedles.Trayscale
+    - io.github.dvlv.boxbuddyrs
+    - io.missioncenter.MissionCenter
+    - md.obsidian.Obsidian
+    - org.fedoraproject.MediaWriter
+    - org.localsend.localsend_app
+    - org.remmina.Remmina
 
 user:
   repo-name: flathub-user

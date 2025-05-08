@@ -1,4 +1,4 @@
 type: akmods
-base: bazzite
+# base: bazzite
 install:
   - evdi

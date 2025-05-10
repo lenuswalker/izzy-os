@@ -58,6 +58,7 @@ system:
     # Utility
     - com.bitwarden.desktop
     - com.dec05eba.gpu_screen_recorder
+    - org.freedesktop.Platform.ffmpeg-full
     - com.freerdp.FreeRDP
     - com.github.tchx84.Flatseal
     - com.github.tenderowl.frog

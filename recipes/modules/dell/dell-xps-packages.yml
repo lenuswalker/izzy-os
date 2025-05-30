@@ -4,5 +4,6 @@ repos:
 install:
   - libfprint-tod
   - libfprint-tod-goodix
+  - iio-sensor-proxy
 remove:
   - libfprint

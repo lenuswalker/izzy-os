@@ -44,10 +44,7 @@ customize-alphas=true
 min-alpha=0.5
 max-alpha=0.8
 
-[org.gnome.settings-daemon.plugins.media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
-
 [org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0]
-binding='<Control><Shift>Escape'
+binding='<Control><Shift><Escape>'
 command='flatpak run io.missioncenter.MissionCenter'
 name='mission-center'

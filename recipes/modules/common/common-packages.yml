@@ -5,6 +5,7 @@ repos:
 install:
   # Utility
   - age
+  - akmod-evdi
   - bash-completion
   - bootc
   - distrobox

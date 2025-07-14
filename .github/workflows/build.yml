@@ -35,7 +35,7 @@ jobs:
     steps:
        # the build is fully handled by the reusable github action
       - name: Build Custom Image
-        uses: blue-build/github-action@v1.8.2
+        uses: blue-build/github-action@v1.8.3
         with:
           #cli_version: v0.8.11
           recipe: ${{ matrix.recipe }}

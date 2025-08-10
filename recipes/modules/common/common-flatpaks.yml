@@ -1,78 +1,78 @@
 type: default-flatpaks
-notify: true # Send notification after install/uninstall is finished (true/false)
-system:
-  # If no repo information is specified, Flathub will be used by default
-  # repo-url: https://dl.flathub.org/repo/flathub.flatpakrepo
-  repo-name: flathub-system
-  repo-title: "Flathub (system-wide)" # Optional; this sets the remote's user-facing name in graphical frontends like GNOME Software
-  install:
-    # Browsers
-    - app.zen_browser.zen
-    - com.google.Chrome
-    - com.microsoft.Edge
+configurations:
+  - scope: user
+    repo:
+        # you can override the title to make inclusion of both system and user repos clearer
+      title: Flathub (user)
+  - notify: true # Send notification after install/uninstall is finished (true/false)
+    scope: system
+    repo:
+      title: "Flathub (system-wide)"
+    install:
+      # Browsers
+      - app.zen_browser.zen
+      - com.google.Chrome
+      - com.microsoft.Edge
 
-    # Development
-    - com.visualstudio.code
+      # Development
+      - com.visualstudio.code
 
-    # Gaming
-    - com.valvesoftware.Steam
-    - net.lutris.Lutris
+      # Gaming
+      - com.valvesoftware.Steam
+      - net.lutris.Lutris
 
-    # Graphics
-    - com.github.finefindus.eyedropper
-    - com.github.maoschanz.drawing
-    - com.obsproject.Studio
-    - org.pitivi.Pitivi
-    - page.kramo.Sly
+      # Graphics
+      - com.github.finefindus.eyedropper
+      - com.github.maoschanz.drawing
+      - com.obsproject.Studio
+      - org.pitivi.Pitivi
+      - page.kramo.Sly
 
-    # Gnome Apps
-    - org.gnome.Boxes
-    - org.gnome.Calculator
-    - org.gnome.Calendar
-    - org.gnome.clocks
-    - org.gnome.Contacts
-    - org.gnome.Decibels
-    - org.gnome.font-viewer
-    - org.gnome.Loupe
-    - org.gnome.NetworkDisplays
-    - org.gnome.Papers
-    - org.gnome.Showtime
-    - org.gnome.Snapshot
-    - org.gnome.TextEditor
-    - org.gnome.Weather
+      # Gnome Apps
+      - org.gnome.Boxes
+      - org.gnome.Calculator
+      - org.gnome.Calendar
+      - org.gnome.clocks
+      - org.gnome.Contacts
+      - org.gnome.Decibels
+      - org.gnome.font-viewer
+      - org.gnome.Loupe
+      - org.gnome.NetworkDisplays
+      - org.gnome.Papers
+      - org.gnome.Showtime
+      - org.gnome.Snapshot
+      - org.gnome.TextEditor
+      - org.gnome.Weather
 
-    # Media
-    - com.github.rafostar.Clapper
-    - com.spotify.Client
-    - com.stremio.Stremio
+      # Media
+      - com.github.rafostar.Clapper
+      - com.spotify.Client
+      - com.stremio.Stremio
 
-    # Office
-    - org.libreoffice.LibreOffice
+      # Office
+      - org.libreoffice.LibreOffice
 
-    # Social
-    - com.discordapp.Discord
-    - com.github.IsmaelMartinez.teams_for_linux
-    - com.rtosta.zapzap
-    - us.zoom.Zoom
+      # Social
+      - com.discordapp.Discord
+      - com.github.IsmaelMartinez.teams_for_linux
+      - com.rtosta.zapzap
+      - us.zoom.Zoom
 
-    # Utility
-    - com.bitwarden.desktop
-    - com.dec05eba.gpu_screen_recorder
-    - org.freedesktop.Platform.ffmpeg-full
-    - com.freerdp.FreeRDP
-    - com.github.tchx84.Flatseal
-    - com.github.tenderowl.frog
-    - com.jeffser.Alpaca
-    - com.mattjakeman.ExtensionManager
-    - com.usebottles.bottles
-    - de.haeckerfelix.Fragments
-    - dev.deedles.Trayscale
-    - io.github.dvlv.boxbuddyrs
-    - io.missioncenter.MissionCenter
-    - md.obsidian.Obsidian
-    - org.fedoraproject.MediaWriter
-    - org.localsend.localsend_app
-    - org.remmina.Remmina
-
-user:
-  repo-name: flathub-user
+      # Utility
+      - com.bitwarden.desktop
+      - com.dec05eba.gpu_screen_recorder
+      - org.freedesktop.Platform.ffmpeg-full
+      - com.freerdp.FreeRDP
+      - com.github.tchx84.Flatseal
+      - com.github.tenderowl.frog
+      - com.jeffser.Alpaca
+      - com.mattjakeman.ExtensionManager
+      - com.usebottles.bottles
+      - de.haeckerfelix.Fragments
+      - dev.deedles.Trayscale
+      - io.github.dvlv.boxbuddyrs
+      - io.missioncenter.MissionCenter
+      - md.obsidian.Obsidian
+      - org.fedoraproject.MediaWriter
+      - org.localsend.localsend_app
+      - org.remmina.Remmina

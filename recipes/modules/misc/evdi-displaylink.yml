@@ -1,0 +1,9 @@
+type: script
+scripts:
+  - install-evdi.sh
+
+type: rpm-ostree
+repos:
+  - negativo17-fedora-multimedia.repo
+install:
+  - displaylink

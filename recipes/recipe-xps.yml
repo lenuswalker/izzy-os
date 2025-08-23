@@ -26,4 +26,5 @@ modules:
   - from-file: modules/gnome/gnome-extensions.yml
   - from-file: modules/gnome/gnome-packages.yml
   - from-file: modules/gnome/gschema-overrides.yml
+  - from-file: modules/misc/evdi-displaylink.yml
   - type: signing

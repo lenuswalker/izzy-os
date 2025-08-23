@@ -14,6 +14,7 @@ install:
   - podman-compose
   - python3-neovim
   - starship
+  - toolbox
   - tuned
   - tuned-ppd
   - vim

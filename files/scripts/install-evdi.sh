@@ -5,10 +5,10 @@ set -euo pipefail
 TB_NAME="evdi-build"
 
 echo "📦 Creating toolbox: $TB_NAME"
-toolbox create "$TB_NAME" || true
+/usr/bin/toolbox create "$TB_NAME" || true
 
 echo "🚪 Entering toolbox..."
-toolbox run --container "$TB_NAME" bash -c "
+/usr/bin/toolbox run --container "$TB_NAME" bash -c "
   set -euo pipefail
 
   echo '🔧 Installing build dependencies...'
@@ -31,7 +31,7 @@ toolbox run --container "$TB_NAME" bash -c "
 echo "💡 Tip: You may need to rebuild after a kernel update."
 
 echo "🚪 Exiting toolbox..."
-toolbox exit
+/usr/bin/toolbox exit
 
 sudo modprobe evdi
 

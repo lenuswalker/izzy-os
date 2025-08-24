@@ -5,7 +5,6 @@ repos:
 install:
   # Kernel
   - kernel-devel
-  - kernel-headers
 
   # Utility
   - age

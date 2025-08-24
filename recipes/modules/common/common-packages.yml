@@ -3,6 +3,10 @@ repos:
   - atim-starship.repo
   - negativo17-fedora-multimedia.repo
 install:
+  # Kernel
+  - kernel-devel
+  - kernel-headers
+
   # Utility
   - age
   - bash-completion

@@ -5,7 +5,7 @@ set -euo pipefail
 TB_NAME="evdi-build"
 
 echo "📦 Creating toolbox: $TB_NAME"
-toolbox create "$TB_NAME" || true
+toolbox create "$TB_NAME" --assumeyes || true
 
 echo "🚪 Entering toolbox..."
 toolbox run --container "$TB_NAME" bash -c "

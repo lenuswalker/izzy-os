@@ -27,5 +27,5 @@ modules:
   - from-file: modules/gnome/gnome-packages.yml
   - from-file: modules/gnome/gschema-overrides.yml
   - from-file: modules/displaylink/displaylink-packages.yml
-  - from-file: modules/displaylink/displaylink-service.yml
+  - from-file: modules/displaylink/displaylink-systemd.yml
   - type: signing

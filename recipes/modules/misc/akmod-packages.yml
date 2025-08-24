@@ -4,6 +4,7 @@ repos:
 install:
   # Kernel
   - akmods
+  - akmod-evdi
   - displaylink
   - kernel-devel
   - kmodtool

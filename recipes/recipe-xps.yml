@@ -26,5 +26,6 @@ modules:
   - from-file: modules/gnome/gnome-extensions.yml
   - from-file: modules/gnome/gnome-packages.yml
   - from-file: modules/gnome/gschema-overrides.yml
-  - from-file: modules/misc/install-displaylink-secureboot.yml
+  - from-file: modules/misc/akmod-packages.yml
+  - from-file: modules/misc/install-displaylink-secureboot-systemd.yml
   - type: signing

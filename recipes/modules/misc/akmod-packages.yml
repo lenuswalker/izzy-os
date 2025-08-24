@@ -1,0 +1,9 @@
+type: rpm-ostree
+repos:
+  - negativo17-fedora-multimedia.repo
+install:
+  # Kernel
+  - akmods
+  - displaylink
+  - kernel-devel
+  - kmodtool

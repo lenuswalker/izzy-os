@@ -6,7 +6,7 @@ ConditionUser=!root
 Type=oneshot
 # Make sure $HOME is set in user units during early login
 Environment=HOME=%h
-ExecStart=/usr/bin/bash -lc '/usr/share/evdi/install-evdi.sh'
+ExecStart=/usr/bin/bash -lc 'chmod +x /var/tmp/install-evdi.sh && ./var/tmp/install-evdi.sh'
 RemainAfterExit=yes
 
 [Install]

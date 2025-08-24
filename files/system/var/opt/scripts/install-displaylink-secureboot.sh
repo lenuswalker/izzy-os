@@ -20,10 +20,10 @@ toolbox run --container "$TB_NAME" bash -c "
     @development-tools \
     kernel-devel-"$KVER" \
     mokutil openssl kmodtool akmods dkms \
-    python3-devel pybind11
+    python3-devel pybind11 --skip-unavailable
 
   echo '📦 Adding negativo17 repo...'
-  sudo dnf config-manager --add-repo=https://negativo17.org/repos/fedora-multimedia.repo
+  sudo dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo --overwrite
 
   echo '📦 Installing DisplayLink package...'
   sudo dnf install -y displaylink

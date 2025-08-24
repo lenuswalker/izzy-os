@@ -1,4 +1,4 @@
 type: systemd
 user:
   enabled:
-    - build-evdi.service
+    - install-displaylink-secureboot.service

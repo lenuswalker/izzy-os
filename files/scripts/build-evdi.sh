@@ -9,7 +9,7 @@ KERN=${1:-$(ls /usr/src/kernels | head --lines=1)}
 set -e
 
 echo "Installing kmod-evdi"
-dnf install -y kmod-evdi displaylink
+dnf install -y kernel-devel kmod-evdi displaylink
 
 echo "Building evdi kmod for $KERN"
 akmods --force --kernels $KERN --akmod evdi

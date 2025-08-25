@@ -1,26 +1,6 @@
-
-FROM fedora:latest
-
-RUN dnf install -y \
-    git \
-    make \
-    gcc \
-    kernel-6.15.10-200.fc42 \
-    kernel-devel-6.15.10-200.fc42 \
-    kernel-headers \
-    dkms \
-    elfutils-libelf-devel \
-    rpmdevtools \
-    rpm-build \
-    rpm-ostree \
-    ostree \
-    dnf-plugins-core \
-    akmods \
-    wget
-
 RUN --mount=type=tmpfs,target=/var/lib/dkms \
-    --mount=type=bind,source=./files/scripts/,target=/scripts/ \
+    --mount=type=bind,source=./files/scripts/,target=/tmp/files/scripts/ \
     --mount=type=cache,dst=/var/cache/rpm-ostree,id=rpm-ostree-cache-myfw-latest,sharing=locked \
     --mount=type=cache,dst=/var/cache/libdnf5,id=dnf-cache-myfw-latest,sharing=locked \
-    /scripts/build-evdi.sh && \
+    /tmp/files/scripts/build-evdi.sh && \
     dnf remove -y akmods

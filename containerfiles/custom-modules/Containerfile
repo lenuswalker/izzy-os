@@ -2,7 +2,6 @@ RUN --mount=type=tmpfs,target=/var/lib/dkms \
     --mount=type=bind,source=./files/scripts/,target=/scripts/ \
     --mount=type=cache,dst=/var/cache/rpm-ostree,id=rpm-ostree-cache-myfw-latest,sharing=locked \
     --mount=type=cache,dst=/var/cache/libdnf5,id=dnf-cache-myfw-latest,sharing=locked \
-    
+    chmod +x /scripts/build-evdi.sh && \
     /scripts/build-evdi.sh && \
-
     dnf remove -y akmods

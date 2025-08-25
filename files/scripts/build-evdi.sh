@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+set -ouex pipefail
+
 KERN=${1:-$(ls /usr/src/kernels | head --lines=1)}
 #MOK_KEY=${2:-/var/lib/dkms/mok.key}
 #MOK_DER=${3:-/var/lib/dkms/mok.der }

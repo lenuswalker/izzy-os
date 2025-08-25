@@ -1,5 +1,5 @@
 RUN --mount=type=tmpfs,target=/var/lib/dkms \
-    --mount=type=bind,source=./files/scripts/,target=/tmp/files/scripts/ \
+    --mount=type=bind,source=/files,target=/tmp/files,rw \
     --mount=type=cache,dst=/var/cache/rpm-ostree,id=rpm-ostree-cache-myfw-latest,sharing=locked \
     --mount=type=cache,dst=/var/cache/libdnf5,id=dnf-cache-myfw-latest,sharing=locked \
     /tmp/files/scripts/build-evdi.sh && \

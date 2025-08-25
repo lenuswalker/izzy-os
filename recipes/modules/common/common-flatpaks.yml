@@ -1,10 +1,11 @@
 type: default-flatpaks
 configurations:
-  - scope: user
+  - notify: false
+    scope: user
     repo:
         # you can override the title to make inclusion of both system and user repos clearer
       title: Flathub (user)
-  - notify: true # Send notification after install/uninstall is finished (true/false)
+  - notify: false # Send notification after install/uninstall is finished (true/false)
     scope: system
     repo:
       title: "Flathub (system-wide)"
@@ -47,7 +48,6 @@ configurations:
       # Media
       - com.github.rafostar.Clapper
       - com.spotify.Client
-      - com.stremio.Stremio
 
       # Office
       - org.libreoffice.LibreOffice
@@ -76,3 +76,13 @@ configurations:
       - org.fedoraproject.MediaWriter
       - org.localsend.localsend_app
       - org.remmina.Remmina
+
+  - notify: false
+    scope: system
+    repo:
+      url: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+      name: flathub-beta
+      title: Flathub Beta
+    install:
+      # Media
+      - com.stremio.Stremio

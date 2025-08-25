@@ -28,5 +28,5 @@ modules:
   - from-file: modules/gnome/gschema-overrides.yml
   - from-file: modules/displaylink/displaylink-packages.yml
   - from-file: modules/displaylink/evdi-akmod.yml
-  # - from-file: modules/displaylink/displaylink-systemd.yml
+  - from-file: modules/displaylink/displaylink-systemd.yml
   - type: signing

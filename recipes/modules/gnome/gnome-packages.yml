@@ -1,4 +1,4 @@
 type: rpm-ostree
 install:
-  - evolution-ews
+  - evolution-ews-core
   - gnome-shell-extension-appindicator

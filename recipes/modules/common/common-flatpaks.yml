@@ -71,6 +71,7 @@ configurations:
       - de.haeckerfelix.Fragments
       - dev.deedles.Trayscale
       - io.github.dvlv.boxbuddyrs
+      - io.github.kolunmi.Bazaar
       - io.missioncenter.MissionCenter
       - md.obsidian.Obsidian
       - org.fedoraproject.MediaWriter

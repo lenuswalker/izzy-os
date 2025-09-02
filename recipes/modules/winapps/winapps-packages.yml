@@ -6,3 +6,8 @@ install:
   - dialog
   - nmap-ncat
   - podman-compose
+
+  # Virtualization
+  - libvirt
+  - qemu-kvm
+  - virt-install

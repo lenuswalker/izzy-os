@@ -1,0 +1,8 @@
+type: rpm-ostree
+repos:
+  - negativo17-fedora-multimedia.repo
+install:
+  # Needed for winapps
+  - dialog
+  - nmap-ncat
+  - podman-compose

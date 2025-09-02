@@ -11,7 +11,6 @@ install:
   - fastfetch
   - neovim
   - nu
-  - podman-compose
   - python3-neovim
   - starship
   - toolbox
@@ -38,10 +37,6 @@ install:
 
   # Fonts
   - rsms-inter-fonts
-
-  # Needed for winapps
-  - dialog
-  - nmap-ncat
 
 remove:
   - firefox

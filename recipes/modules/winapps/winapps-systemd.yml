@@ -1,0 +1,4 @@
+type: systemd
+user:
+  enabled:
+    - install-winapps.service

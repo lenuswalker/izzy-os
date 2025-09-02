@@ -1,0 +1,13 @@
+[Unit]
+Description=Install WinApps on first login if it is missing
+ConditionUser=!root
+
+[Service]
+Type=oneshot
+# Make sure $HOME is set in user units during early login
+Environment=HOME=%h
+ExecStart=/usr/bin/bash -lc 'chmod +x /var/opt/scripts/install-winapps.sh && ./var/opt/scripts/install-winapps.sh'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

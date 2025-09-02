@@ -29,4 +29,7 @@ modules:
   - from-file: modules/displaylink/displaylink-packages.yml
   - from-file: modules/displaylink/evdi-akmod.yml
   - from-file: modules/displaylink/displaylink-systemd.yml
+  - from-file: modules/winapps/winapps-files.yml
+  - from-file: modules/winapps/winapps-packages.yml
+  - from-file: modules/winapps/winapps-systemd.yml
   - type: signing

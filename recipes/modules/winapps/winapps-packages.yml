@@ -4,6 +4,7 @@ repos:
 install:
   # Needed for winapps
   - dialog
+  - iproute
   - nmap-ncat
   - podman-compose
 

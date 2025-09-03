@@ -1,4 +1,4 @@
 type: files
 files:
-  - source: system/var/opt
-    destination: /var/opt
+  - source: system/tmp
+    destination: /tmp

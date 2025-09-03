@@ -7,4 +7,3 @@ install:
   - iproute
   - nmap-ncat
   - podman-compose
-

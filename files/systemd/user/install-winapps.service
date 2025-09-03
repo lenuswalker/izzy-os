@@ -6,7 +6,7 @@ ConditionUser=!root
 Type=oneshot
 # Make sure $HOME is set in user units during early login
 Environment=HOME=%h
-ExecStart=/usr/bin/bash -lc 'chmod +x /var/opt/scripts/install-winapps.sh && ./var/opt/scripts/install-winapps.sh'
+ExecStart=/usr/bin/bash -lc 'chmod +x /tmp/install-winapps.sh && ./tmp/install-winapps.sh'
 RemainAfterExit=yes
 
 [Install]

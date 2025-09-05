@@ -5,3 +5,7 @@ SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="/bin/systemctl sto
 
 # Switch to battery power profile
 SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="/usr/sbin/tuned-adm profile powersave"
+
+# Adjust Intel Power Limits Dell XPS 13 9310
+SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="/usr/bin/sh -c 'echo 12000000 > /sys/class/powercap/intel-rapl/intel-rapl:0/constraint_0_power_limit_uw'"
+SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="0",RUN+="/usr/bin/sh -c 'echo 15000000 > /sys/class/powercap/intel-rapl/intel-rapl:0/constraint_1_power_limit_uw'"

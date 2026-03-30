@@ -2,6 +2,3 @@ type: dnf
 install:
   packages:
     - openh264
-remove:
-  packages:
-    - noopenh264

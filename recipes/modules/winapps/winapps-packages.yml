@@ -1,9 +1,10 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - negativo17-fedora-multimedia.repo
+  nonfree: negativo17
 install:
-  # Needed for winapps
-  - dialog
-  - iproute
-  - nmap-ncat
-  - podman-compose
+  packages:
+    # Needed for winapps
+    - dialog
+    - iproute
+    - nmap-ncat
+    - podman-compose

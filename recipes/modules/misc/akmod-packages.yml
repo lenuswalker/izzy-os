@@ -1,10 +1,11 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - negativo17-fedora-multimedia.repo
+  nonfree: negativo17
 install:
-  # Kernel
-  - akmods
-  - akmod-evdi
-  - displaylink
-  - kernel-devel
-  - kmodtool
+  packages:
+    # Kernel
+    - akmods
+    - akmod-evdi
+    - displaylink
+    - kernel-devel
+    - kmodtool

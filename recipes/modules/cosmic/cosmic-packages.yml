@@ -1,5 +1,7 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - ryanabx-cosmic-epoch.repo
+  copr:
+    - ryanabx/cosmic-epoch
 install:
-  - cosmic-desktop
+  packages:
+    - cosmic-desktop

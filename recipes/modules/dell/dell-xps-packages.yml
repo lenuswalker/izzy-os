@@ -1,9 +1,12 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - manciukic-libfprint-tod-goodix.repo
+  copr:
+    - manciukic/libfprint-tod-goodix
 install:
-  - libfprint-tod
-  - libfprint-tod-goodix
-  - iio-sensor-proxy
+  packages:
+    - libfprint-tod
+    - libfprint-tod-goodix
+    - iio-sensor-proxy
 remove:
-  - libfprint
+  packages:
+    - libfprint

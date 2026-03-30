@@ -1,47 +1,50 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - atim-starship.repo
-  - negativo17-fedora-multimedia.repo
+  copr:
+    - atim/starship
+  nonfree: negativo17
 install:
-  # Utility
-  - age
-  - bash-completion
-  - bootc
-  - distrobox
-  - fastfetch
-  - neovim
-  - nu
-  - podman-compose
-  - python3-neovim
-  - starship
-  - tuned
-  - tuned-ppd
-  - vim
+  packages:
+    # Utility
+    - age
+    - bash-completion
+    - bootc
+    - distrobox
+    - fastfetch
+    - neovim
+    - nu
+    - podman-compose
+    - python3-neovim
+    - starship
+    - tuned
+    - tuned-ppd
+    - vim
 
-  # Codecs
-  - ffmpeg
-  - ffmpeg-libs
-  - heif-pixbuf-loader
-  - libavcodec
-  - libheif
-  #- pipewire-libs-extra
+    # Codecs
+    - ffmpeg
+    - ffmpeg-libs
+    - heif-pixbuf-loader
+    - libavcodec
+    - libheif
+    #- pipewire-libs-extra
 
-  # Audio
-  - pipewire
-  - wireplumber
+    # Audio
+    - pipewire
+    - wireplumber
 
-  # Themes
-  - adw-gtk3-theme
-  - gtk-murrine-engine
-  - sassc
+    # Themes
+    - adw-gtk3-theme
+    - gtk-murrine-engine
+    - sassc
 
-  # Fonts
-  - rsms-inter-fonts
+    # Fonts
+    - rsms-inter-fonts
 
-  # Needed for winapps
-  - dialog
-  - nmap-ncat
+    # Needed for winapps
+    - dialog
+    - nmap-ncat
 
 remove:
-  - firefox
-  - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  packages:
+    - firefox
+    - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)

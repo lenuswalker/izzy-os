@@ -1,6 +1,8 @@
-type: rpm-ostree
+type: dnf
 install:
-  - evolution-ews-core
-  - gnome-shell-extension-appindicator
+  packages:
+    - evolution-ews-core
+    - gnome-shell-extension-appindicator
 remove:
-  - gnome-software
+  packages:
+    - gnome-software

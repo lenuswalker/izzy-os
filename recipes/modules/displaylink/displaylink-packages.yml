@@ -1,9 +1,10 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - negativo17-fedora-multimedia.repo
+  nonfree: negativo17
 install:
-  #- https://github.com/lenuswalker/akmod-evdi/releases/download/v1.14.10/akmod-evdi-1.14.10-1.fc42.noarch.rpm
-  - akmods
-  #- displaylink
-  - kernel-devel
-  #- kmodtool
+  packages:
+    #- https://github.com/lenuswalker/akmod-evdi/releases/download/v1.14.10/akmod-evdi-1.14.10-1.fc42.noarch.rpm
+    - akmods
+    #- displaylink
+    - kernel-devel
+    #- kmodtool

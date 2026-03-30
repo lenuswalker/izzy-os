@@ -1,6 +1,8 @@
-type: rpm-ostree
+type: dnf
 install:
-  - openh264
+  packages:
+    - openh264
 remove:
-  - nvtop
-  - noopenh264
+  packages:
+    - nvtop
+    - noopenh264

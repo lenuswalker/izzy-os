@@ -1,4 +1,5 @@
-type: rpm-ostree
+type: dnf
 install:
-  - igt-gpu-tools
-  - libva-intel-media-driver
+  packages:
+    - igt-gpu-tools
+    - libva-intel-media-driver

@@ -1,113 +1,115 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - solopasha-hyprland.repo
-  - erikreider-swaynotificationcenter.repo
+  copr:
+    - solopasha/hyprland
+    - erikreider/swaynotificationcenter
 install:
-  # Hyprland
-  - hyprcursor
-  - hypridle
-  - hyprland
-  - hyprlock
-  - hyprpaper
-  - xdg-desktop-portal-hyprland
+  packages:
+    # Hyprland
+    - hyprcursor
+    - hypridle
+    - hyprland
+    - hyprlock
+    - hyprpaper
+    - xdg-desktop-portal-hyprland
 
-  # display
-  - brightnessctl
-  - cliphist
+    # display
+    - brightnessctl
+    - cliphist
 
-  # Desktop Utils
-  - rofi-wayland
-  - SwayNotificationCenter
-  - waybar
-  
-  # environment
-  - cargo
-  - curl
-  - gawk
-  - git
-  - grim
-  - gvfs
-  - gvfs-mtp
-  - ImageMagick
-  - jq
-  - inxi
-  - kitty
-  - libfprint
-  - nano
-  - openssl
-  - power-profiles-daemon
-  - polkit-gnome
-  - python3-requests
-  - python3-pip
-  - python3-pyquery
-  - qt5ct
-  - qt6ct
-  - qt6-qtsvg
-  - swappy
-  - SwayNotificationCenter
-  - unzip
-  - vim-enhanced
-  - wget2
-  - wl-clipboard
-  - wlogout
-  - xdg-user-dirs
-  - xdg-utils
-  - xorg-x11-server-Xwayland
-  - yad
+    # Desktop Utils
+    - rofi-wayland
+    - SwayNotificationCenter
+    - waybar
+    
+    # environment
+    - cargo
+    - curl
+    - gawk
+    - git
+    - grim
+    - gvfs
+    - gvfs-mtp
+    - ImageMagick
+    - jq
+    - inxi
+    - kitty
+    - libfprint
+    - nano
+    - openssl
+    - power-profiles-daemon
+    - polkit-gnome
+    - python3-requests
+    - python3-pip
+    - python3-pyquery
+    - qt5ct
+    - qt6ct
+    - qt6-qtsvg
+    - swappy
+    - SwayNotificationCenter
+    - unzip
+    - vim-enhanced
+    - wget2
+    - wl-clipboard
+    - wlogout
+    - xdg-user-dirs
+    - xdg-utils
+    - xorg-x11-server-Xwayland
+    - yad
 
-  # fonts
-  - adobe-source-code-pro-fonts
-  - fira-code-fonts
-  - fontawesome-fonts-all
-  - google-droid-sans-fonts
-  - google-noto-sans-cjk-fonts
-  - google-noto-color-emoji-fonts
-  - google-noto-emoji-fonts
-  - jetbrains-mono-fonts
+    # fonts
+    - adobe-source-code-pro-fonts
+    - fira-code-fonts
+    - fontawesome-fonts-all
+    - google-droid-sans-fonts
+    - google-noto-sans-cjk-fonts
+    - google-noto-color-emoji-fonts
+    - google-noto-emoji-fonts
+    - jetbrains-mono-fonts
 
-  # networking
-  - network-manager-applet
-  - NetworkManager-tui
-  - bluez
-  - bluez-tools
-  - blueman
-  - python3-cairo
+    # networking
+    - network-manager-applet
+    - NetworkManager-tui
+    - bluez
+    - bluez-tools
+    - blueman
+    - python3-cairo
 
-  # sound
-  - pamixer
-  - pavucontrol
-  - pipewire
-  - pipewire-alsa
-  - pipewire-utils
-  - playerctl
-  - wireplumber
+    # sound
+    - pamixer
+    - pavucontrol
+    - pipewire
+    - pipewire-alsa
+    - pipewire-utils
+    - playerctl
+    - wireplumber
 
-  # file manager
-  - ffmpegthumbnailer
-  - file-roller
-  - thunar
-  - thunar-archive-plugin 
-  - thunar-volman
-  - tumbler
+    # file manager
+    - ffmpegthumbnailer
+    - file-roller
+    - thunar
+    - thunar-archive-plugin 
+    - thunar-volman
+    - tumbler
 
-  # screenshot
-  - slurp
-  - grim
+    # screenshot
+    - slurp
+    - grim
 
-  # sddm
-  - sddm
-  - qt6-qt5compat 
-  - qt6-qtdeclarative 
-  - qt6-qtsvg
+    # sddm
+    - sddm
+    - qt6-qt5compat 
+    - qt6-qtdeclarative 
+    - qt6-qtsvg
 
-  # nwg-look
-  - golang
-  - gtk3
-  - gtk3-devel
-  - cairo-devel
-  - glib-devel
+    # nwg-look
+    - golang
+    - gtk3
+    - gtk3-devel
+    - cairo-devel
+    - glib-devel
 
-  # themes
-  - aquamarine
-  - gtk-murrine-engine
-  - kvantum
+    # themes
+    - aquamarine
+    - gtk-murrine-engine
+    - kvantum

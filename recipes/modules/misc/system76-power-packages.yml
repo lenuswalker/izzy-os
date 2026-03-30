@@ -1,5 +1,7 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - szydell-system76.repo
+  copr:
+    - szydell/system76
 install:
-  - system76-power
+  packages:
+    - system76-power

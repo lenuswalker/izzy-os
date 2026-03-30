@@ -4,5 +4,4 @@ install:
     - openh264
 remove:
   packages:
-    - nvtop
     - noopenh264

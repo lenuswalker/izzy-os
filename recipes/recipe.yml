@@ -19,10 +19,10 @@ modules:
   - from-file: modules/common/common-fonts.yml
   - from-file: modules/common/common-packages.yml
   - from-file: modules/common/common-scripts.yml
+  - from-file: modules/cosmic/cosmic-packages.yml
   - from-file: modules/intel/intel-packages.yml
   - from-file: modules/intel/intel-specific.yml
   - from-file: modules/gnome/gnome-extensions.yml
   - from-file: modules/gnome/gnome-packages.yml
   - from-file: modules/gnome/gschema-overrides.yml
-  - from-file: modules/cosmic/cosmic-packages.yml
   - type: signing

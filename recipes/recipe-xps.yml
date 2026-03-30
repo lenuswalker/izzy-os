@@ -19,6 +19,7 @@ modules:
   - from-file: modules/common/common-fonts.yml
   - from-file: modules/common/common-packages.yml
   - from-file: modules/common/common-scripts.yml
+  - from-file: modules/cosmic/cosmic-packages.yml
   - from-file: modules/dell/dell-xps-packages.yml
   - from-file: modules/intel/intel-packages.yml
   - from-file: modules/intel/intel-specific.yml
@@ -28,7 +29,6 @@ modules:
   - from-file: modules/displaylink/displaylink-packages.yml
   - from-file: modules/displaylink/evdi-akmod.yml
   - from-file: modules/displaylink/displaylink-systemd.yml
-  - from-file: modules/cosmic/cosmic-packages.yml
   - from-file: modules/winapps/winapps-files.yml
   - from-file: modules/winapps/winapps-packages.yml
   - from-file: modules/winapps/winapps-systemd.yml

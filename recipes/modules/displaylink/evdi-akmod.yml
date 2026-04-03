@@ -1,3 +1,20 @@
 type: containerfile
-containerfiles:
-  - custom-modules
+snippets:
+  - |
+    # 1. Install the negativo17 repository used by the opdude scripts
+    dnf install -y https://negativo17.org/repos/fedora-multimedia/fedora-multimedia.repo && \
+    # 2. Identify the exact kernel version in this image
+    KERNEL_VERSION=$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}') && \
+    # 3. Install build dependencies and the evdi akmod package
+    dnf install -y \
+        akmod-evdi \
+        kernel-devel-${KERNEL_VERSION} \
+        akmods \
+        gcc \
+        make \
+        elfutils-libelf-devel && \
+    # 4. Force the build for the identified kernel version
+    akmods --force --kernels "${KERNEL_VERSION}" && \
+    # 5. Clean up build tools to minimize image size
+    dnf remove -y kernel-devel gcc make elfutils-libelf-devel && \
+    dnf clean all

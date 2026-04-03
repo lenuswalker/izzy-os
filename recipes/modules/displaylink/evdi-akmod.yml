@@ -1,25 +1,27 @@
 type: containerfile
 snippets:
   - |
-    # 1. Install build dependencies and identify the current image kernel
+    # 1. Install build dependencies (added gcc-c++ and libdrm-devel)
     RUN KERNEL_VERSION=$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}') && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
             gcc \
+            gcc-c++ \
             make \
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 2. Clone the EVDI source code
+        # 2. Clone the EVDI source
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
-        cd /tmp/evdi && \
-        # 3. Build the module for the specific kernel in the image
-        make -j$(nproc) && \
-        # 4. Manually install the module to the extra directory
+        cd /tmp/evdi/module && \
+        # 3. Build ONLY the kernel module, pointing to the Fedora headers
+        # We override KDIR to prevent it from looking for the "Azure" build path
+        make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
+        # 4. Install the module to the extra directory
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
-        cp module/evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
+        cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 5. Cleanup build-only packages and temporary files
+        # 5. Cleanup
         rm -rf /tmp/evdi && \
-        dnf remove -y kernel-devel gcc make git elfutils-libelf-devel && \
+        dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

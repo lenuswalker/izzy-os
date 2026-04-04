@@ -3,12 +3,8 @@ repos:
   nonfree: negativo17
 install:
   packages:
-    #- https://github.com/lenuswalker/akmod-evdi/releases/download/v1.14.10/akmod-evdi-1.14.10-1.fc42.noarch.rpm
-    #- akmods
+    - akmod-evdi
     - displaylink
-    #- kernel-devel
+    - kernel-devel
   exclude:
     - dkms-evdi
-    - akmod-evdi
-
-    #- kmodtool

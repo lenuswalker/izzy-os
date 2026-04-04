@@ -1,0 +1,13 @@
+[Unit]
+Description=Build and load EVDI for the running kernel on first boot
+After=network-online.target systemd-modules-load.service local-fs.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/evdi-firstboot-build.done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/evdi-firstboot-build.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

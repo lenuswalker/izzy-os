@@ -12,7 +12,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   # - from-file: modules/common/common-akmods.yml
   - from-file: modules/displaylink/displaylink-build.yml
-  # - from-file: modules/common/common-bling.yml
+  - from-file: modules/common/common-bling.yml
   - from-file: modules/common/common-brew.yml
   - from-file: modules/common/common-chezmoi.yml
   - from-file: modules/common/common-files.yml

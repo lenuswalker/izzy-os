@@ -1,9 +1,8 @@
 type: containerfile
 snippets:
   - |
-    # 1. Identify the kernel version and install build tools
-    # We use the headers matching the kernel version currently in the image
-    RUN KERNEL_VERSION=$(ls /lib/modules | grep -v "total" | tail -n 1) && \
+    # 1. Setup Kernel Version and Build Dependencies
+    RUN KERNEL_VERSION=$(ls /lib/modules | tail -n 1) && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
             gcc \
@@ -12,22 +11,28 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 2. Build the kernel module from source
-        # This avoids the "Not to be used as root" error from the RPM scriptlet
+        # 2. Build EVDI Kernel Module from Source
+        # Source compilation is necessary to support the bleeding-edge Rawhide kernel
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 3. Handle Userspace Components via DNF5
-        # F43 repos are often 404; we use F41 as a stable source for the binary service
-        printf "[negativo17-f41]\nname=negativo17-f41\nbaseurl=https://negativo17.org/repos/multimedia/fedora-41/\$basearch/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f41.repo && \
+        # 3. Install Userspace Components (DisplayLink service)
+        # We create a static repo file to avoid shell expansion bugs ($basearch -> x86_64)
+        cat <<EOF > /etc/yum.repos.d/negativo17-f41.repo
+    [negativo17-f41]
+    name=negativo17-f41
+    baseurl=https://negativo17.org/repos/multimedia/fedora-41/x86_64/
+    enabled=1
+    gpgcheck=0
+    EOF
         mkdir -p /tmp/rpms && \
-        dnf --disablerepo="*" --enablerepo="negativo17-f41" download --destdir /tmp/rpms displaylink libevdi && \
-        # 4. Force install while bypassing the 'akmod-evdi' dependency requirement
+        # DNF5 requires --destdir to follow the download command
+        dnf --enablerepo=negativo17-f41 --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
-        # 5. Cleanup build environment to keep the image slim
+        # 4. Final Cleanup
         rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f41.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

@@ -21,13 +21,13 @@ snippets:
         depmod -a ${KERNEL_VERSION} && \
         # 3. Download userspace components using a literal URL to avoid shell expansion bugs
         # Hardcoding 'x86_64' prevents the URL from breaking
-        printf "[negativo17-f41]\nname=negativo17-f41\nbaseurl=https://negativo17.org/repos/multimedia/fedora-41/x86_64/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f41.repo && \
+        printf "[negativo17-f43]\nname=negativo17-f43\nbaseurl=https://negativo17.org/repos/multimedia/fedora-43/x86_64/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f43.repo && \
         mkdir -p /tmp/rpms && \
         # DNF5 download requires the package name to follow the options
-        dnf --enablerepo=negativo17-f41 --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
+        dnf --enablerepo=negativo17-f43 --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
         # 4. Install userspace driver while skipping the broken akmod-evdi requirement
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
         # 5. Final Cleanup
-        rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f41.repo && \
+        rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f43.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

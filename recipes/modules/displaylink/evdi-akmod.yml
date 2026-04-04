@@ -1,7 +1,7 @@
 type: containerfile
 snippets:
   - |
-    # 1. Install build dependencies (added gcc-c++ and libdrm-devel)
+    # 1. Install build dependencies and identifying the kernel
     RUN KERNEL_VERSION=$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}') && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
@@ -11,17 +11,17 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 2. Clone the EVDI source
+        # 2. Build the kernel module from source
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
-        # 3. Build ONLY the kernel module, pointing to the Fedora headers
-        # We override KDIR to prevent it from looking for the "Azure" build path
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
-        # 4. Install the module to the extra directory
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 5. Cleanup
+        # 3. Install the userspace service while EXCLUDING the problematic akmod package
+        dnf install -y https://negativo17.org/repos/fedora-multimedia/fedora-multimedia.repo && \
+        dnf install -y displaylink --exclude=akmod-evdi && \
+        # 4. Cleanup
         rm -rf /tmp/evdi && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

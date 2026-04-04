@@ -1,6 +1,7 @@
 type: containerfile
 snippets:
   - |
+    # 1. Identify kernel and install build tools
     RUN KERNEL_VERSION=$(ls /lib/modules | tail -n 1) && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
@@ -10,16 +11,23 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
+        # 2. Build the EVDI kernel module from source
+        # This bypasses the 'Not to be used as root' error in the RPMs
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
+        # 3. Download userspace components using a literal URL to avoid shell expansion bugs
+        # Hardcoding 'x86_64' prevents the URL from breaking
         printf "[negativo17-f41]\nname=negativo17-f41\nbaseurl=https://negativo17.org/repos/multimedia/fedora-41/x86_64/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f41.repo && \
         mkdir -p /tmp/rpms && \
+        # DNF5 download requires the package name to follow the options
         dnf --enablerepo=negativo17-f41 --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
+        # 4. Install userspace driver while skipping the broken akmod-evdi requirement
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
+        # 5. Final Cleanup
         rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f41.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

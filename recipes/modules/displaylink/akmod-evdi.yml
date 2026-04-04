@@ -1,8 +1,8 @@
 type: containerfile
 snippets:
   - |
-    # 1. Install build dependencies and identify the current kernel
-    RUN KERNEL_VERSION=$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}') && \
+    # 1. Identify the kernel version and install build tools
+    RUN KERNEL_VERSION=$(ls /lib/modules | grep -v "total" | tail -n 1) && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
             gcc \
@@ -10,7 +10,8 @@ snippets:
             make \
             libdrm-devel \
             git \
-            elfutils-libelf-devel && \
+            elfutils-libelf-devel \
+            curl && \
         # 2. Build the kernel module from source
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
@@ -18,11 +19,13 @@ snippets:
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 3. Manually define the Negativo17 repository
-        # Fedora 43 often 404s; we point to the stable Fedora 41 path for the userspace driver
-        printf "[negativo17-multimedia]\nname=negativo17 - Multimedia\nbaseurl=https://negativo17.org/repos/multimedia/fedora-41/\$basearch/\nenabled=1\ngpgcheck=1\ngpgkey=https://negativo17.org/repos/RPM-GPG-KEY-slaanesh\n" > /etc/yum.repos.d/negativo17-multimedia.repo && \
-        # 4. Install displaylink userspace driver and cleanup
-        dnf install -y displaylink --exclude=akmod-evdi && \
-        rm -rf /tmp/evdi && \
+        # 3. Manually download and install userspace RPMs
+        # We use --nodeps to skip the check for the akmod-evdi package
+        mkdir -p /tmp/rpms && \
+        curl -L -o /tmp/rpms/displaylink.rpm https://negativo17.org/repos/multimedia/fedora-41/x86_64/displaylink-6.2.0-1.fc41.x86_64.rpm && \
+        curl -L -o /tmp/rpms/libevdi.rpm https://negativo17.org/repos/multimedia/fedora-41/x86_64/libevdi-1.14.15-1.fc41.x86_64.rpm && \
+        rpm -ivh --nodeps /tmp/rpms/*.rpm && \
+        # 4. Cleanup build-time dependencies
+        rm -rf /tmp/evdi /tmp/rpms && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

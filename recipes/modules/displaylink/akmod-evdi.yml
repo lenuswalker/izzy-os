@@ -1,8 +1,10 @@
 type: containerfile
 snippets:
   - |
-    # 1. Identify kernel and install build tools
+    # 1. Dynamically gather version information
     RUN KERNEL_VERSION=$(ls /lib/modules | tail -n 1) && \
+        FEDORA_VERSION=$(grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"') && \
+        # 2. Install build dependencies
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
             gcc \
@@ -11,23 +13,22 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 2. Build the EVDI kernel module from source
-        # This bypasses the 'Not to be used as root' error in the RPMs
+        # 3. Build EVDI Kernel Module from Source
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 3. Download userspace components using a literal URL to avoid shell expansion bugs
-        # Hardcoding 'x86_64' prevents the URL from breaking
-        printf "[negativo17-f43]\nname=negativo17-f43\nbaseurl=https://negativo17.org/repos/multimedia/fedora-43/x86_64/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f43.repo && \
+        # 4. Create repository file using the dynamic FEDORA_VERSION
+        printf "[negativo17-dynamic]\nname=negativo17-dynamic\nbaseurl=https://negativo17.org/repos/multimedia/fedora-%%s/x86_64/\nenabled=1\ngpgcheck=0\n" "$FEDORA_VERSION" > /etc/yum.repos.d/negativo17-dynamic.repo && \
+        # 5. Download and force-install userspace components (DNF5 compliant)
         mkdir -p /tmp/rpms && \
-        # DNF5 download requires the package name to follow the options
-        dnf --enablerepo=negativo17-f43 --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
-        # 4. Install userspace driver while skipping the broken akmod-evdi requirement
+        dnf --enablerepo=negativo17-dynamic --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
-        # 5. Final Cleanup
-        rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f43.repo && \
+        # 6. Enable the service (replaces displaylink-systemd.yml)
+        systemctl enable displaylink.service && \
+        # 7. Cleanup
+        rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-dynamic.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

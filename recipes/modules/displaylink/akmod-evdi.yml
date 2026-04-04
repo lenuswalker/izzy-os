@@ -1,7 +1,8 @@
 type: containerfile
 snippets:
   - |
-    # 1. Install build tools and identify the target kernel
+    # 1. Identify the kernel version and install build tools
+    # We use the headers matching the kernel version currently in the image
     RUN KERNEL_VERSION=$(ls /lib/modules | grep -v "total" | tail -n 1) && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
@@ -11,21 +12,22 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 2. Build the EVDI kernel module from source
+        # 2. Build the kernel module from source
+        # This avoids the "Not to be used as root" error from the RPM scriptlet
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 3. Fetch userspace RPMs using DNF (Fixes the curl 404 error)
-        # We define a temporary F41 repo because F43/Rawhide metadata is often missing
+        # 3. Handle Userspace Components via DNF5
+        # F43 repos are often 404; we use F41 as a stable source for the binary service
         printf "[negativo17-f41]\nname=negativo17-f41\nbaseurl=https://negativo17.org/repos/multimedia/fedora-41/\$basearch/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f41.repo && \
         mkdir -p /tmp/rpms && \
-        dnf --disablerepo="*" --enablerepo="negativo17-f41" --destdir=/tmp/rpms download displaylink libevdi && \
-        # 4. Install using --nodeps to skip the 'akmod-evdi' requirement
+        dnf --disablerepo="*" --enablerepo="negativo17-f41" download --destdir /tmp/rpms displaylink libevdi && \
+        # 4. Force install while bypassing the 'akmod-evdi' dependency requirement
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
-        # 5. Cleanup
+        # 5. Cleanup build environment to keep the image slim
         rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f41.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

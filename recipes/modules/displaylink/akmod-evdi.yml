@@ -1,10 +1,9 @@
 type: containerfile
 snippets:
   - |
-    # 1. Dynamically gather version information
+    # 1. Identify versions and install build tools
     RUN KERNEL_VERSION=$(ls /lib/modules | tail -n 1) && \
-        FEDORA_VERSION=$(grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"') && \
-        # 2. Install build dependencies
+        FEDORA_VERSION=$(rpm -E %fedora) && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
             gcc \
@@ -13,22 +12,25 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 3. Build EVDI Kernel Module from Source
+        # 2. Build EVDI Kernel Module from Source
+        # Source build is required to match your Rawhide/Main kernel exactly
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 4. Create repository file using the dynamic FEDORA_VERSION
-        printf "[negativo17-dynamic]\nname=negativo17-dynamic\nbaseurl=https://negativo17.org/repos/multimedia/fedora-%%s/x86_64/\nenabled=1\ngpgcheck=0\n" "$FEDORA_VERSION" > /etc/yum.repos.d/negativo17-dynamic.repo && \
-        # 5. Download and force-install userspace components (DNF5 compliant)
+        # 3. Dynamically create the repo file pointing to your image's version
+        # Corrected: using a single %s for shell printf
+        printf "[negativo17-dynamic]\nname=negativo17-dynamic\nbaseurl=https://negativo17.org/repos/multimedia/fedora-%s/x86_64/\nenabled=1\ngpgcheck=0\n" "$FEDORA_VERSION" > /etc/yum.repos.d/negativo17-dynamic.repo && \
+        # 4. Download and force-install userspace components (DNF5 compliant)
         mkdir -p /tmp/rpms && \
         dnf --enablerepo=negativo17-dynamic --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
+        # rpm --nodeps is critical to skip the broken 'akmod-evdi' dependency script
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
-        # 6. Enable the service (replaces displaylink-systemd.yml)
+        # 5. Enable the service (replacing displaylink-systemd.yml)
         systemctl enable displaylink.service && \
-        # 7. Cleanup
+        # 6. Final Cleanup
         rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-dynamic.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

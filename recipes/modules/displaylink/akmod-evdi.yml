@@ -1,7 +1,6 @@
 type: containerfile
 snippets:
   - |
-    # 1. Setup Kernel Version and Build Dependencies
     RUN KERNEL_VERSION=$(ls /lib/modules | tail -n 1) && \
         dnf install -y \
             kernel-devel-${KERNEL_VERSION} \
@@ -11,28 +10,16 @@ snippets:
             libdrm-devel \
             git \
             elfutils-libelf-devel && \
-        # 2. Build EVDI Kernel Module from Source
-        # Source compilation is necessary to support the bleeding-edge Rawhide kernel
         git clone https://github.com/DisplayLink/evdi.git /tmp/evdi && \
         cd /tmp/evdi/module && \
         make KDIR=/usr/lib/modules/${KERNEL_VERSION}/build && \
         mkdir -p /usr/lib/modules/${KERNEL_VERSION}/extra && \
         cp evdi.ko /usr/lib/modules/${KERNEL_VERSION}/extra/ && \
         depmod -a ${KERNEL_VERSION} && \
-        # 3. Install Userspace Components (DisplayLink service)
-        # We create a static repo file to avoid shell expansion bugs ($basearch -> x86_64)
-        cat <<EOF > /etc/yum.repos.d/negativo17-f41.repo
-    [negativo17-f41]
-    name=negativo17-f41
-    baseurl=https://negativo17.org/repos/multimedia/fedora-41/x86_64/
-    enabled=1
-    gpgcheck=0
-    EOF
+        printf "[negativo17-f41]\nname=negativo17-f41\nbaseurl=https://negativo17.org/repos/multimedia/fedora-41/x86_64/\nenabled=1\ngpgcheck=0\n" > /etc/yum.repos.d/negativo17-f41.repo && \
         mkdir -p /tmp/rpms && \
-        # DNF5 requires --destdir to follow the download command
         dnf --enablerepo=negativo17-f41 --disablerepo="*" download --destdir /tmp/rpms displaylink libevdi && \
         rpm -ivh --nodeps /tmp/rpms/*.rpm && \
-        # 4. Final Cleanup
         rm -rf /tmp/evdi /tmp/rpms /etc/yum.repos.d/negativo17-f41.repo && \
         dnf remove -y kernel-devel gcc gcc-c++ make git elfutils-libelf-devel && \
         dnf clean all

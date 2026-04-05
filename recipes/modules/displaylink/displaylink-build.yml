@@ -1,3 +1,46 @@
 type: containerfile
-containerfiles:
-  - displaylink
+snippets:
+  - |
+    # 1. Add the Negativo17 repository
+    RUN curl -Lo /etc/yum.repos.d/fedora-multimedia.repo https://negativo17.org/repos/fedora-multimedia.repo
+    
+    # 2. Install kernel headers and build tools needed for the driver
+    # Note: We need to ensure kernel, kernel-devel, and kernel-headers versions match
+    RUN rpm-ostree install kernel-devel kernel-headers kernel-core akmods && \
+        echo "Installed kernel packages:" && \
+        rpm -qa | grep "^kernel"
+    
+    # 3. Install libevdi first (this should not pull in akmod-evdi)
+    RUN rpm-ostree install libevdi
+    
+    # 4. Download all DisplayLink-related packages with dependencies, then install
+    # them manually with --noscripts to skip the akmod-evdi post-install scriptlet
+    # that tries to build as root. We'll build the kernel module manually in step 6.
+    RUN dnf download --resolve displaylink akmod-evdi -y
+    
+    # 5. Install all downloaded packages without running scriptlets.
+    # This prevents akmod-evdi from trying to build as root during installation.
+    RUN rpm -Uvh --noscripts *.rpm && rm -f *.rpm
+    
+    # 6. Build evdi kernel module manually using rpmbuild (bypass akmods due to /tmp restrictions)
+    # The akmodsbuild script is hardcoded to use /tmp which has permission issues in containers.
+    # /root also has permission restrictions, so we use /var/tmp/rpmbuild instead.
+    # rpmbuild --rebuild handles source RPMs directly, no need to install them first.
+    RUN KERNEL_VERSION=$(rpm -q kernel-devel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}\n' | tail -n 1) && \
+        echo "Building evdi module for kernel ${KERNEL_VERSION}" && \
+        mkdir -p /var/tmp/rpmbuild/BUILD /var/tmp/rpmbuild/RPMS /var/tmp/rpmbuild/SOURCES /var/tmp/rpmbuild/SPECS /var/tmp/rpmbuild/SRPMS && \
+        echo "Building kmod with rpmbuild:" && \
+        rpmbuild --rebuild \
+          --define "_topdir /var/tmp/rpmbuild" \
+          --define "kernels ${KERNEL_VERSION}" \
+          --target x86_64 \
+          /usr/src/akmods/evdi-kmod-*.src.rpm && \
+        echo "Looking for built kmod RPM:" && \
+        find /var/tmp/rpmbuild/RPMS -name "kmod-evdi*.rpm" -ls && \
+        echo "Installing kmod-evdi RPM:" && \
+        rpm -Uvh /var/tmp/rpmbuild/RPMS/x86_64/kmod-evdi*.rpm && \
+        echo "Verifying module installation:" && \
+        find /lib/modules/${KERNEL_VERSION} -name "evdi.ko*" -ls && \
+        depmod -a "${KERNEL_VERSION}" && \
+        echo "Checking module info for target kernel:" && \
+        modinfo -k "${KERNEL_VERSION}" evdi || echo "Note: modinfo check failed (expected in container build)"

@@ -18,17 +18,16 @@ RUN --mount=type=cache,target=/var/cache/dnf \
     xz \
     findutils \
     grep \
-    which; \
+    which \
+    evdi-kmod-common; \
     \
     dnf5 download --resolve --destdir /tmp/displaylink-rpms \
-    evdi-kmod-common \
     akmod-evdi \
     libevdi \
     displaylink \
     xorg-x11-displaylink; \
     \
     rpm -Uvh --nopost --noposttrans \
-    /tmp/displaylink-rpms/evdi-kmod-common-*.rpm \
     /tmp/displaylink-rpms/akmod-evdi-*.rpm; \
     \
     AKMOD_SRPM="$(find /usr/src/akmods -maxdepth 1 -type f -name 'evdi-kmod-*.src.rpm' | head -n1)"; \

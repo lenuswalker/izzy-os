@@ -6,6 +6,8 @@ install:
   packages:
     - libfprint-tod
     - libfprint-tod-goodix
+    - fprintd
+    - fprintd-pam
     - iio-sensor-proxy
 remove:
   packages:

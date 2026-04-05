@@ -43,4 +43,6 @@ snippets:
         find /lib/modules/${KERNEL_VERSION} -name "evdi.ko*" -ls && \
         depmod -a "${KERNEL_VERSION}" && \
         echo "Checking module info for target kernel:" && \
-        modinfo -k "${KERNEL_VERSION}" evdi || echo "Note: modinfo check failed (expected in container build)"
+        modinfo -k "${KERNEL_VERSION}" evdi || echo "Note: modinfo check failed (expected in container build)" && \
+        echo "Remove negativo17 repo" && \
+        rm -f /etc/yum.repos.d/fedora-multimedia.repo

@@ -2,17 +2,56 @@ ADD https://negativo17.org/repos/fedora-multimedia.repo /etc/yum.repos.d/fedora-
 
 RUN --mount=type=cache,target=/var/cache/dnf \
     set -eux; \
-    mkdir -p /tmp/displaylink-rpms; \
+    KERNEL_VERSION="$(ls /lib/modules | sort -V | tail -n1)"; \
+    mkdir -p /tmp/displaylink-rpms /tmp/evdi-out; \
+    \
     dnf5 -y --setopt=install_weak_deps=False install \
     akmods \
+    dnf5-plugins \
     kernel-devel \
     kernel-devel-matched \
-    dnf5-plugins && \
+    gcc \
+    make \
+    elfutils-libelf-devel \
+    rpm-build \
+    rpmdevtools \
+    kmodtool \
+    tar \
+    xz \
+    findutils \
+    grep \
+    which; \
+    \
     dnf5 download --resolve --destdir /tmp/displaylink-rpms \
-    displaylink \
+    akmod-evdi \
     libevdi \
-    xorg-x11-displaylink && \
-    rpm -Uvh --nopost --noposttrans /tmp/displaylink-rpms/*.rpm && \
-    rm -rf /tmp/displaylink-rpms && \
-    dnf5 clean all && \
-    rm -rf /etc/yum.repos.d/fedora-multimedia.repo
+    displaylink \
+    xorg-x11-displaylink; \
+    \
+    rpm -Uvh --nopost --noposttrans /tmp/displaylink-rpms/akmod-evdi-*.rpm; \
+    \
+    AKMOD_SRPM="$(find /usr/src/akmods -maxdepth 1 -type f -name 'evdi-kmod-*.src.rpm' | head -n1)"; \
+    test -n "${AKMOD_SRPM}"; \
+    \
+    akmodsbuild \
+    --kernels "${KERNEL_VERSION}" \
+    --outputdir /tmp/evdi-out \
+    "${AKMOD_SRPM}"; \
+    \
+    KMOD_RPM="$(find /tmp/evdi-out -type f -name 'kmod-evdi-*.rpm' | head -n1)"; \
+    test -n "${KMOD_RPM}"; \
+    \
+    rpm -Uvh "${KMOD_RPM}"; \
+    \
+    rpm -e --nodeps akmod-evdi; \
+    \
+    rpm -Uvh \
+    /tmp/displaylink-rpms/libevdi-*.rpm \
+    /tmp/displaylink-rpms/displaylink-*.rpm \
+    /tmp/displaylink-rpms/xorg-x11-displaylink-*.rpm; \
+    \
+    depmod -a "${KERNEL_VERSION}"; \
+    systemctl enable displaylink.service; \
+    \
+    rm -rf /tmp/displaylink-rpms /tmp/evdi-out /etc/yum.repos.d/fedora-multimedia.repo; \
+    dnf5 clean all

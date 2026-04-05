@@ -2,4 +2,3 @@ type: systemd
 system:
   enabled:
     - displaylink.service
-    - evdi-firstboot-build.service

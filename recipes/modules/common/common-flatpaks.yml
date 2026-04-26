@@ -46,7 +46,6 @@ configurations:
       - org.gnome.Weather
 
       # Media
-      - com.github.rafostar.Clapper
       - com.spotify.Client
 
       # Office

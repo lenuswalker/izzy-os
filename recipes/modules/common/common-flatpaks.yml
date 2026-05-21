@@ -76,6 +76,7 @@ configurations:
       - org.fedoraproject.MediaWriter
       - org.localsend.localsend_app
       - org.remmina.Remmina
+      - page.tesk.Refine
 
   - notify: false
     scope: system

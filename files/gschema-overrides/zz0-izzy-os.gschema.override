@@ -46,5 +46,5 @@ max-alpha=0.8
 
 [org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0]
 binding='<Control><Shift><Escape>'
-command='flatpak run io.missioncenter.MissionCenter'
+command='flatpak run net.nokyan.Resources'
 name='mission-center'

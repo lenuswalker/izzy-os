@@ -20,16 +20,26 @@ modules:
   - from-file: modules/intel/intel-packages.yml
   - from-file: modules/intel/intel-specific.yml
 
-  # Default applications
-  - from-file: modules/omarchy/omarchy-flatpaks.yml
+  # WinApps prerequisites (podman-compose, dialog, etc.)
+  - from-file: modules/winapps/winapps-packages.yml
+
+  # Default applications (common flatpak set; includes FreeRDP for WinApps)
+  - from-file: modules/common/common-flatpaks.yml
 
   # Session files + SDDM greeter user (must precede omarchy-services)
   - from-file: modules/omarchy/omarchy-files.yml
+  # WinApps first-login installer script -> /tmp
+  - from-file: modules/winapps/winapps-files.yml
 
   # Vendor the Omarchy look-and-feel and seed /etc/skel (needs git from packages)
   - from-file: modules/omarchy/omarchy-config.yml
 
+  # Pull personal dotfiles (layers on top of the omadora-seeded /etc/skel)
+  - from-file: modules/common/common-chezmoi.yml
+
   # Enable the SDDM greeter / Hyprland session, disable GDM
   - from-file: modules/omarchy/omarchy-services.yml
+  # Enable the WinApps first-login user service
+  - from-file: modules/winapps/winapps-systemd.yml
 
   - type: signing

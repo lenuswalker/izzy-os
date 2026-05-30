@@ -1,22 +1,26 @@
 type: dnf
 repos:
   copr:
-    - solopasha/hyprland      # Hyprland ecosystem + satty for Fedora
+    # wayblue's own Hyprland set, kept current for the latest Fedora (built
+    # against Fedora 44's libdisplay-info 0.3 / aquamarine 0.11). solopasha's
+    # COPR lags new Fedora releases, so its aquamarine breaks here.
+    - craftidore/wayblueorg-hyprland
     - errornointernet/walker   # Walker application launcher (Omarchy's launcher)
     - atim/lazygit             # lazygit TUI
     - atim/starship            # starship prompt
 install:
   packages:
-    # Hyprland ecosystem (solopasha/hyprland)
-    - hyprland
+    # Hyprland ecosystem (craftidore/wayblueorg-hyprland).
+    # NB: this set ships Hyprland as `hyprland-git`; aquamarine + the hypr*
+    # libraries come in as dependencies. uwsm/satty are not in this COPR and
+    # are installed separately in omarchy-hypr-extras.yml.
+    - hyprland-git
     - hyprlock
     - hypridle
     - hyprsunset
-    - hyprshot
     - hyprpicker
     - hyprpolkitagent
     - xdg-desktop-portal-hyprland
-    - uwsm                     # Universal Wayland Session Manager (how Omarchy launches Hyprland)
 
     # Wayland desktop shell
     - waybar
@@ -102,8 +106,7 @@ install:
     - gh
     - lazygit
 
-    # Theming
+    # Theming (Adwaita-dark ships with GNOME; adw-gtk3-theme covers GTK apps)
     - kvantum
-    - gnome-themes-extra
     - yaru-icon-theme
     - adw-gtk3-theme

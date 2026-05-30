@@ -1,0 +1,15 @@
+type: dnf
+# uwsm and satty are not in the wayblueorg Hyprland COPR, so they come from
+# solopasha. They are standalone (no hypr* library deps), and this runs as its
+# own dnf transaction so it can't pull solopasha's (older, F44-incompatible)
+# Hyprland stack alongside the wayblueorg one installed in omarchy-packages.yml.
+repos:
+  copr:
+    - solopasha/hyprland
+install:
+  # Disable weak deps so uwsm's "Recommends: hyprland" can't drag in solopasha's
+  # hyprland and conflict with the hyprland-git already installed.
+  install-weak-deps: false
+  packages:
+    - uwsm    # Universal Wayland Session Manager (how Omarchy launches Hyprland)
+    - satty   # screenshot annotation tool

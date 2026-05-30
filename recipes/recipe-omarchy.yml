@@ -12,6 +12,7 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   # Omarchy / Hyprland software stack (installs git used by omarchy-config)
   - from-file: modules/omarchy/omarchy-packages.yml
+  - from-file: modules/omarchy/omarchy-hypr-extras.yml
   - from-file: modules/omarchy/omarchy-fonts.yml
 
   # Dell XPS 13 + Intel hardware enablement

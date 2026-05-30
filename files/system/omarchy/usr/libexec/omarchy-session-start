@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# Omarchy session entrypoint.
+#
+# /etc/skel only seeds *new* user accounts, so anyone who rebased onto this
+# image with an existing account never gets the omadora config. This installs
+# it into the current user's home (once) right before Hyprland starts, so the
+# Omarchy look-and-feel applies for new and existing users alike.
+#
+# Runs AS the user (launched by uwsm as the session command), so files are
+# owned correctly. It is best-effort: any failure here must never stop the
+# session from starting, so config setup is guarded and we always exec Hyprland.
+
+SRC="/usr/share/omadora"
+STATE="${HOME}/.local/state/omarchy"
+MARKER="${STATE}/.configured"
+DEFAULT_THEME="tokyo-night"
+
+if [ -d "${SRC}" ] && [ ! -f "${MARKER}" ]; then
+  {
+    mkdir -p "${HOME}/.config" "${HOME}/.local/share" "${STATE}"
+
+    # Configs + the omarchy-* commands resolve via ~/.local/share/omadora.
+    ln -sfn "${SRC}" "${HOME}/.local/share/omadora"
+
+    # Install the omadora config tree (overwrites the default config Hyprland
+    # may have auto-generated on a previous login).
+    cp -Rf "${SRC}/config/." "${HOME}/.config/"
+
+    # Default shell rc.
+    [ -f "${SRC}/default/bashrc" ] && cp -f "${SRC}/default/bashrc" "${HOME}/.bashrc"
+
+    # Theme links (absolute into the read-only tree; omarchy-theme-* relinks
+    # these when the user switches themes).
+    mkdir -p "${HOME}/.config/omadora/themes" "${HOME}/.config/omadora/current"
+    for t in "${SRC}/themes/"*/; do
+      [ -d "${t}" ] && ln -sfn "${SRC}/themes/$(basename "${t}")" \
+        "${HOME}/.config/omadora/themes/$(basename "${t}")"
+    done
+    ln -sfn "${SRC}/themes/${DEFAULT_THEME}" "${HOME}/.config/omadora/current/theme"
+
+    bg="$(find "${SRC}/themes/${DEFAULT_THEME}/backgrounds" -type f \
+      \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) 2>/dev/null | sort | head -n1)"
+    [ -n "${bg}" ] && ln -sfn "${bg}" "${HOME}/.config/omadora/current/background"
+
+    [ -d "${HOME}/.config/nvim/lua/plugins" ] && \
+      ln -sfn "${SRC}/themes/${DEFAULT_THEME}/neovim.lua" "${HOME}/.config/nvim/lua/plugins/theme.lua"
+    mkdir -p "${HOME}/.config/btop/themes" && \
+      ln -sfn "${SRC}/themes/${DEFAULT_THEME}/btop.theme" "${HOME}/.config/btop/themes/current.theme"
+    mkdir -p "${HOME}/.config/mako" && \
+      ln -sfn "${SRC}/themes/${DEFAULT_THEME}/mako.ini" "${HOME}/.config/mako/config"
+
+    touch "${MARKER}"
+  } >> "${STATE:-/tmp}/setup.log" 2>&1 || true
+fi
+
+exec Hyprland "$@"

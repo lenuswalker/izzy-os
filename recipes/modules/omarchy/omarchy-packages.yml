@@ -62,13 +62,10 @@ install:
     # Bluetooth
     - blueman
 
-    # Login (SDDM with a Wayland greeter via Weston) + boot splash
-    - sddm
-    - sddm-wayland-generic      # runs the SDDM greeter on Weston (no Xorg server)
+    # Login: GDM (the Silverblue default) stays the display manager and lists
+    # the Hyprland session from /usr/share/wayland-sessions. Reliable Wayland
+    # greeter, nothing to install/enable here. Plus XWayland + boot splash.
     - xorg-x11-server-Xwayland  # XWayland shim so legacy X11 apps run under Hyprland
-    - qt6-qtsvg
-    - qt6-qt5compat
-    - qt6-qtdeclarative
     - plymouth
     - plymouth-system-theme
     - plymouth-plugin-script

@@ -1,6 +1,0 @@
-type: script
-scripts:
-  # Switch the display manager from GDM to SDDM (Wayland greeter) and enable the
-  # SDDM greeter-user creation service. Runs after omarchy-files.yml so the unit
-  # files it enables are already present in the image.
-  - switch-to-sddm.sh

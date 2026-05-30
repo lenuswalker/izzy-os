@@ -26,7 +26,8 @@ modules:
   # Default applications (common flatpak set; includes FreeRDP for WinApps)
   - from-file: modules/common/common-flatpaks.yml
 
-  # Session files + SDDM greeter user (must precede omarchy-services)
+  # Hyprland (uwsm) session entry + session-start wrapper -> /usr/share/...
+  # GDM (Silverblue default) stays the display manager and lists this session.
   - from-file: modules/omarchy/omarchy-files.yml
   # WinApps first-login installer script -> /tmp
   - from-file: modules/winapps/winapps-files.yml
@@ -38,8 +39,6 @@ modules:
   # /etc/skel config wins on any conflict
   - from-file: modules/omarchy/omarchy-chezmoi.yml
 
-  # Enable the SDDM greeter / Hyprland session, disable GDM
-  - from-file: modules/omarchy/omarchy-services.yml
   # Enable the WinApps first-login user service
   - from-file: modules/winapps/winapps-systemd.yml
 

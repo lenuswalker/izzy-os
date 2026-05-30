@@ -1,10 +1,8 @@
 type: dnf
 repos:
   copr:
-    - solopasha/hyprland      # Hyprland ecosystem for Fedora
-    - erikreider/SwayOSD       # on-screen volume/brightness display
+    - solopasha/hyprland      # Hyprland ecosystem + satty for Fedora
     - errornointernet/walker   # Walker application launcher (Omarchy's launcher)
-    - atim/satty               # screenshot annotation tool
     - atim/lazygit             # lazygit TUI
     - atim/starship            # starship prompt
 install:
@@ -24,7 +22,6 @@ install:
     - waybar
     - mako
     - swaybg
-    - swayosd
     - walker
     - xdg-desktop-portal-gtk
     - libqalculate

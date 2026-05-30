@@ -1,0 +1,34 @@
+# image will be published to ghcr.io/<user>/<name>
+name: izzy-os-omarchy
+# description will be included in the image's metadata
+description: Atomic Fedora image mimicking Omarchy (Hyprland) for the Dell XPS 13.
+
+# the base image to build on top of (FROM) and the version tag to use
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: latest # latest is also supported if you want new updates ASAP
+
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  # Omarchy / Hyprland software stack (installs git used by omarchy-config)
+  - from-file: modules/omarchy/omarchy-packages.yml
+  - from-file: modules/omarchy/omarchy-fonts.yml
+
+  # Dell XPS 13 + Intel hardware enablement
+  - from-file: modules/dell/dell-xps-packages.yml
+  - from-file: modules/intel/intel-packages.yml
+  - from-file: modules/intel/intel-specific.yml
+
+  # Default applications
+  - from-file: modules/omarchy/omarchy-flatpaks.yml
+
+  # Session files + SDDM greeter user (must precede omarchy-services)
+  - from-file: modules/omarchy/omarchy-files.yml
+
+  # Vendor the Omarchy look-and-feel and seed /etc/skel (needs git from packages)
+  - from-file: modules/omarchy/omarchy-config.yml
+
+  # Enable the SDDM greeter / Hyprland session, disable GDM
+  - from-file: modules/omarchy/omarchy-services.yml
+
+  - type: signing

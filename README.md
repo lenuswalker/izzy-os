@@ -4,6 +4,20 @@ See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup i
 
 After setup, it is recommended you update this README to describe your custom image.
 
+## Images
+
+This repo builds several images. Notably:
+
+- **`izzy-os-omarchy`** — an atomic Fedora image for the Dell XPS 13 that mimics
+  [Omarchy](https://github.com/basecamp/omarchy) (DHH's opinionated Arch/Hyprland
+  setup). It builds on `ghcr.io/ublue-os/silverblue-main`, layers the Hyprland
+  ecosystem from the `solopasha/hyprland` COPR, uses SDDM to launch a
+  uwsm-managed Hyprland session, and vendors the [omadora](https://github.com/matoval/omadora)
+  configuration (a Fedora adaptation of Omarchy) into `/usr/share/omadora`,
+  seeding `/etc/skel` so new users get the full Omarchy look-and-feel, themes
+  and `omarchy-*` helper commands. Defined in
+  [`recipes/recipe-omarchy.yml`](recipes/recipe-omarchy.yml).
+
 ## Installation
 
 > **Warning**  

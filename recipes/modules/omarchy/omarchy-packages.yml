@@ -1,0 +1,112 @@
+type: dnf
+repos:
+  copr:
+    - solopasha/hyprland      # Hyprland ecosystem for Fedora
+    - erikreider/SwayOSD       # on-screen volume/brightness display
+    - errornointernet/walker   # Walker application launcher (Omarchy's launcher)
+    - atim/satty               # screenshot annotation tool
+    - atim/lazygit             # lazygit TUI
+    - atim/starship            # starship prompt
+install:
+  packages:
+    # Hyprland ecosystem (solopasha/hyprland)
+    - hyprland
+    - hyprlock
+    - hypridle
+    - hyprsunset
+    - hyprshot
+    - hyprpicker
+    - hyprpolkitagent
+    - xdg-desktop-portal-hyprland
+    - uwsm                     # Universal Wayland Session Manager (how Omarchy launches Hyprland)
+
+    # Wayland desktop shell
+    - waybar
+    - mako
+    - swaybg
+    - swayosd
+    - walker
+    - xdg-desktop-portal-gtk
+    - libqalculate
+    - brightnessctl
+    - playerctl
+    - pamixer
+    - wireplumber
+    - slurp
+    - grim
+    - satty
+
+    # Input methods
+    - fcitx5
+    - fcitx5-gtk
+    - fcitx5-qt
+
+    # File manager + thumbnails
+    - nautilus
+    - sushi
+    - ffmpegthumbnailer
+    - gvfs-mtp
+
+    # Media / viewers
+    - mpv
+    - evince
+    - imv
+
+    # Browser
+    - chromium
+
+    # Secrets / polkit
+    - gnome-keyring
+
+    # Bluetooth
+    - blueman
+
+    # Login (SDDM with a Wayland greeter via Weston) + boot splash
+    - sddm
+    - sddm-wayland-generic      # runs the SDDM greeter on Weston (no Xorg server)
+    - xorg-x11-server-Xwayland  # XWayland shim so legacy X11 apps run under Hyprland
+    - qt6-qtsvg
+    - qt6-qt5compat
+    - qt6-qtdeclarative
+    - plymouth
+    - plymouth-system-theme
+    - plymouth-plugin-script
+
+    # Terminal + CLI tooling
+    - alacritty
+    - tmux
+    - starship
+    - fastfetch
+    - btop
+    - bat
+    - ripgrep
+    - fd-find
+    - fzf
+    - eza
+    - zoxide
+    - jq
+    - xmlstarlet
+    - wl-clipboard
+    - man-db
+    - less
+    - whois
+    - plocate
+    - bash-completion
+    - unzip
+    - wget2
+    - curl
+    - git
+    - gawk
+    - ImageMagick
+
+    # Editors + dev
+    - neovim
+    - python3-neovim
+    - gh
+    - lazygit
+
+    # Theming
+    - kvantum
+    - gnome-themes-extra
+    - yaru-icon-theme
+    - adw-gtk3-theme

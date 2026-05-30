@@ -1,0 +1,6 @@
+type: script
+scripts:
+  # Vendors the Omarchy-for-Fedora (omadora) config tree into the image and
+  # seeds /etc/skel so new users get the full Omarchy look-and-feel.
+  # Must run after omarchy-packages.yml (needs git).
+  - install-omarchy-config.sh

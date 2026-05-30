@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+# Create the SDDM greeter user/group if they don't already exist.
+# Needed because RPM scriptlet-created system users don't always persist
+# into an ostree/atomic image.
+
+getent group sddm > /dev/null || groupadd -r sddm
+getent passwd sddm > /dev/null || useradd -r -g sddm -c "SDDM Greeter Account" -d /var/lib/sddm -s /usr/sbin/nologin sddm

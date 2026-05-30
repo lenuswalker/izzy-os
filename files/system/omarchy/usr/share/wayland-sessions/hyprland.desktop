@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Hyprland
+Comment=Omarchy Hyprland session (managed by uwsm)
+Exec=uwsm start -- /usr/share/omarchy/sessions/hyprland.desktop
+DesktopNames=Hyprland
+Type=Application

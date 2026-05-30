@@ -1,0 +1,12 @@
+[Unit]
+Description=Create the SDDM greeter user before SDDM starts
+Before=sddm.service
+ConditionPathExists=!/var/lib/sddm
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/omarchy-sddm-useradd
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

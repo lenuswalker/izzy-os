@@ -1,0 +1,9 @@
+type: chezmoi
+repository: "https://github.com/lenuswalker/dotfiles" # my dotfiles repo
+all-users: true
+# omadora seeds the Omarchy look-and-feel into /etc/skel. "skip" means chezmoi
+# will NOT overwrite a file that differs from the dotfiles repo, so the
+# omadora-seeded config wins on any conflict; chezmoi only fills in files the
+# omadora skel doesn't already provide. (The shared common-chezmoi.yml uses
+# "replace" for the GNOME images, where the personal dotfiles should win.)
+file-conflict-policy: skip

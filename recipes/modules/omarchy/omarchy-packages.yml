@@ -9,6 +9,7 @@ repos:
     - mineiro/satty   # satty screenshot annotator (lionheartp doesn't ship it)
     - mineiro/utility-belt
     - atim/starship   # prompt (omadora uses starship if present)
+  nonfree: negativo17
 install:
   packages:
     # --- Hyprland ecosystem (lionheartp/Hyprland; satty from mineiro/satty) ---

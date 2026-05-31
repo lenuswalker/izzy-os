@@ -1,21 +1,16 @@
 type: dnf
 repos:
   copr:
-    # sdegler/hyprland ships the full Hyprland 0.55.x stack (incl. satty + uwsm)
-    # for current Fedora, built against F44's libdisplay-info 0.3. This is the
-    # COPR the maintained elpritchos/omadora config is written against, so the
-    # config matches the Hyprland version (unlike solopasha, which is frozen at
-    # Oct-2025 / Hyprland 0.51 and broken on F44).
-    - sdegler/hyprland
+    # lionheartp/Hyprland ships the full Hyprland 0.55.x stack, fully built for
+    # Fedora 44 (against libdisplay-info 0.3). It's what the maintained
+    # elpritchos/omadora config targets, so config and Hyprland versions match
+    # (unlike solopasha, frozen at Oct-2025 / 0.51 and broken on F44).
+    - lionheartp/Hyprland
+    - mineiro/satty   # satty screenshot annotator (lionheartp doesn't ship it)
     - atim/starship   # prompt (omadora uses starship if present)
 install:
-  # tuned weakly pulls tuned-ppd, which conflicts with the base
-  # power-profiles-daemon (both provide ppd-service). Keep PPD as the active
-  # power manager and install plain tuned only.
-  exclude:
-    - tuned-ppd
   packages:
-    # --- Hyprland ecosystem (sdegler/hyprland) ---
+    # --- Hyprland ecosystem (lionheartp/Hyprland; satty from mineiro/satty) ---
     - hyprland
     - hyprlock
     - hypridle
@@ -63,7 +58,8 @@ install:
     - plymouth
     - plymouth-system-theme
     - plymouth-plugin-script
-    - power-profiles-daemon
+    # NB: the ublue base ships tuned-ppd for power profiles; do NOT add
+    # power-profiles-daemon (it conflicts with tuned-ppd).
 
     # --- Terminal + CLI tooling ---
     - alacritty

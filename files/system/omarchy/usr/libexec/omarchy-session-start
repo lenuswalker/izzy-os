@@ -2,55 +2,54 @@
 #
 # Omarchy session entrypoint.
 #
-# /etc/skel only seeds *new* user accounts, so anyone who rebased onto this
-# image with an existing account never gets the omadora config. This installs
-# it into the current user's home (once) right before Hyprland starts, so the
-# Omarchy look-and-feel applies for new and existing users alike.
+# /etc/skel only seeds *new* accounts, so this installs the omadora config into
+# the current user's home (once) right before Hyprland starts -- covering both
+# new and existing (rebased) accounts. Mirrors elpritchos/omadora's own
+# config.sh + theme.sh. Runs AS the user, so files are owned correctly.
 #
-# Runs AS the user (launched by uwsm as the session command), so files are
-# owned correctly. It is best-effort: any failure here must never stop the
-# session from starting, so config setup is guarded and we always exec Hyprland.
+# Best-effort: a setup error must never block login, so the work is guarded and
+# we always exec Hyprland at the end.
 
 SRC="/usr/share/omadora"
 STATE="${HOME}/.local/state/omarchy"
 MARKER="${STATE}/.configured"
-DEFAULT_THEME="tokyo-night"
+DEFAULT_THEME="Rose Pine Darker"
+
+export OMADORA_PATH="${SRC}"
+export PATH="${SRC}/bin:${HOME}/.local/bin:${PATH}"
 
 if [ -d "${SRC}" ] && [ ! -f "${MARKER}" ]; then
   {
     mkdir -p "${HOME}/.config" "${HOME}/.local/share" "${STATE}"
 
-    # Configs + the omarchy-* commands resolve via ~/.local/share/omadora.
+    # omadora config + bins resolve via ~/.local/share/omadora.
     ln -sfn "${SRC}" "${HOME}/.local/share/omadora"
 
-    # Install the omadora config tree (overwrites the default config Hyprland
+    # Install the omadora config tree (overwrites any default config Hyprland
     # may have auto-generated on a previous login).
     cp -Rf "${SRC}/config/." "${HOME}/.config/"
-
-    # Default shell rc.
     [ -f "${SRC}/default/bashrc" ] && cp -f "${SRC}/default/bashrc" "${HOME}/.bashrc"
 
-    # Theme links (absolute into the read-only tree; omarchy-theme-* relinks
-    # these when the user switches themes).
-    mkdir -p "${HOME}/.config/omadora/themes" "${HOME}/.config/omadora/current"
-    for t in "${SRC}/themes/"*/; do
-      [ -d "${t}" ] && ln -sfn "${SRC}/themes/$(basename "${t}")" \
-        "${HOME}/.config/omadora/themes/$(basename "${t}")"
-    done
-    ln -sfn "${SRC}/themes/${DEFAULT_THEME}" "${HOME}/.config/omadora/current/theme"
+    # Generate + activate the default theme (pure bash/sed; produces
+    # ~/.config/omadora/current/theme/{hyprland,mako,waybar,...}). The trailing
+    # restart/gnome hooks no-op pre-session and are harmless.
+    mkdir -p "${HOME}/.config/omadora/themes"
+    timeout 120 omadora-theme-set "${DEFAULT_THEME}" || true
 
-    bg="$(find "${SRC}/themes/${DEFAULT_THEME}/backgrounds" -type f \
-      \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) 2>/dev/null | sort | head -n1)"
-    [ -n "${bg}" ] && ln -sfn "${bg}" "${HOME}/.config/omadora/current/background"
+    # Per-app theme links (created in the real home so they resolve per-user).
+    if [ -d "${HOME}/.config/nvim/lua/plugins" ]; then
+      ln -snf "${HOME}/.config/omadora/current/theme/neovim.lua" \
+        "${HOME}/.config/nvim/lua/plugins/theme.lua"
+    fi
+    mkdir -p "${HOME}/.config/btop/themes"
+    ln -snf "${HOME}/.config/omadora/current/theme/btop.theme" \
+      "${HOME}/.config/btop/themes/current.theme"
+    mkdir -p "${HOME}/.config/mako"
+    ln -snf "${HOME}/.config/omadora/current/theme/mako.ini" \
+      "${HOME}/.config/mako/config"
 
-    [ -d "${HOME}/.config/nvim/lua/plugins" ] && \
-      ln -sfn "${SRC}/themes/${DEFAULT_THEME}/neovim.lua" "${HOME}/.config/nvim/lua/plugins/theme.lua"
-    mkdir -p "${HOME}/.config/btop/themes" && \
-      ln -sfn "${SRC}/themes/${DEFAULT_THEME}/btop.theme" "${HOME}/.config/btop/themes/current.theme"
-    mkdir -p "${HOME}/.config/mako" && \
-      ln -sfn "${SRC}/themes/${DEFAULT_THEME}/mako.ini" "${HOME}/.config/mako/config"
-
-    touch "${MARKER}"
+    # Only mark done if the theme actually generated, so a partial run retries.
+    [ -f "${HOME}/.config/omadora/current/theme/hyprland.conf" ] && touch "${MARKER}"
   } >> "${STATE:-/tmp}/setup.log" 2>&1 || true
 fi
 

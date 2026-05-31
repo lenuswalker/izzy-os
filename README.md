@@ -11,12 +11,13 @@ This repo builds several images. Notably:
 - **`izzy-os-omarchy`** — an atomic Fedora image for the Dell XPS 13 that mimics
   [Omarchy](https://github.com/basecamp/omarchy) (DHH's opinionated Arch/Hyprland
   setup). It builds on `ghcr.io/ublue-os/silverblue-main`, layers the Hyprland
-  ecosystem from the `solopasha/hyprland` COPR, uses SDDM to launch a
-  uwsm-managed Hyprland session, and vendors the [omadora](https://github.com/matoval/omadora)
-  configuration (a Fedora adaptation of Omarchy) into `/usr/share/omadora`,
-  seeding `/etc/skel` so new users get the full Omarchy look-and-feel, themes
-  and `omarchy-*` helper commands. Defined in
-  [`recipes/recipe-omarchy.yml`](recipes/recipe-omarchy.yml).
+  0.55 ecosystem from the `sdegler/hyprland` COPR, keeps GDM as the (Wayland)
+  display manager listing a uwsm-managed Hyprland session, and vendors the
+  [omadora](https://github.com/elpritchos/omadora) configuration (an actively
+  maintained Fedora adaptation of Omarchy) into `/usr/share/omadora`. The
+  config + theme are applied into each user's home at first Hyprland login (so
+  existing/rebased accounts get it too), along with the `omadora-*` helper
+  commands. Defined in [`recipes/recipe-omarchy.yml`](recipes/recipe-omarchy.yml).
 
 ## Installation
 

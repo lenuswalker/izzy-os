@@ -1,78 +1,67 @@
 type: dnf
 repos:
   copr:
-    # wayblue's own Hyprland set, kept current for the latest Fedora (built
-    # against Fedora 44's libdisplay-info 0.3 / aquamarine 0.11). solopasha's
-    # COPR lags new Fedora releases, so its aquamarine breaks here.
-    - craftidore/wayblueorg-hyprland
-    - errornointernet/walker   # Walker application launcher (Omarchy's launcher)
-    - atim/lazygit             # lazygit TUI
-    - atim/starship            # starship prompt
+    # sdegler/hyprland ships the full Hyprland 0.55.x stack (incl. satty + uwsm)
+    # for current Fedora, built against F44's libdisplay-info 0.3. This is the
+    # COPR the maintained elpritchos/omadora config is written against, so the
+    # config matches the Hyprland version (unlike solopasha, which is frozen at
+    # Oct-2025 / Hyprland 0.51 and broken on F44).
+    - sdegler/hyprland
+    - atim/starship   # prompt (omadora uses starship if present)
 install:
   packages:
-    # Hyprland ecosystem (craftidore/wayblueorg-hyprland).
-    # NB: this set ships Hyprland as `hyprland-git`; aquamarine + the hypr*
-    # libraries come in as dependencies. uwsm/satty are not in this COPR and
-    # are installed separately in omarchy-hypr-extras.yml.
-    - hyprland-git
+    # --- Hyprland ecosystem (sdegler/hyprland) ---
+    - hyprland
     - hyprlock
     - hypridle
-    - hyprsunset
     - hyprpicker
     - hyprpolkitagent
+    - hyprshot
+    - hyprsunset
     - xdg-desktop-portal-hyprland
+    - uwsm           # Universal Wayland Session Manager (how omadora launches Hyprland)
+    - satty          # screenshot annotation
 
-    # Wayland desktop shell
+    # --- Wayland desktop (matches elpritchos/omadora's package set) ---
     - waybar
     - mako
     - swaybg
-    - walker
-    - xdg-desktop-portal-gtk
-    - libqalculate
+    - wofi           # launcher used by omadora
+    - wiremix        # audio mixer TUI
+    - wf-recorder    # screen recording
     - brightnessctl
     - playerctl
-    - pamixer
-    - wireplumber
     - slurp
-    - grim
-    # NB: satty is installed from solopasha in omarchy-hypr-extras.yml
+    - xdg-desktop-portal-gtk
+    - xdg-terminal-exec
+    - xdg-user-dirs
 
-    # Input methods
+    # --- Input methods ---
     - fcitx5
+    - fcitx5-configtool
     - fcitx5-gtk
     - fcitx5-qt
 
-    # File manager + thumbnails
+    # --- File manager / viewers / browser ---
     - nautilus
     - sushi
-    - ffmpegthumbnailer
     - gvfs-mtp
-
-    # Media / viewers
+    - gvfs-smb
     - mpv
     - evince
     - imv
-
-    # Browser
     - chromium
 
-    # Secrets / polkit
+    # --- Secrets / login support / boot splash ---
     - gnome-keyring
-
-    # Bluetooth
-    - blueman
-
-    # Login: GDM (the Silverblue default) stays the display manager and lists
-    # the Hyprland session from /usr/share/wayland-sessions. Reliable Wayland
-    # greeter, nothing to install/enable here. Plus XWayland + boot splash.
-    - xorg-x11-server-Xwayland  # XWayland shim so legacy X11 apps run under Hyprland
+    - xorg-x11-server-Xwayland   # XWayland shim so legacy X11 apps run under Hyprland
     - plymouth
     - plymouth-system-theme
     - plymouth-plugin-script
+    - power-profiles-daemon
 
-    # Terminal + CLI tooling
+    # --- Terminal + CLI tooling ---
     - alacritty
-    - tmux
     - starship
     - fastfetch
     - btop
@@ -82,33 +71,46 @@ install:
     - fzf
     - eza
     - zoxide
+    - du-dust
+    - gum
+    - tldr
     - jq
     - xmlstarlet
     - wl-clipboard
-    - man-db
-    - less
-    - whois
     - plocate
-    - bash-completion
     - unzip
+    - tar
     - wget2
     - curl
     - git
-    - gawk
     - ImageMagick
+    - bind-utils
+    - iputils
+    - iwd
+    - pciutils
+    - usbutils
+    - libxkbcommon-utils
+    - dbus-tools
 
-    # Editors + dev
+    # --- Editors + apps ---
     - neovim
-    - python3-neovim
-    - gh
-    - lazygit
+    - gnome-calculator
+    - pipx
 
-    # Utility
-    - age          # encryption (used by chezmoi)
-    - distrobox
-    - tuned        # tuning daemon (leave PPD active; no tuned-ppd to avoid conflict)
-
-    # Theming (Adwaita-dark ships with GNOME; adw-gtk3-theme covers GTK apps)
-    - kvantum
+    # --- Theming ---
+    - kvantum-qt5
     - yaru-icon-theme
     - adw-gtk3-theme
+
+    # --- Fonts ---
+    - cascadia-code-nf-fonts
+    - cascadia-mono-nf-fonts
+    - fontawesome-fonts-all
+    - google-noto-fonts-common
+    - google-noto-sans-fonts
+    - google-noto-color-emoji-fonts
+
+    # --- Utility (requested) ---
+    - age
+    - distrobox
+    - tuned

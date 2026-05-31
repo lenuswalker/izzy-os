@@ -114,4 +114,4 @@ install:
     # --- Utility (requested) ---
     - age
     - distrobox
-    - tuned
+    - power-profiles-daemon

@@ -112,13 +112,27 @@ install:
     - google-noto-fonts-common
     - google-noto-sans-fonts
     - google-noto-color-emoji-fonts
+    - rsms-inter-fonts
 
     # --- Utility (requested) ---
     - age
     - bluetui
+    - bootc
     - distrobox
     - impala
     - power-profiles-daemon
+
+    # Codecs
+    - ffmpeg
+    - ffmpeg-libs
+    - heif-pixbuf-loader
+    - libavcodec
+    - libheif
+    - pipewire-libs-extra
+
+    # Audio
+    - pipewire
+    - wireplumber
 
 remove:
   packages:

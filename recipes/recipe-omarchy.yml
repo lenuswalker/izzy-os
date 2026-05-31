@@ -10,6 +10,10 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
+  # Common bluebuild modules
+  - from-file: modules/common/common-bling.yml
+  - from-file: modules/common/common-brew.yml
+  
   # Omarchy / Hyprland software stack (installs git used by omarchy-config)
   - from-file: modules/omarchy/omarchy-packages.yml
 

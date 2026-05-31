@@ -23,9 +23,11 @@ export OMADORA_PATH="${SRC}"
 export PATH="${SRC}/bin:${HOME}/.local/bin:${PATH}"
 
 if [ -d "${SRC}" ] && [ ! -f "${MARKER}" ]; then
+  # Create these BEFORE the block below: its output is redirected to
+  # ${STATE}/setup.log, and bash opens that file before running the block, so
+  # ${STATE} must already exist or the whole block is silently skipped.
+  mkdir -p "${STATE}" "${HOME}/.config" "${HOME}/.local/share"
   {
-    mkdir -p "${HOME}/.config" "${HOME}/.local/share" "${STATE}"
-
     # omadora config + bins resolve via ~/.local/share/omadora.
     ln -sfn "${SRC}" "${HOME}/.local/share/omadora"
 

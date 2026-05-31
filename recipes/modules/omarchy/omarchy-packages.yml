@@ -7,6 +7,7 @@ repos:
     # (unlike solopasha, frozen at Oct-2025 / 0.51 and broken on F44).
     - lionheartp/Hyprland
     - mineiro/satty   # satty screenshot annotator (lionheartp doesn't ship it)
+    - mineiro/utility-belt
     - atim/starship   # prompt (omadora uses starship if present)
 install:
   packages:
@@ -99,6 +100,7 @@ install:
     - pipx
 
     # --- Theming ---
+    - aquamarine
     - kvantum-qt5
     - yaru-icon-theme
     - adw-gtk3-theme
@@ -113,7 +115,9 @@ install:
 
     # --- Utility (requested) ---
     - age
+    - bluetui
     - distrobox
+    - impala
     - power-profiles-daemon
 
 remove:

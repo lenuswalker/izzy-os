@@ -9,6 +9,11 @@ repos:
     - sdegler/hyprland
     - atim/starship   # prompt (omadora uses starship if present)
 install:
+  # tuned weakly pulls tuned-ppd, which conflicts with the base
+  # power-profiles-daemon (both provide ppd-service). Keep PPD as the active
+  # power manager and install plain tuned only.
+  exclude:
+    - tuned-ppd
   packages:
     # --- Hyprland ecosystem (sdegler/hyprland) ---
     - hyprland

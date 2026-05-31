@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 #
-# Omarchy session entrypoint.
+# Omarchy session entrypoint -- this is the Exec of the Hyprland wayland-session
+# entry, so GDM runs it directly (do NOT route it through `uwsm start -- <desktop>`,
+# which recognises "hyprland" and launches the compositor itself, skipping this).
 #
 # /etc/skel only seeds *new* accounts, so this installs the omadora config into
-# the current user's home (once) right before Hyprland starts -- covering both
+# the current user's home (once) right before the session starts -- covering both
 # new and existing (rebased) accounts. Mirrors elpritchos/omadora's own
-# config.sh + theme.sh. Runs AS the user, so files are owned correctly.
+# config.sh + theme.sh. Runs AS the user, so files are owned correctly. Then it
+# hands off to `uwsm start` (omadora's autostart uses `uwsm app`, so the session
+# must be uwsm-managed).
 #
 # Best-effort: a setup error must never block login, so the work is guarded and
-# we always exec Hyprland at the end.
+# we always start the session at the end.
 
 SRC="/usr/share/omadora"
 STATE="${HOME}/.local/state/omarchy"
@@ -53,4 +57,6 @@ if [ -d "${SRC}" ] && [ ! -f "${MARKER}" ]; then
   } >> "${STATE:-/tmp}/setup.log" 2>&1 || true
 fi
 
-exec Hyprland "$@"
+# Launch the uwsm-managed Hyprland session (uwsm recognises Hyprland, sets
+# XDG_CURRENT_DESKTOP, and provides the `uwsm app` units the autostart needs).
+exec uwsm start -- Hyprland

@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Hyprland
-Comment=Hyprland compositor
-# Installs the omadora config into the user's home (once) before launching
-# Hyprland, then execs Hyprland. See /usr/libexec/omarchy-session-start.
-Exec=/usr/libexec/omarchy-session-start
-Type=Application

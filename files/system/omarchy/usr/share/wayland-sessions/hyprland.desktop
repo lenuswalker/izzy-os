@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Hyprland
-Comment=Omarchy Hyprland session (managed by uwsm)
-Exec=uwsm start -- /usr/share/omarchy/sessions/hyprland.desktop
-DesktopNames=Hyprland
+Name=Hyprland (Omarchy)
+Comment=Omarchy Hyprland session (installs config on first login, then uwsm)
+Exec=/usr/libexec/omarchy-session-start
 Type=Application
+DesktopNames=Hyprland

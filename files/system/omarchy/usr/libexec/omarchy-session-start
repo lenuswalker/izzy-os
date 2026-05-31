@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+#
+# Omarchy session entrypoint -- this is the Exec of the Hyprland wayland-session
+# entry, so GDM runs it directly (do NOT route it through `uwsm start -- <desktop>`,
+# which recognises "hyprland" and launches the compositor itself, skipping this).
+#
+# /etc/skel only seeds *new* accounts, so this installs the omadora config into
+# the current user's home (once) right before the session starts -- covering both
+# new and existing (rebased) accounts. Mirrors elpritchos/omadora's own
+# config.sh + theme.sh. Runs AS the user, so files are owned correctly. Then it
+# hands off to `uwsm start` (omadora's autostart uses `uwsm app`, so the session
+# must be uwsm-managed).
+#
+# Best-effort: a setup error must never block login, so the work is guarded and
+# we always start the session at the end.
+
+SRC="/usr/share/omadora"
+STATE="${HOME}/.local/state/omarchy"
+MARKER="${STATE}/.configured"
+DEFAULT_THEME="Rose Pine Darker"
+
+export OMADORA_PATH="${SRC}"
+export PATH="${SRC}/bin:${HOME}/.local/bin:${PATH}"
+
+if [ -d "${SRC}" ] && [ ! -f "${MARKER}" ]; then
+  # Create these BEFORE the block below: its output is redirected to
+  # ${STATE}/setup.log, and bash opens that file before running the block, so
+  # ${STATE} must already exist or the whole block is silently skipped.
+  mkdir -p "${STATE}" "${HOME}/.config" "${HOME}/.local/share"
+  {
+    # omadora config + bins resolve via ~/.local/share/omadora.
+    ln -sfn "${SRC}" "${HOME}/.local/share/omadora"
+
+    # Install the omadora config tree (overwrites any default config Hyprland
+    # may have auto-generated on a previous login).
+    cp -Rf "${SRC}/config/." "${HOME}/.config/"
+    [ -f "${SRC}/default/bashrc" ] && cp -f "${SRC}/default/bashrc" "${HOME}/.bashrc"
+
+    # Generate + activate the default theme (pure bash/sed; produces
+    # ~/.config/omadora/current/theme/{hyprland,mako,waybar,...}). The trailing
+    # restart/gnome hooks no-op pre-session and are harmless.
+    mkdir -p "${HOME}/.config/omadora/themes"
+    timeout 120 omadora-theme-set "${DEFAULT_THEME}" || true
+
+    # Per-app theme links (created in the real home so they resolve per-user).
+    if [ -d "${HOME}/.config/nvim/lua/plugins" ]; then
+      ln -snf "${HOME}/.config/omadora/current/theme/neovim.lua" \
+        "${HOME}/.config/nvim/lua/plugins/theme.lua"
+    fi
+    mkdir -p "${HOME}/.config/btop/themes"
+    ln -snf "${HOME}/.config/omadora/current/theme/btop.theme" \
+      "${HOME}/.config/btop/themes/current.theme"
+    mkdir -p "${HOME}/.config/mako"
+    ln -snf "${HOME}/.config/omadora/current/theme/mako.ini" \
+      "${HOME}/.config/mako/config"
+
+    # Only mark done if the theme actually generated, so a partial run retries.
+    [ -f "${HOME}/.config/omadora/current/theme/hyprland.conf" ] && touch "${MARKER}"
+  } >> "${STATE:-/tmp}/setup.log" 2>&1 || true
+fi
+
+# Launch the uwsm-managed Hyprland session (uwsm recognises Hyprland, sets
+# XDG_CURRENT_DESKTOP, and provides the `uwsm app` units the autostart needs).
+exec uwsm start -- Hyprland

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Hyprland (Omarchy)
+Comment=Omarchy Hyprland session (installs config on first login, then uwsm)
+Exec=/usr/libexec/omarchy-session-start
+Type=Application
+DesktopNames=Hyprland

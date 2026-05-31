@@ -1,0 +1,128 @@
+type: dnf
+repos:
+  copr:
+    # lionheartp/Hyprland ships the full Hyprland 0.55.x stack, fully built for
+    # Fedora 44 (against libdisplay-info 0.3). It's what the maintained
+    # elpritchos/omadora config targets, so config and Hyprland versions match
+    # (unlike solopasha, frozen at Oct-2025 / 0.51 and broken on F44).
+    - lionheartp/Hyprland
+    - mineiro/satty   # satty screenshot annotator (lionheartp doesn't ship it)
+    - mineiro/utility-belt
+    - atim/starship   # prompt (omadora uses starship if present)
+install:
+  packages:
+    # --- Hyprland ecosystem (lionheartp/Hyprland; satty from mineiro/satty) ---
+    - hyprland
+    - hyprlock
+    - hypridle
+    - hyprpicker
+    - hyprpolkitagent
+    - hyprshot
+    - hyprsunset
+    - xdg-desktop-portal-hyprland
+    - uwsm           # Universal Wayland Session Manager (how omadora launches Hyprland)
+    - satty          # screenshot annotation
+
+    # --- Wayland desktop (matches elpritchos/omadora's package set) ---
+    - waybar
+    - mako
+    - swaybg
+    - wofi           # launcher used by omadora
+    - wiremix        # audio mixer TUI
+    - wf-recorder    # screen recording
+    - brightnessctl
+    - playerctl
+    - slurp
+    - xdg-desktop-portal-gtk
+    - xdg-terminal-exec
+    - xdg-user-dirs
+
+    # --- Input methods ---
+    - fcitx5
+    - fcitx5-configtool
+    - fcitx5-gtk
+    - fcitx5-qt
+
+    # --- File manager / viewers / browser ---
+    - nautilus
+    - sushi
+    - gvfs-mtp
+    - gvfs-smb
+    - mpv
+    - evince
+    - imv
+    - chromium
+
+    # --- Secrets / login support / boot splash ---
+    - gnome-keyring
+    - xorg-x11-server-Xwayland   # XWayland shim so legacy X11 apps run under Hyprland
+    - plymouth
+    - plymouth-system-theme
+    - plymouth-plugin-script
+    # NB: the ublue base ships tuned-ppd for power profiles; do NOT add
+    # power-profiles-daemon (it conflicts with tuned-ppd).
+
+    # --- Terminal + CLI tooling ---
+    - alacritty
+    - starship
+    - fastfetch
+    - btop
+    - bat
+    - ripgrep
+    - fd-find
+    - fzf
+    - eza
+    - zoxide
+    - du-dust
+    - gum
+    - tldr
+    - jq
+    - xmlstarlet
+    - wl-clipboard
+    - plocate
+    - unzip
+    - tar
+    - wget2
+    - curl
+    - git
+    - ImageMagick
+    - bind-utils
+    - iputils
+    - iwd
+    - pciutils
+    - usbutils
+    - libxkbcommon-utils
+    - dbus-tools
+
+    # --- Editors + apps ---
+    - neovim
+    - gnome-calculator
+    - pipx
+
+    # --- Theming ---
+    - aquamarine
+    - kvantum-qt5
+    - yaru-icon-theme
+    - adw-gtk3-theme
+
+    # --- Fonts ---
+    - cascadia-code-nf-fonts
+    - cascadia-mono-nf-fonts
+    - fontawesome-fonts-all
+    - google-noto-fonts-common
+    - google-noto-sans-fonts
+    - google-noto-color-emoji-fonts
+
+    # --- Utility (requested) ---
+    - age
+    - bluetui
+    - distrobox
+    - impala
+    - power-profiles-daemon
+
+remove:
+  packages:
+    - firefox
+    - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+    - tuned            # conflicts with power-profiles-daemon (tuned is a full system optimizer, but power-profiles-daemon is a focused power profile manager; the two conflict and should not be installed together) 
+    - tuned-ppd       # conflicts with power-profiles-daemon (tuned-ppd is a power profile plugin, but power-profiles-daemon is a full power profile manager; the two conflict and should not be installed together)

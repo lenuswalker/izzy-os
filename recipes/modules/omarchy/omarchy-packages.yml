@@ -115,3 +115,10 @@ install:
     - age
     - distrobox
     - power-profiles-daemon
+
+remove:
+  packages:
+    - firefox
+    - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+    - tuned            # conflicts with power-profiles-daemon (tuned is a full system optimizer, but power-profiles-daemon is a focused power profile manager; the two conflict and should not be installed together) 
+    - tuned-ppd       # conflicts with power-profiles-daemon (tuned-ppd is a power profile plugin, but power-profiles-daemon is a full power profile manager; the two conflict and should not be installed together)

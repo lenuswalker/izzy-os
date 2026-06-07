@@ -116,6 +116,11 @@ install:
     - google-noto-color-emoji-fonts
     - google-noto-fonts-common
 
+    # --- Calendar integration (DMS calendar widget) --------------------------------
+    - python3-vdirsyncer
+    - khal
+    - python3-aiohttp-oauthlib
+
 remove:
   packages:
     # power-profiles-daemon and tuned-ppd both implement the power-profiles

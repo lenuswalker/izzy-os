@@ -45,6 +45,3 @@ if [ ! -f "${DEST}/shell.qml" ]; then
 fi
 echo "DankMaterialShell installed at ${DEST}."
 
-# Boot straight into the SDDM graphical login.
-echo "Setting default systemd target to graphical.target..."
-systemctl set-default graphical.target

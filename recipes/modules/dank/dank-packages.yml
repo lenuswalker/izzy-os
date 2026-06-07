@@ -11,6 +11,7 @@ repos:
     # danksearch (launcher file search), cliphist (clipboard history),
     # material-symbols-fonts (the icon font DMS requires) and ghostty.
     - avengemedia/danklinux
+    - avengemedia/dms-git
 install:
   packages:
     # --- Hyprland ecosystem (lionheartp/Hyprland) ------------------------------
@@ -27,6 +28,7 @@ install:
     - uwsm                   # Universal Wayland Session Manager (launches Hyprland)
 
     # --- DankMaterialShell runtime (avengemedia/danklinux COPR) ---------------
+    - dms-git                # REQUIRED: the DankMaterialShell shell itself
     - quickshell-git         # REQUIRED: the Quickshell runtime DMS is built on
     - matugen                # wallpaper-based Material You color generation
     - dgop                   # CPU/RAM/GPU metrics + process list widgets
@@ -96,6 +98,9 @@ install:
     - unzip
     - tar
     - jq
+    - dolphin
+    - neovim
+    - python3-neovim
 
     # --- Theming targets for matugen ------------------------------------------
     - adw-gtk3-theme         # GTK3/4 theme matugen recolors

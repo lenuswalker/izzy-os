@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Hyprland (DankMaterialShell)
+Comment=Hyprland with the DankMaterialShell desktop (seeds config on first login, then uwsm)
+Exec=/usr/libexec/dank-session-start
+Type=Application
+DesktopNames=Hyprland

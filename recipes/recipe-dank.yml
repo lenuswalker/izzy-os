@@ -1,0 +1,32 @@
+# image will be published to ghcr.io/<user>/<name>
+name: izzy-os-dank
+# description will be included in the image's metadata
+description: Light, GNOME-free Fedora image for the Dell XPS — Hyprland (lionheartp/Hyprland COPR) + DankMaterialShell.
+
+# Build on the minimal Universal Blue base: no desktop environment, no GNOME.
+# Everything (Hyprland, SDDM, DankMaterialShell) is layered on top, keeping the
+# install light. `latest` tracks current stable Fedora, which the
+# lionheartp/Hyprland COPR builds against.
+base-image: ghcr.io/ublue-os/base-main
+image-version: latest
+
+# module configuration, executed in order
+modules:
+  # --- Software (Hyprland + DankMaterialShell + all deps) -------------------
+  - from-file: modules/dank/dank-packages.yml
+
+  # --- Dell XPS + Intel hardware enablement --------------------------------
+  - from-file: modules/dell/dell-xps-packages.yml
+  - from-file: modules/intel/intel-packages.yml
+  - from-file: modules/intel/intel-specific.yml
+
+  # --- Session files (wayland session, dms wrapper, default configs, SDDM) --
+  - from-file: modules/dank/dank-files.yml
+
+  # --- Vendor DankMaterialShell + set graphical boot target ----------------
+  - from-file: modules/dank/dank-config.yml
+
+  # --- Enable login / networking / bluetooth services ----------------------
+  - from-file: modules/dank/dank-systemd.yml
+
+  - type: signing

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# DankMaterialShell session entrypoint -- this is the Exec of the Hyprland
+# wayland-session entry, so SDDM runs it directly.
+#
+# The DMS shell itself is system-wide (/etc/xdg/quickshell/dms), so nothing to
+# seed there. We only drop a default Hyprland config (hyprland.conf + the
+# matching hypridle.conf) into the user's home on first login -- covering both
+# new and existing/rebased accounts -- then hand off to a uwsm-managed Hyprland
+# session (the default config autostarts DMS via `dms run`).
+#
+# Best-effort: a setup error must never block login, so seeding is guarded and
+# we always start the session at the end.
+
+DEFAULTS="/usr/share/dank/hypr"
+USER_HYPR="${HOME}/.config/hypr"
+
+if [ -d "${DEFAULTS}" ] && [ ! -f "${USER_HYPR}/hyprland.conf" ]; then
+  mkdir -p "${USER_HYPR}"
+  # -n: never clobber a config the user already customised.
+  cp -rn "${DEFAULTS}/." "${USER_HYPR}/" 2>/dev/null || true
+fi
+
+# Populate XDG user dirs (Downloads, Pictures, ...) so screenshots etc. land
+# somewhere sane.
+command -v xdg-user-dirs-update >/dev/null 2>&1 && xdg-user-dirs-update || true
+
+# Launch the uwsm-managed Hyprland session (uwsm sets XDG_CURRENT_DESKTOP and
+# provides the user-service environment apps expect).
+exec uwsm start -- Hyprland

@@ -1,0 +1,6 @@
+type: systemd
+system:
+  enabled:
+    - sddm.service               # graphical login
+    - NetworkManager.service     # networking (DMS network widget)
+    - bluetooth.service          # bluetooth (DMS bluetooth widget)

@@ -1,0 +1,124 @@
+type: dnf
+repos:
+  copr:
+    # lionheartp/Hyprland ships the full Hyprland 0.55.x stack, fully built for
+    # current Fedora (against libdisplay-info 0.3). Requested explicitly so the
+    # whole hypr* ecosystem comes from one consistent COPR.
+    - lionheartp/Hyprland
+    # avengemedia/danklinux is the upstream DankMaterialShell repository. It
+    # provides quickshell (the shell runtime DMS requires) plus the optional
+    # helpers DMS uses: matugen (dynamic theming), dgop (system metrics),
+    # danksearch (launcher file search), cliphist (clipboard history),
+    # material-symbols-fonts (the icon font DMS requires) and ghostty.
+    - avengemedia/danklinux
+install:
+  packages:
+    # --- Hyprland ecosystem (lionheartp/Hyprland) ------------------------------
+    - hyprland
+    - hyprland-guiutils      # hyprland-dialog / hyprland-donate etc.
+    - hyprlock               # screen locker (fallback; DMS provides its own lock)
+    - hypridle               # idle daemon -> triggers DMS lock / dpms off
+    - hyprpicker             # color picker
+    - hyprpolkitagent        # polkit auth agent
+    - hyprshot               # screenshot helper
+    - hyprsunset             # night light (DMS night-mode backend on Hyprland)
+    - hyprcursor             # cursor theme runtime
+    - xdg-desktop-portal-hyprland
+    - uwsm                   # Universal Wayland Session Manager (launches Hyprland)
+
+    # --- DankMaterialShell runtime (avengemedia/danklinux COPR) ---------------
+    - quickshell-git         # REQUIRED: the Quickshell runtime DMS is built on
+    - matugen                # wallpaper-based Material You color generation
+    - dgop                   # CPU/RAM/GPU metrics + process list widgets
+    - danksearch             # fast file search backend for the launcher
+    - cliphist               # clipboard history backend (DMS clipboard widget)
+    - material-symbols-fonts # REQUIRED icon font for the DMS UI
+    - ghostty                # default terminal emulator
+
+    # --- DankMaterialShell optional feature deps (Fedora repos) ---------------
+    - wl-clipboard           # wl-copy/wl-paste, used with cliphist
+    - cava                   # audio visualizer widget
+    - brightnessctl          # internal display brightness
+    - ddcutil                # external monitor brightness (DDC/CI)
+    - grim                   # screenshot capture
+    - slurp                  # region selection for screenshots
+    - glib2                  # gsettings (matugen GTK theming)
+    - dconf                  # gsettings backend
+    - gsettings-desktop-schemas
+
+    # --- Quickshell Qt6 runtime (safety net; pulled by quickshell-git too) ----
+    - qt6-qtdeclarative
+    - qt6-qtwayland
+    - qt6-qt5compat
+    - qt6-qtsvg
+    - qt6-qtmultimedia
+    - qt6-qtimageformats
+    - qt6-qtbase-gui
+
+    # --- Login / session ------------------------------------------------------
+    - sddm                   # display manager (Qt-based, no GNOME deps)
+    - xorg-x11-server-Xorg   # X11 backend for the SDDM greeter
+    - xorg-x11-server-Xwayland   # XWayland shim for legacy X11 apps under Hyprland
+
+    # --- Wayland desktop portals / file dialogs -------------------------------
+    - xdg-desktop-portal
+    - xdg-desktop-portal-gtk
+    - xdg-user-dirs
+    - xdg-utils
+
+    # --- Networking (DMS network widget talks to NetworkManager over D-Bus) ---
+    - NetworkManager
+    - NetworkManager-tui
+
+    # --- Bluetooth (DMS bluetooth widget talks to bluez over D-Bus) -----------
+    - bluez
+    - bluez-tools
+
+    # --- Audio (PipeWire; DMS volume/mic widgets use wireplumber) -------------
+    - pipewire
+    - pipewire-pulseaudio
+    - pipewire-alsa
+    - wireplumber
+
+    # --- Power profiles (DMS power widget) ------------------------------------
+    - power-profiles-daemon
+
+    # --- Secrets (Secret Service daemon; NOT the GNOME desktop) ---------------
+    - gnome-keyring
+
+    # --- Minimal everyday utilities -------------------------------------------
+    - thunar                 # lightweight file manager (no GNOME)
+    - thunar-volman
+    - tumbler                # thumbnails for thunar
+    - gtk3
+    - git                    # used by the config-vendoring script + general use
+    - curl
+    - wget2
+    - unzip
+    - tar
+    - jq
+
+    # --- Theming targets for matugen ------------------------------------------
+    - adw-gtk3-theme         # GTK3/4 theme matugen recolors
+    - papirus-icon-theme     # app icons (launcher)
+    - kvantum                # Qt theming engine matugen can target
+    - qt5ct
+    - qt6ct
+
+    # --- Fonts ----------------------------------------------------------------
+    - rsms-inter-fonts       # Inter (DMS UI font)
+    - cascadia-code-nf-fonts # Cascadia Code Nerd Font (terminal/glyphs)
+    - cascadia-mono-nf-fonts
+    - jetbrains-mono-fonts
+    - fontawesome-fonts-all
+    - google-noto-sans-fonts
+    - google-noto-color-emoji-fonts
+    - google-noto-fonts-common
+
+remove:
+  packages:
+    # power-profiles-daemon and tuned-ppd both implement the power-profiles
+    # D-Bus interface and conflict; keep ppd, drop the tuned stack (mirrors the
+    # omarchy image). Harmless if these are not present on the base.
+    - tuned
+    - tuned-ppd

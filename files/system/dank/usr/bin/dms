@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Thin wrapper around Quickshell for the DankMaterialShell config vendored
+# system-wide at /etc/xdg/quickshell/dms.
+#
+#   dms run            -> qs -c dms              (start the shell)
+#   dms ipc call ...   -> qs -c dms ipc call ... (send IPC, used by keybinds)
+#
+# This covers the two subcommands the default config and keybinds rely on. To
+# use the full upstream Go `dms` CLI instead, install it (e.g. from the
+# avengemedia COPR) into /usr/local/bin, which takes precedence on PATH.
+set -euo pipefail
+
+case "${1:-}" in
+  run | "")
+    shift || true
+    exec qs -c dms "$@"
+    ;;
+  *)
+    exec qs -c dms "$@"
+    ;;
+esac

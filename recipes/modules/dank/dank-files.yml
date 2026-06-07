@@ -1,0 +1,6 @@
+type: files
+files:
+  # Session entry + entrypoint, the `dms` IPC wrapper, the default Hyprland
+  # config (seeded per-user on first login) and the SDDM config.
+  - source: system/dank
+    destination: /

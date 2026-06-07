@@ -19,6 +19,19 @@ This repo builds several images. Notably:
   existing/rebased accounts get it too), along with the `omadora-*` helper
   commands. Defined in [`recipes/recipe-omarchy.yml`](recipes/recipe-omarchy.yml).
 
+- **`izzy-os-dank`** — a light, **GNOME-free** atomic Fedora image for the Dell
+  XPS running [Hyprland](https://hypr.land) with the
+  [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell) (DMS)
+  Quickshell desktop. It builds on the minimal `ghcr.io/ublue-os/base-main`
+  (no desktop environment), layers the full Hyprland 0.55 stack from the
+  `lionheartp/Hyprland` COPR, and pulls DMS and its dependencies (quickshell,
+  matugen, dgop, danksearch, cliphist, material-symbols-fonts, ghostty) from the
+  `avengemedia/danklinux` COPR. [SDDM](https://github.com/sddm/sddm) is the
+  display manager. DMS is vendored system-wide into `/etc/xdg/quickshell/dms`
+  (so `qs -c dms` / `dms run` works for every user with no per-user setup), and
+  a default Hyprland config is seeded into each user's home at first login.
+  Defined in [`recipes/recipe-dank.yml`](recipes/recipe-dank.yml).
+
 ## Installation
 
 > **Warning**  

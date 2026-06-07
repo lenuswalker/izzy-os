@@ -33,6 +33,7 @@ jobs:
           #- recipe-hyprland.yml
           - recipe-xps.yml
           - recipe-omarchy.yml
+          - recipe-dank.yml
     steps:
        # the build is fully handled by the reusable github action
       - name: Build Custom Image

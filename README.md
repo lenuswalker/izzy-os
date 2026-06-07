@@ -11,7 +11,7 @@ This repo builds several images. Notably:
 - **`izzy-os-omarchy`** — an atomic Fedora image for the Dell XPS 13 that mimics
   [Omarchy](https://github.com/basecamp/omarchy) (DHH's opinionated Arch/Hyprland
   setup). It builds on `ghcr.io/ublue-os/silverblue-main`, layers the Hyprland
-  0.55 ecosystem from the `sdegler/hyprland` COPR, keeps GDM as the (Wayland)
+  0.55 ecosystem from the `lionheartp/hyprland` COPR, keeps GDM as the (Wayland)
   display manager listing a uwsm-managed Hyprland session, and vendors the
   [omadora](https://github.com/elpritchos/omadora) configuration (an actively
   maintained Fedora adaptation of Omarchy) into `/usr/share/omadora`. The
@@ -19,18 +19,18 @@ This repo builds several images. Notably:
   existing/rebased accounts get it too), along with the `omadora-*` helper
   commands. Defined in [`recipes/recipe-omarchy.yml`](recipes/recipe-omarchy.yml).
 
-- **`izzy-os-dank`** — a light, **GNOME-free** atomic Fedora image for the Dell
+- **`izzy-os-hyprdms`** — a light, **GNOME-free** atomic Fedora image for the Dell
   XPS running [Hyprland](https://hypr.land) with the
   [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell) (DMS)
   Quickshell desktop. It builds on the minimal `ghcr.io/ublue-os/base-main`
   (no desktop environment), layers the full Hyprland 0.55 stack from the
   `lionheartp/Hyprland` COPR, and pulls DMS and its dependencies (quickshell,
   matugen, dgop, danksearch, cliphist, material-symbols-fonts, ghostty) from the
-  `avengemedia/danklinux` COPR. [SDDM](https://github.com/sddm/sddm) is the
+  `avengemedia/danklinux` COPR. [greetd](https://git.sr.ht/~kennylevinsen/greetd) is the
   display manager. DMS is vendored system-wide into `/etc/xdg/quickshell/dms`
   (so `qs -c dms` / `dms run` works for every user with no per-user setup), and
   a default Hyprland config is seeded into each user's home at first login.
-  Defined in [`recipes/recipe-dank.yml`](recipes/recipe-dank.yml).
+  Defined in [`recipes/recipe-hyprdms.yml`](recipes/recipe-hyprdms.yml).
 
 ## Installation
 

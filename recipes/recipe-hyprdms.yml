@@ -1,5 +1,5 @@
 # image will be published to ghcr.io/<user>/<name>
-name: izzy-os-dank
+name: izzy-os-hyprdms
 # description will be included in the image's metadata
 description: Light, GNOME-free Fedora image for the Dell XPS — Hyprland (lionheartp/Hyprland COPR) + DankMaterialShell.
 
@@ -12,6 +12,13 @@ image-version: latest
 
 # module configuration, executed in order
 modules:
+  # --- Common bluebuild modules --------------------------------------------
+  - from-file: modules/common/common-bling.yml
+  - from-file: modules/common/common-brew.yml
+
+  # --- Common packages (utilities, codecs, themes, fonts) ----------------
+  - from-file: modules/common/common-packages.yml
+  
   # --- Software (Hyprland + DankMaterialShell + all deps) -------------------
   - from-file: modules/dank/dank-packages.yml
 
@@ -19,6 +26,12 @@ modules:
   - from-file: modules/dell/dell-xps-packages.yml
   - from-file: modules/intel/intel-packages.yml
   - from-file: modules/intel/intel-specific.yml
+
+  # --- WinApps prerequisites (podman-compose, dialog, etc.) -----------------
+  - from-file: modules/winapps/winapps-packages.yml
+
+  # --- Default applications (common flatpak set; includes FreeRDP for WinApps) ---
+  - from-file: modules/common/common-flatpaks.yml
 
   # --- Session files (wayland session, dms wrapper, default configs, SDDM) --
   - from-file: modules/dank/dank-files.yml
@@ -28,5 +41,8 @@ modules:
 
   # --- Enable login / networking / bluetooth services ----------------------
   - from-file: modules/dank/dank-systemd.yml
+
+  # --- Enable the WinApps first-login user service -------------------------
+  - from-file: modules/winapps/winapps-systemd.yml
 
   - type: signing

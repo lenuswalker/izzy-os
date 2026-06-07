@@ -98,8 +98,6 @@ install:
     - unzip
     - tar
     - jq
-    - neovim
-    - python3-neovim
 
     # --- Theming targets for matugen ------------------------------------------
     - adw-gtk3-theme         # GTK3/4 theme matugen recolors

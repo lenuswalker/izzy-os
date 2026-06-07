@@ -1,0 +1,16 @@
+# greetd configuration for the izzy-os DankMaterialShell image.
+#
+# greetd launches the DankMaterialShell greeter (dms-greeter), a Quickshell
+# login UI. dms-greeter starts its own Hyprland compositor to host the greeter,
+# so the login screen is pure Wayland -- no X11 server is involved. After a user
+# authenticates, greetd runs their chosen wayland-session entry as that user
+# (default: hyprland.desktop -> /usr/libexec/dank-session-start).
+#
+# The unprivileged `greeter` account is provided by the dms-greeter package via
+# sysusers.d.
+[terminal]
+vt = 1
+
+[default_session]
+user = "greeter"
+command = "dms-greeter --command hyprland"

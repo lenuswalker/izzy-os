@@ -1,0 +1,11 @@
+type: systemd
+system:
+  enabled:
+    - greetd.service               # graphical login
+    - NetworkManager.service     # networking (DMS network widget)
+    - bluetooth.service          # bluetooth (DMS bluetooth widget)
+user:
+  enabled:
+    # Autostart the DankMaterialShell shell once the Hyprland graphical session
+    # is up (bound to graphical-session.target; see dms.service).
+    - dms.service

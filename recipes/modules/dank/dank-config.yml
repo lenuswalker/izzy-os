@@ -1,0 +1,6 @@
+type: script
+scripts:
+  # Vendors the DankMaterialShell Quickshell config into /etc/xdg/quickshell/dms
+  # and sets the graphical boot target. Must run after dank-packages.yml (needs
+  # git + quickshell).
+  - install-dank-config.sh

@@ -27,8 +27,8 @@ rm -rf "${DEST}/.git"
 chmod -R a+rX "${DEST}"
 
 # Quickshell entrypoint is shell.qml at the config root.
-if [ ! -f "${DEST}/shell.qml" ]; then
-  echo "ERROR: ${DEST}/shell.qml missing -- DankMaterialShell checkout looks broken" >&2
+if [ ! -f "${DEST}/quickshell/shell.qml" ]; then
+  echo "ERROR: ${DEST}/quickshell/shell.qml missing -- DankMaterialShell checkout looks broken" >&2
   exit 1
 fi
 echo "DankMaterialShell installed at ${DEST}."

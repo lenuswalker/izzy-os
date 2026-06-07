@@ -13,4 +13,4 @@ vt = 1
 
 [default_session]
 user = "greeter"
-command = "dms-greeter --command Hyprland"
+command = "dms-greeter --command hyprland"

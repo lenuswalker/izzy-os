@@ -10,7 +10,7 @@ repos:
     # helpers DMS uses: matugen (dynamic theming), dgop (system metrics),
     # danksearch (launcher file search), cliphist (clipboard history),
     # material-symbols-fonts (the icon font DMS requires) and ghostty.
-    - avengemedia/danklinux
+    # - avengemedia/danklinux
     - avengemedia/dms-git
 install:
   packages:
@@ -98,7 +98,6 @@ install:
     - unzip
     - tar
     - jq
-    - dolphin
     - neovim
     - python3-neovim
 

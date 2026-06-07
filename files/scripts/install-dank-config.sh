@@ -18,17 +18,29 @@ set -oue pipefail
 DMS_REPO="${DMS_REPO:-https://github.com/AvengeMedia/DankMaterialShell}"
 DMS_REF="${DMS_REF:-master}"
 DEST="/etc/xdg/quickshell/dms"
+SRC_SUBDIR="quickshell"
 
-echo "Cloning DankMaterialShell (${DMS_REF}) from ${DMS_REPO} into ${DEST}..."
+echo "Cloning DankMaterialShell (${DMS_REF}) from ${DMS_REPO}..."
+TMP="$(mktemp -d)"
+trap 'rm -rf "${TMP}"' EXIT
+git clone --depth 1 --branch "${DMS_REF}" "${DMS_REPO}" "${TMP}"
+
+if [ ! -f "${TMP}/${SRC_SUBDIR}/shell.qml" ]; then
+  echo "ERROR: ${SRC_SUBDIR}/shell.qml missing in checkout -- DankMaterialShell layout changed" >&2
+  exit 1
+fi
+
+echo "Installing DankMaterialShell into ${DEST}..."
 mkdir -p "$(dirname "${DEST}")"
 rm -rf "${DEST}"
-git clone --depth 1 --branch "${DMS_REF}" "${DMS_REPO}" "${DEST}"
-rm -rf "${DEST}/.git"
+
+# Move only the quickshell/ subdir's contents so shell.qml lands at the config root.
+mv "${TMP}/${SRC_SUBDIR}" "${DEST}"
 chmod -R a+rX "${DEST}"
 
 # Quickshell entrypoint is shell.qml at the config root.
-if [ ! -f "${DEST}/quickshell/shell.qml" ]; then
-  echo "ERROR: ${DEST}/quickshell/shell.qml missing -- DankMaterialShell checkout looks broken" >&2
+if [ ! -f "${DEST}/shell.qml" ]; then
+  echo "ERROR: ${DEST}/shell.qml missing -- DankMaterialShell checkout looks broken" >&2
   exit 1
 fi
 echo "DankMaterialShell installed at ${DEST}."

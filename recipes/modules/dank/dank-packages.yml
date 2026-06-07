@@ -28,7 +28,7 @@ install:
     - uwsm                   # Universal Wayland Session Manager (launches Hyprland)
 
     # --- DankMaterialShell runtime (avengemedia/danklinux COPR) ---------------
-    - dms-git                # REQUIRED: the DankMaterialShell shell itself
+    - dms                    # REQUIRED: the DankMaterialShell shell itself
     - quickshell-git         # REQUIRED: the Quickshell runtime DMS is built on
     - matugen                # wallpaper-based Material You color generation
     - dgop                   # CPU/RAM/GPU metrics + process list widgets

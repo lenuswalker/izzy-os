@@ -1,0 +1,21 @@
+[Unit]
+Description=DankMaterialShell (Quickshell desktop shell)
+Documentation=https://danklinux.com/docs/dankmaterialshell
+# Tie the shell to the graphical (Wayland) session: it starts once the
+# compositor has finalized the session env (`uwsm finalize` in hyprland.conf)
+# and stops when the session goes away.
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=exec
+# `dms run` execs `qs -c dms` (the vendored config at /etc/xdg/quickshell/dms).
+ExecStart=/usr/bin/dms run
+Restart=on-failure
+RestartSec=2
+# Run in the session slice alongside other graphical user services.
+Slice=session.slice
+
+[Install]
+WantedBy=graphical-session.target

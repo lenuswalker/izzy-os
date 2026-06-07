@@ -56,9 +56,8 @@ install:
     - qt6-qtbase-gui
 
     # --- Login / session ------------------------------------------------------
-    - sddm                   # display manager (Qt-based, no GNOME deps)
-    - xorg-x11-server-Xorg   # X11 backend for the SDDM greeter
-    - xorg-x11-server-Xwayland   # XWayland shim for legacy X11 apps under Hyprland
+    - greetd
+    - dms-greeter
 
     # --- Wayland desktop portals / file dialogs -------------------------------
     - xdg-desktop-portal

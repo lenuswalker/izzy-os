@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # DankMaterialShell session entrypoint -- this is the Exec of the Hyprland
-# wayland-session entry, so SDDM runs it directly.
+# wayland-session entry, so greetd (via dms-greeter) runs it after login.
 #
 # The DMS shell itself is system-wide (/etc/xdg/quickshell/dms), so nothing to
 # seed there. We only drop a default Hyprland config (hyprland.conf + the
@@ -18,7 +18,7 @@ USER_HYPR="${HOME}/.config/hypr"
 if [ -d "${DEFAULTS}" ] && [ ! -f "${USER_HYPR}/hyprland.conf" ]; then
   mkdir -p "${USER_HYPR}"
   # -n: never clobber a config the user already customised.
-  cp -rn "${DEFAULTS}/." "${USER_HYPR}/" 2>/dev/null || true
+  cp -r "${DEFAULTS}/." "${USER_HYPR}/" 2>/dev/null || true
 fi
 
 # Populate XDG user dirs (Downloads, Pictures, ...) so screenshots etc. land
